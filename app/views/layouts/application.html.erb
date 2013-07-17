@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+  <head>
+  	<meta charset="utf-8" />
+
+  	<!-- Set the viewport width to device width for mobile -->
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  	<title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+  	<%= stylesheet_link_tag    "application" %>
+  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+	<nav class="top-bar">
+	  <ul class="title-area">
+	    <!-- Title Area -->
+	    <li class="name">
+	      <h1><a href="#">Timemachine </a></h1>
+	    </li>
+	    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+	    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+	  </ul>
+
+	  <section class="top-bar-section">
+	    <!-- Left Nav Section -->
+	    <ul class="left">
+	      <li class="divider"></li>
+	      <li class="active"><a href="#">Main Item 1</a></li>
+	      <li class="divider"></li>
+	      <li><a href="#">Main Item 2</a></li>
+	      <li class="divider"></li>
+	      <li class="has-dropdown"><a href="#">Main Item 3</a>
+
+	        <ul class="dropdown">
+	          <li ><a href="#">Dropdown Level 1a</a></li>
+	          <li><a href="#">Dropdown Level 1b</a></li>
+	          <li><a href="#">Dropdown Level 1c</a></li>
+	          <li class="divider"></li>
+	          <li><a href="#">Dropdown Level 1d</a></li>
+	          <li><a href="#">Dropdown Level 1e</a></li>
+	          <li><a href="#">Dropdown Level 1f</a></li>
+	          <li class="divider"></li>
+	          <li><a href="#">See all &rarr;</a></li>
+	        </ul>
+	      </li>
+	      <li class="divider"></li>
+	    </ul>
+
+	    <!-- Right Nav Section -->
+	    <ul class="right">
+	      <li class="divider hide-for-small"></li>
+	      <li class="divider"></li>
+	      <li class="has-form">
+	        <form>
+	          <div class="row collapse">
+	            <div class="small-8 columns">
+	              <input type="text">
+	            </div>
+	            <div class="small-4 columns">
+	              <a href="#" class="alert button">Search</a>
+	            </div>
+	          </div>
+	        </form>
+	      </li>
+	      <li class="divider show-for-small"></li>
+	      <li class="has-form">
+	        <a class="button" href="#">Button!</a>
+	      </li>
+	    </ul>
+	  </section>
+	</nav>
+	<%= yield %>  	
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>

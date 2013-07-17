@@ -1,0 +1,15 @@
+<%= form_for(@customers) do |f| %>
+	<div class="row">
+	  <div class="small-3 columns">
+	    <%= f.label :name, class: "right inline", title: "A name for the Customer, must be unique", data: {tooltip: true } %>
+	  </div>
+	  <div class="small-9 columns">
+	    <%= f.text_field :name %>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 small-offset-3 columns">
+	    <%= f.submit %>
+	  </div>
+	</div>
+<% end %>

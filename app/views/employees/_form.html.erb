@@ -1,0 +1,12 @@
+<%= form_for(@employee) do |f| %>
+	<div class="row">
+	  <div class="small-3 columns">
+	    <%= f.label :name, class: "right inline", title: "A name for the project, must be unique", data: {tooltip: true } %>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 small-offset-3 columns">
+	    <%= f.submit %>
+	  </div>
+	</div>
+<% end %>

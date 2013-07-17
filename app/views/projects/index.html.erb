@@ -1,0 +1,19 @@
+<%= link_to "New Project", new_project_path, :class => "small button"%>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Name</th>
+      <th>Customer</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% for p in @projects %>
+    <tr>
+      <td><%= p.name%></td>
+      <td><%= p.customer%></td>
+      <td><%= p.desc%></td>
+    </tr>
+	<% end %>
+	</tbody>
+</table>
