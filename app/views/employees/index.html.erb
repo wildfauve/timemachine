@@ -1,0 +1,19 @@
+<%= link_to "New Employee", new_employee_path, :class => "small button"%>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% for e in @employees %>
+    	<tr>
+      	<td><%= e.name%></td>
+			<td>
+				<%= link_to 'Show', employee_path(e), :class => "small button"%>
+			</td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

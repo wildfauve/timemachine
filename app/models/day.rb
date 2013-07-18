@@ -4,7 +4,7 @@ class Day
   include Mongoid::Timestamps  
   
   field :name, :type => String
-  embedded_by :employee, :inverse_of => :days
-  embeds :assignment_days
+  embedded_in :employee, :inverse_of => :days
+  embeds_many :assignment_days
 
 end

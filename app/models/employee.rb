@@ -10,4 +10,10 @@ class Employee
   has_and_belongs_to_many :projects
   embeds_many :days
 
+  def self.create_it(params)
+    emp = self.new(params)
+    emp.save
+    emp
+  end
+
 end

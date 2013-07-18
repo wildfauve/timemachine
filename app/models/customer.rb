@@ -21,5 +21,11 @@ class Customer
     cus.save
   end
     
+  def self.all_projects
+    projects = []
+    all = self.all.each {|cust| cust.projects.each {|proj| projects << proj }}
+    return projects
+  end
+  
 
 end

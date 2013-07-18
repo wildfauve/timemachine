@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
   end
   
   def new
-    @employees = Employee.new
+    @employee = Employee.new
   end
   
   def create

@@ -3,6 +3,7 @@
   <thead>
     <tr>
       <th width="200">Name</th>
+      <th>Projects</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -10,6 +11,11 @@
 	<% for c in @customers %>
     	<tr>
       	<td><%= c.name%></td>
+			<td>
+				<% for p in c.projects %>
+					<p><%= link_to "#{p.name}", customer_project_path(c,p)%></p>
+				<% end %>
+			</td>
 			<td>
 				<%= link_to 'Show', customer_path(c), :class => "small button"%>
 				<%= link_to 'New Project', new_customer_project_path(c), :class => "small button success"%>
