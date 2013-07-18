@@ -10,5 +10,9 @@ module ApplicationHelper
     end
   end
   
+  def project_list_select
+    Customer.all_projects.map{|p| [p.name, p.id]}
+  end
+  
   
 end

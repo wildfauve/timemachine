@@ -12,6 +12,7 @@
       	<td><%= e.name%></td>
 			<td>
 				<%= link_to 'Show', employee_path(e), :class => "small button"%>
+				<%= link_to 'Edit', edit_employee_path(e), :class => "small button"%>
 			</td>
 		</tr>
 	<% end %>
