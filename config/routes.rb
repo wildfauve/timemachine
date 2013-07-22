@@ -5,6 +5,11 @@ Timemachine::Application.routes.draw do
   
   resources :assignments
   
-  resources :employees
+  resources :employees do
+     member do
+      post 'calc'
+    end
+    resources :assignments
+  end
   
 end

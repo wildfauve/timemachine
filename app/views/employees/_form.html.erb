@@ -1,4 +1,4 @@
-<%= form_for(@employee, :class => "custom") do |f| %>
+<%= form_for(@employee, :html => {:class => "custom"}) do |f| %>
 	<div class="row">
 	  <div class="small-3 columns">
 	    <%= f.label :name, class: "right inline", title: "A name the employee, must be unique", data: {tooltip: true } %>
@@ -12,7 +12,7 @@
 			<%= f.label :projects, class: "right inline", title: "A name the employee, must be unique", data: {tooltip: true } %>
 		</div>
 		<div class="small-9 columns">	
-			<%= select_tag(:project, options_for_select(project_list_select), :include_blank => true, :prompt => "Select a Project to Assign Type", :class => "medium") %>
+			<%= select_tag(:project, options_for_select(project_list_select), :include_blank => true, :prompt => "Select a Project to Assign", :class => "medium") %>
 		</div>
 	</div>
 	<div class="row">

@@ -17,4 +17,8 @@ class Project
     proj
   end
   
+  def update_it(params)
+    
+  end
+  
 end

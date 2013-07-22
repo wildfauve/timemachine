@@ -1,0 +1,71 @@
+<%= form_tag(calc_employee_path(@employee), :class => "custom") do %>
+	<%= hidden_field_tag 'project', @project.id %>
+	<%= hidden_field_tag 'date', @date %>	
+	<div class="row">
+		<div class="small-12 columns">
+			<h3 class='subheader center inline'><%= @date %></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag '1 Hr', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= radio_button_tag('hour', '1', false) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag '2 Hr', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= radio_button_tag('hour', '2', false) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag '4 Hr', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= radio_button_tag('hour', '4', false) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag '8 Hr', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= radio_button_tag('hour', '8', false) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag 'Custom', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= number_field_tag('custom_num', nil, :in => 1..10) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag 'Fill?', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= check_box_tag('fill', '1', false) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag 'fill-value', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= number_field_tag('fill-value', nil, :in => 1..15) %>
+		</div>
+	</div>
+
+	<div class="row">
+	  <div class="small-9 small-offset-3 columns">
+	    <%= submit_tag 'Submit', :class => 'button small' %>
+	  </div>
+	</div>
+<% end %>

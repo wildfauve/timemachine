@@ -15,5 +15,14 @@ class Employee
     emp.save
     emp
   end
+  
+  def update_it(params)
+    self.attributes = (params[:employee])
+    if !params[:project].empty?
+      proj = Project.find(params[:project])
+      self.projects << proj
+    end
+    save
+  end
 
 end
