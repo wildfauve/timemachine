@@ -27,5 +27,12 @@ class Customer
     return projects
   end
   
+  def remove_project(project)
+    if Employee.has_project_time?(self)
+      raise
+    else
+      true
+    end
+  end
 
 end

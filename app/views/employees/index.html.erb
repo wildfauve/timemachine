@@ -19,6 +19,8 @@
 			<td>
 				<%= link_to 'Show', employee_path(e), :class => "small button"%>
 				<%= link_to 'Edit', edit_employee_path(e), :class => "small button"%>
+				<%= link_to 'Dashboard', by_employee_path(e), :class => 'button small'%>				
+				<%= link_to 'Erase Days', erase_employee_path(e), :method => :post, :class => 'button small'%>	
 			</td>
 		</tr>
 	<% end %>

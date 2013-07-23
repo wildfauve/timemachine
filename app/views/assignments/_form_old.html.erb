@@ -1,18 +1,5 @@
 <div class="row">
-	<%= form_tag(date_employee_assignment_path(@employee, @project), :class => "custom", :remote => true) do %>
-  		<div class="small-3 columns">
-			<%= select_tag(:date_opt, options_for_select(date_list), :include_blank => true, :prompt => "Change the  Date", :class => "medium") %>
-		</div>
-  		<div class="small-9 columns">		
-	    	<%= submit_tag 'Submit', :class => 'button small' %>
-			<%= link_to 'Go To Today', date_employee_assignment_path(@employee, @project, :date_opt => Date.today), :remote => true, :method => :post, :class => 'button small' %>	
-	  </div>
-	<% end %>
-</div>
-<div class="row">
-	<div class="small-3 columns">
-		<h3 class='subheader center inline'><%= @date %></h3>
-	</div>
+	<div class="small-9 columns"></div>	
 	<div class="small-9 columns">
 		<%= link_to '1hr', calc_employee_path(@employee, :project => @project.id, :hour => "1", :date => @date), :class => 'button small', :method => :post %>
 		<%= link_to '2hr', calc_employee_path(@employee, :project => @project.id, :hour => "2", :date => @date), :class => 'button small', :method => :post %>
@@ -25,11 +12,48 @@
 	<%= hidden_field_tag 'project', @project.id %>
 	<%= hidden_field_tag 'date', @date %>	
 	<div class="row">
+		<div class="small-12 columns">
+			<h3 class='subheader center inline'><%= @date %></h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag '1 Hr', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= radio_button_tag('hour', '1', false) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag '2 Hr', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= radio_button_tag('hour', '2', false) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag '4 Hr', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= radio_button_tag('hour', '4', false) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag '8 Hr', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= radio_button_tag('hour', '8', false) %>
+		</div>
+	</div>
+	<div class="row">
 		<div class="small-3 columns">
 		    <%= label_tag 'Custom', nil , class: "right inline" %>
 		  </div>
 		<div class="small-9 columns">
-			<%= number_field_tag('custom_num', @assigment_day_proj, :in => 1..10) %>
+			<%= number_field_tag('custom_num', nil, :in => 1..10) %>
 		</div>
 	</div>
 	<div class="row">

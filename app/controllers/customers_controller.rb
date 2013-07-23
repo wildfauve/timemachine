@@ -5,7 +5,7 @@ class CustomersController < ApplicationController
   end
   
   def new
-    @customers = Customer.new
+    @customer = Customer.new
   end
   
   def create
@@ -25,6 +25,7 @@ class CustomersController < ApplicationController
   end
   
   def edit
+    @customer = Customer.find(params[:id])
   end
   
   def update

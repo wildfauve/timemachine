@@ -1,4 +1,4 @@
-<%= form_for(@customers) do |f| %>
+<%= form_for(@customer) do |f| %>
 	<div class="row">
 	  <div class="small-3 columns">
 	    <%= f.label :name, class: "right inline", title: "A name for the Customer, must be unique", data: {tooltip: true } %>
@@ -13,3 +13,4 @@
 	  </div>
 	</div>
 <% end %>
+<%= render :partial => 'project_form' %>

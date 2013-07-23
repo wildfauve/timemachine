@@ -14,5 +14,11 @@ module ApplicationHelper
     Customer.all_projects.map{|p| [p.name, p.id]}
   end
   
+  def date_list
+    list = []
+    (Date.today-15..Date.today).each {|d| list << [d, d]}
+    return list
+  end
+  
   
 end

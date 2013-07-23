@@ -1,0 +1,10 @@
+<% for proj in @customer.projects %>
+	<div class='row' id=<%=proj.id%>>
+		<div class="small-3 columns">
+		<%= proj.name %>
+		</div>
+	  	<div class="small-9 columns">		
+			<%= link_to 'remove', customer_project_path(@customer, proj), :method => :delete, :class => 'button small', :remote => true%>
+		</div>
+	</div>
+<% end %>

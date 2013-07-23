@@ -45,8 +45,28 @@ class EmployeesController < ApplicationController
   end
   
   def calc
-    raise
+    @employee = Employee.find(params[:id])
+    @employee.add_time(params)
+    respond_to do |format|
+      if @employee.valid?
+        format.html { redirect_to employee_path(@employee) }
+        format.json
+      else
+        format.html { render action: "edit" }
+        format.json
+      end
+    end      
   end
   
+  def erase
+    @employee = Employee.find(params[:id])
+    @employee.erase_time
+    respond_to do |format|
+      format.html { redirect_to employees_path }
+      format.json
+    end
+    
+  end
+      
   
 end

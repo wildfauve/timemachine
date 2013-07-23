@@ -1,8 +1,16 @@
-<h2 class="subheader"><%= @employee.name %></h2>
+<div class="row">
+	<div class="small-2 columns">
+		<h2 class="subheader"><%= @employee.name %></h2>
+	</div>
+	<div class="small-10 columns">	
+		<%= link_to 'Dashboard', by_employee_path(@employee), :class => 'button small'%>
+	</div>
+</div>
 <% for p in @employee.projects %>
 		<div class=<%=p.name%>>
-			<h3 class="subheader"><%= link_to p.name, new_employee_assignment_path(@employee, :project_id => p.id), :remote => true %></h3>
+			<h3 class="subheader"><%= link_to "#{p.customer.name}:#{p.name}", new_employee_assignment_path(@employee, :project_id => p.id), :remote => true %></h3>
 			<div id='<%=p.name%>' class='time-form'>
 			</div>			
 		</div>
 <% end %>
+

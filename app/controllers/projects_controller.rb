@@ -22,5 +22,19 @@ class ProjectsController < ApplicationController
   def update
   end
   
+  def destroy
+    @customer = Customer.find(params[:customer_id])
+    @project = Project.find(params[:id])
+    @customer.remove_project(@project)
+    respond_to do |format|
+      if @customer.valid?
+        format.js {render 'remove_proj', :layout => false }
+      else
+        format.html { render action: "new" }
+      end
+    end      
+    
+  end
+  
   
 end
