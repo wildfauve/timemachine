@@ -28,10 +28,10 @@ class Customer
   end
   
   def remove_project(project)
-    if Employee.has_project_time?(self)
-      raise
-    else
-      true
+    if Employee.has_project_time?(project)
+      errors.add(:project, "Can't delete project when time is allocated")
+    else  
+      self.projects.delete(project)
     end
   end
 

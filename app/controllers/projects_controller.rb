@@ -26,12 +26,9 @@ class ProjectsController < ApplicationController
     @customer = Customer.find(params[:customer_id])
     @project = Project.find(params[:id])
     @customer.remove_project(@project)
+    Rails.logger.info(">>>Project Controller>> #{@customer.errors.inspect}  #{@customer.errors.any?}")        
     respond_to do |format|
-      if @customer.valid?
-        format.js {render 'remove_proj', :layout => false }
-      else
-        format.html { render action: "new" }
-      end
+      format.js {render 'remove_proj', :layout => false }
     end      
     
   end
