@@ -20,6 +20,9 @@ class Employee
     self.where('days.entries.project' => project.id).count > 0 ? true : false
   end
   
+#  def self.delete_project(project)
+#    self.where(:projects_id => project).each {|emp| emp.projects.delete(project)}
+#  end
   
   def update_it(params)
     self.attributes = (params[:employee])
