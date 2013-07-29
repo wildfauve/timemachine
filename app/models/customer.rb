@@ -15,24 +15,32 @@ class Customer
     cus
   end
   
-  def self.create_project(params)
-    cus = self.find(params[:customer_id])
-    cus.projects << Project.create_it(params[:project])
-    cus.save!
-  end
+
     
   def self.all_projects
     projects = []
     all = self.all.each {|cust| cust.projects.each {|proj| projects << proj }}
     return projects
   end
+
+  def create_project(params)
+    self.projects << Project.create_it(params)
+    save!
+    self
+  end
+
+  def update_project(params)
+    Project.find(params[:id]).update_it(params[:project])
+    self
+  end
+
   
   def remove_project(project)
     if Employee.has_project_time?(project)
       errors.add(:project, "Can't delete project when time is allocated")
     else  
+      Employee.delete_project(project)      
       self.projects.delete(project)
-#      Employee.delete_project(project)
     end
   end
 

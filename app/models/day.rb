@@ -10,7 +10,7 @@ class Day
   def project_hours(project_id)
     project = Project.find(project_id)
     ent = self.entries.where(:project => project.id)
-    ent.count == 0 ? nil : ent.first.hours
+    ent.count == 0 ? 0 : ent.first.hours
   end
 
   def total_hours
@@ -19,13 +19,12 @@ class Day
 
   def add_time(params)
     self.date = params[:date]
-    project = Project.find(params[:project])
-    ass_find = self.entries.where(:project => project.id)
+    ass_find = self.entries.where(:project => params[:project].id)
     if ass_find.count > 0 
-      ass_day = ass_find.first.add_time(params, project)
+      ass_day = ass_find.first.add_time(params)
     else
       ass_day = Entry.new
-      self.entries << ass_day.add_time(params, project)
+      self.entries << ass_day.add_time(params)
     end
     self
   end

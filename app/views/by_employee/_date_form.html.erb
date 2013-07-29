@@ -1,0 +1,8 @@
+<%= form_tag(daterefresh_by_employee_path(@employee), :class => "custom") do %>
+	<div class="small-7 columns">
+		<%= text_field_tag :date_start, nil, :class => "date-picker", :placeholder => "Start Date?" %>
+	</div>
+	<div class="small-5 columns">		
+    	<%= submit_tag 'Submit', :class => 'button tiny' %>
+  </div>
+<% end %>

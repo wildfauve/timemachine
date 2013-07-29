@@ -18,7 +18,12 @@ class Project
   end
   
   def update_it(params)
-    
+    self.attributes = params
+    save!
+  end
+  
+  def hyphenise_name
+    self.name.gsub(/ /, '-')
   end
   
 end

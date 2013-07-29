@@ -10,16 +10,37 @@ class ProjectsController < ApplicationController
   end
   
   def create
-    @customer = Customer.create_project(params)
+    @customer = Customer.find(params[:customer_id]).create_project(params[:project])
+    respond_to do |format|
+      if @customer.valid?
+        format.html {redirect_to customers_path}
+      else
+        raise
+      end
+    end    
   end
   
   def show
   end
   
   def edit
+    @customer = Customer.find(params[:customer_id])
+    @project = Project.find(params[:id])
+    respond_to do |format|
+      format.js {render 'edit_project_form', :layout => false }
+    end
   end
   
   def update
+    @customer = Customer.find(params[:customer_id]).update_project(params)
+    respond_to do |format|
+      if @customer.valid?
+        format.html {redirect_to customers_path}
+      else
+        raise
+      end
+    end    
+    
   end
   
   def destroy

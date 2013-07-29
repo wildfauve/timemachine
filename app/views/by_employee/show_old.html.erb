@@ -1,0 +1,43 @@
+<div class="row">
+	<div class="small-2 columns">
+		<h2 class="subheader"><%= link_to @employee.name, employee_path(@employee) %></h2>
+	</div>
+	<div class="small-10 columns">
+		<dl class="sub-nav">
+			<dl class="sub-nav">
+			  	<dd><%= link_to 'Show', employee_path(@employee) %></dd>
+			  	<dd class="active"><%= link_to 'Dashboard-All', by_employee_path(@employee) %></dd>
+				<dd><%= link_to 'Dashboard_Period', by_employee_path(@employee, :state => :period) %></dd>
+			  	<dd><a href="#">Suspended</a></dd>
+			</dl>
+		</dl>
+	</div>	
+</div>
+
+<h2 class="subheader"></h2>
+<table>
+	<thead>
+		<tr>
+			<th>Assignment</th>
+			<% for day in @dash.day_range %>
+				<th><%= day %></th>
+			<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<% for proj in @employee.projects %>
+			<tr>
+				<td><%= proj.name%></td>
+				<% for day in @employee.day_range %>
+					<td><%= @employee.project_hours_by_day(:project_id => proj.id, :date => day) %></td>
+				<% end %>
+			</tr>
+		<% end %>
+		<tr>
+			<td>Totals</td>
+			<% for day in @employee.day_range %>
+				<td><%= @employee.total_hours_by_day(:date => day) %></td>
+			<% end %>
+		</tr>
+	</tbody>
+</table>

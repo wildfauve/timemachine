@@ -1,3 +1,5 @@
+<% model_class = Employee %>
+<% title model_class.to_s %>
 <%= link_to "New Employee", new_employee_path, :class => "small button"%>
 <table>
   <thead>
@@ -17,10 +19,10 @@
 				<% end %>
 			</td>
 			<td>
-				<%= link_to 'Show', employee_path(e), :class => "small button"%>
-				<%= link_to 'Edit', edit_employee_path(e), :class => "small button"%>
-				<%= link_to 'Dashboard', by_employee_path(e), :class => 'button small'%>				
-				<%= link_to 'Erase Days', erase_employee_path(e), :method => :post, :class => 'button small'%>	
+				<%= link_to 'Show', employee_path(e), :class => "tiny button"%>
+				<%= link_to 'Edit', edit_employee_path(e), :class => "tiny button"%>
+				<%= link_to 'Dashboard', by_employee_path(e), :class => 'tiny button'%>				
+				<%= link_to 'Erase Days', erase_employee_path(e), :method => :post, :class => 'tiny button'%>	
 			</td>
 		</tr>
 	<% end %>

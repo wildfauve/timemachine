@@ -20,9 +20,9 @@ class Employee
     self.where('days.entries.project' => project.id).count > 0 ? true : false
   end
   
-#  def self.delete_project(project)
-#    self.where(:projects_id => project).each {|emp| emp.projects.delete(project)}
-#  end
+  def self.delete_project(project)
+    self.where(:project_ids => project).each {|emp| emp.projects.delete(project)}
+  end
   
   def update_it(params)
     self.attributes = (params[:employee])
@@ -45,14 +45,28 @@ class Employee
     save
   end
   
+  def set_date_range(state)
+    if state
+      if state == "period"
+        today = Date.today
+        start_month = (today.change({:day => 1})..today.change({:day => 15}))
+        end_month = (today.change({:day => 15})..today.end_of_month)
+        today <= Date.today.change({:day => 15}) ? @date_range = start_month : @date_range = end_month
+      end
+    else
+      @date_range = nil
+    end
+    self
+  end
+  
   def day_range
-    self.days.collect {|d| d.date}
+    c = self.days.select {|d| @date_range === d.date}.collect {|d| d.date}
   end
   
   def project_hours_by_day(params)
     day_find = self.days.where(:date => params[:date])
     if day_find.count == 0
-      nil
+      0
     else
       day_find.first.project_hours(params[:project_id])
     end    
@@ -61,7 +75,7 @@ class Employee
   def total_hours_by_day(params)
     day_find = self.days.where(:date => params[:date])
     if day_find.count == 0
-      nil
+      0
     else
       day_find.first.total_hours
     end

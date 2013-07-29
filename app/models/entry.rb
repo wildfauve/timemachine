@@ -7,8 +7,8 @@ class Entry
   field :project, :type => Moped::BSON::ObjectId
   embedded_in :day, :inverse_of => :entries
 
-  def add_time(params, project)
-    self.project = Project.find(params[:project]).id
+  def add_time(params)
+    self.project = params[:project].id
     if params[:hour].present?
       self.hours = params[:hour]
     elsif params[:custom_num].present?

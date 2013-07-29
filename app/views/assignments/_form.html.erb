@@ -14,14 +14,14 @@
 		<h3 class='subheader center inline'><%= @date %></h3>
 	</div>
 	<div class="small-9 columns">
-		<%= link_to '1hr', calc_employee_path(@employee, :project => @project.id, :hour => "1", :date => @date), :class => 'button small', :method => :post %>
-		<%= link_to '2hr', calc_employee_path(@employee, :project => @project.id, :hour => "2", :date => @date), :class => 'button small', :method => :post %>
-		<%= link_to '4hr', calc_employee_path(@employee, :project => @project.id, :hour => "4", :date => @date), :class => 'button small', :method => :post %>
-		<%= link_to '6hr', calc_employee_path(@employee, :project => @project.id, :hour => "6", :date => @date), :class => 'button small', :method => :post %>
-		<%= link_to '8hr', calc_employee_path(@employee, :project => @project.id, :hour => "8", :date => @date), :class => 'button small', :method => :post %>
+		<%= link_to '1hr', calc_employee_assignment_path(@employee, @project.id, :hour => "1", :date => @date), :class => 'button small', :method => :post, :remote => true %>
+		<%= link_to '2hr', calc_employee_assignment_path(@employee, @project.id, :hour => "2", :date => @date), :class => 'button small', :method => :post, :remote => true %>
+		<%= link_to '4hr', calc_employee_assignment_path(@employee, @project.id, :hour => "4", :date => @date), :class => 'button small', :method => :post, :remote => true %>
+		<%= link_to '6hr', calc_employee_assignment_path(@employee, @project.id, :hour => "6", :date => @date), :class => 'button small', :method => :post, :remote => true %>
+		<%= link_to '8hr', calc_employee_assignment_path(@employee, @project.id, :hour => "8", :date => @date), :class => 'button small', :method => :post, :remote => true %>
 	</div>
 </div>
-<%= form_tag(calc_employee_path(@employee), :class => "custom") do %>
+<%= form_tag(calc_employee_assignment_path(@employee, @project), :class => "custom", :remote => true) do %>
 	<%= hidden_field_tag 'project', @project.id %>
 	<%= hidden_field_tag 'date', @date %>	
 	<div class="row">
@@ -29,7 +29,7 @@
 		    <%= label_tag 'Custom', nil , class: "right inline" %>
 		  </div>
 		<div class="small-9 columns">
-			<%= number_field_tag('custom_num', @assigment_day_proj, :in => 1..10) %>
+			<%= number_field_tag('custom_num', @assigment_day_proj, :in => 0..10) %>
 		</div>
 	</div>
 	<div class="row">

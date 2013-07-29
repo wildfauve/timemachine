@@ -26,7 +26,7 @@ group :development do
   gem 'meta_request'
 end
 
-
+gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem "mongoid", "~> 3.0.0"
 gem "origin", "~> 1.0.4"

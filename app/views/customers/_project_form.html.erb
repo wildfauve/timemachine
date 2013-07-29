@@ -4,9 +4,11 @@
 		<%= proj.name %>
 		</div>
 	  	<div class="small-3 columns">		
-			<%= link_to 'remove', customer_project_path(@customer, proj), :method => :delete, :class => 'button small', :remote => true%>
+			<%= link_to 'edit', edit_customer_project_path(@customer, proj), :class => 'button tiny', :remote => true%>
+			<%= link_to 'remove', customer_project_path(@customer, proj), :method => :delete, :class => 'button tiny alert', :remote => true%>
+			
 		</div>
-		<div class="small-6 columns" id="errors-<%=proj.id%>">
+		<div class="small-6 columns" id="status-<%=proj.id%>">
 		</div>
 	</div>
 <% end %>

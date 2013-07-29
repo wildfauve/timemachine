@@ -1,26 +1,50 @@
-<h2 class="subheader"><%= link_to @employee.name, employee_path(@employee) %></h2>
+<div class="row">
+	<div class="small-2 columns">
+		<h2 class="subheader"><%= link_to @employee.name, employee_path(@employee) %></h2>
+	</div>
+	<div class="small-6 columns">
+		<dl class="sub-nav">
+			<dl class="sub-nav">
+			  	<dd><%= link_to 'Show', employee_path(@employee) %></dd>
+			  	<dd class="<%= params[:state] ? "" : "active" %>"><%= link_to 'Dashboard-All', by_employee_path(@employee) %></dd>
+				<dd class=<%= params[:state] ? "active" : "" %>><%= link_to 'Dashboard_Period', by_employee_path(@employee, :state => :period) %></dd>
+			  	<dd id="setdate"><%= link_to 'Set Date', date_by_employee_path(@employee), :remote => true %></dd>
+			</dl>
+		</dl>
+	</div>
+	<div class="small-4 columns">
+		<div class="row" id="date-form">
+		</div>
+		
+	</div>
+</div>
+
+<h2 class="subheader"></h2>
 <table>
 	<thead>
 		<tr>
 			<th>Assignment</th>
-			<% for day in @employee.day_range %>
-				<th><%= day %></th>
+			<% for day in @dash.day_range %>
+				<th>
+					<p><%= day %></p>
+					<p><%= day.strftime('%a')%></p>
+				</th>
 			<% end %>
 		</tr>
 	</thead>
 	<tbody>
-		<% for proj in @employee.projects %>
+		<% for sum_line in @dash.summary %>
 			<tr>
-				<td><%= proj.name%></td>
-				<% for day in @employee.day_range %>
-					<td><%= @employee.project_hours_by_day(:project_id => proj.id, :date => day) %></td>
+				<td><%= sum_line[:project] %></td>
+				<% sum_line[:dates].each  do |date, hours| %>
+					<td><%= hours == 0 ? "" : hours %></td>
 				<% end %>
 			</tr>
 		<% end %>
 		<tr>
 			<td>Totals</td>
-			<% for day in @employee.day_range %>
-				<td><%= @employee.total_hours_by_day(:date => day) %></td>
+			<% @dash.day_total.each do |day, tot| %>
+				<td><%= tot %></td>
 			<% end %>
 		</tr>
 	</tbody>
