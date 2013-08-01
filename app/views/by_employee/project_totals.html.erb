@@ -1,0 +1,28 @@
+<%= render :partial => 'shared/employee_hrd' %>
+<%= link_to 'Refresh Totals', calc_totals_by_employee_path(@employee), :class => "small button", :method => :post%>
+<table>
+	<thead>
+		<tr>
+			<th>Customer</th>
+			<th>Assignment</th>
+			<th>Total Hours</th>
+			<th>Start Date</th>
+			<th>End Date</th>
+			<th>Utilisation</th>
+			<th>Average Effort (hours/week)</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% for proj in @employee.projsummaries %>		
+			<tr>
+				<td><%= proj.assigned_project.customer.name %></td>
+				<td><%= proj.assigned_project.name %></td>				
+				<td><%= proj.total_hours %></td>
+				<td><%= proj.start_date %></td>
+				<td><%= proj.end_date %></td>
+				<td><%= number_to_percentage(proj.total_utilisation, :precision => 2) %></td>
+				<td><%= proj.avg_effort %></td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>

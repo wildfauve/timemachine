@@ -23,4 +23,19 @@ class ByEmployeeController < ApplicationController
     end
   end
   
+  def totals
+    @employee = Employee.find(params[:id])
+    respond_to do |format|
+      format.html {render 'project_totals'}
+    end
+  end
+  
+  def calc_totals
+    @employee = Employee.find(params[:id])
+    @employee.refresh_totals
+    respond_to do |format|
+      format.html {redirect_to totals_by_employee_path(@employee)}
+    end    
+  end
+  
 end

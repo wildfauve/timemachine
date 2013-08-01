@@ -22,7 +22,7 @@ class Dashboard
     @day_total = {}
     @employee.projects.each  do |proj|
       line, dates = {}, {}
-      line[:project] = proj.name
+      line[:project] = proj
       @day_range.each do |day|
         hours = @employee.project_hours_by_day(:project_id => proj.id, :date => day)
         dates[day.to_s] = hours
@@ -36,8 +36,8 @@ class Dashboard
   
   def set_date_range(state)
     if state
-      if state == "period"
-        date_ranage = calc_date_range(Date.today)
+      if state == "timesheet"
+        date_range = calc_date_range(Date.today)
       end
     else
       @date_start ? date_range = calc_date_range(@date_start) : date_range = nil

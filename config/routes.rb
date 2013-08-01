@@ -24,6 +24,8 @@ Timemachine::Application.routes.draw do
         member do
           get 'date'
           post 'daterefresh'
+          get 'totals'
+          post 'calc_totals'
         end
       end
     end

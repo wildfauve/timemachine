@@ -26,5 +26,12 @@ module ApplicationHelper
     return list
   end
   
+  def test_location(params, test)
+    return "active" if test == :show && params[:action] == 'show' && params[:controller] == "employees"
+    return "active" if test == :summary_all && !params[:state] && params[:action] == 'show' && params[:controller] == "by_employee"
+    return "active" if test == :timesheet && params[:state]
+    return "active" if test == :projsummary && params[:action] == 'totals' && params[:controller] == "by_employee"    
+    ""
+  end
   
 end

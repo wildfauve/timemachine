@@ -3,7 +3,7 @@ class Entry
   include Mongoid::Document
   include Mongoid::Timestamps  
   
-  field :hours, :type => Integer
+  field :hours, :type => Float
   field :project, :type => Moped::BSON::ObjectId
   embedded_in :day, :inverse_of => :entries
 

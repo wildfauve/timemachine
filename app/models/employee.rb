@@ -9,6 +9,7 @@ class Employee
   
   has_and_belongs_to_many :projects
   embeds_many :days
+  has_many :projsummaries
 
   def self.create_it(params)
     emp = self.new(params)
@@ -40,14 +41,15 @@ class Employee
       day = day_find.first.add_time(params)
     else
       day = Day.new
-      self.days << day.add_time(params)
+      self.days << day.add_time(params)[:day]
     end
+    #projsum = self.projsummaries.find_or_create_by(:name)
     save
   end
   
   def set_date_range(state)
     if state
-      if state == "period"
+      if state == "timesheet"
         today = Date.today
         start_month = (today.change({:day => 1})..today.change({:day => 15}))
         end_month = (today.change({:day => 15})..today.end_of_month)
@@ -84,6 +86,13 @@ class Employee
   def erase_time
     self.days = nil
     save
+  end
+  
+  def refresh_totals
+    Dashboard.new(:employee => self).summary.each do |proj|
+      self.projsummaries << Projsummary.store(proj)
+      save
+    end
   end
     
 

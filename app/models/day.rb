@@ -21,17 +21,17 @@ class Day
     self.date = params[:date]
     ass_find = self.entries.where(:project => params[:project].id)
     if ass_find.count > 0 
-      ass_day = ass_find.first.add_time(params)
+      ass_entry = ass_find.first.add_time(params)
     else
-      ass_day = Entry.new
-      self.entries << ass_day.add_time(params)
+      ass_entry = Entry.new
+      self.entries << ass_entry.add_time(params)
     end
-    self
+    return {:entry => ass_entry, :day => self}
   end
   
-  def assigned_project
-    return Project.find(project)
-  end
+#  def assigned_project
+#    return Project.find(project)
+#  end
   
 
 end
