@@ -6,7 +6,7 @@
 		<dl class="sub-nav">
 			<dl class="sub-nav">
 			  	<dd class=<%= test_location(params, :show) %>><%= link_to 'Show', employee_path(@employee) %></dd>
-			  	<dd class=<%= test_location(params, :summary_all) %>><%= link_to 'Summary-All', by_employee_path(@employee) %></dd>
+			  	<dd class=<%= test_location(params, :summary_all) %>><%= link_to 'Summary-All', summary_by_employee_path(@employee) %></dd>
 				<dd class=<%= test_location(params, :timesheet) %>><%= link_to 'Timesheet', by_employee_path(@employee, :state => :timesheet) %></dd>
 			  	<dd id="setdate"><%= link_to 'Set Date', date_by_employee_path(@employee), :remote => true %></dd>
 			  	<dd class=<%= test_location(params, :projsummary)%> ><%= link_to 'Project Summary', totals_by_employee_path(@employee) %></dd>			

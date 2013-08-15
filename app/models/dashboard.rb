@@ -1,6 +1,6 @@
 class Dashboard
   
-  attr_accessor :day_range, :day_total
+  attr_accessor :day_range, :day_total, :proj_total, :summ_by_date, :summ_by_project
   
   def initialize(params)
     @employee = params[:employee]
@@ -8,18 +8,23 @@ class Dashboard
     set_date_range(params[:date_state])
   end
 
-# ==> summ  
+# ==> summ_by_project
 # [{:project=>"Solution Architecture", :dates=>{"2013-07-22"=>8, "2013-07-23"=>8, "2013-07-24"=>7, "2013-07-25"=>5, "2013-07-26"=>6}},
 # {:project=>"Transformation Programme", :dates=>{"2013-07-22"=>0, "2013-07-23"=>0, "2013-07-24"=>0, "2013-07-25"=>0, "2013-07-26"=>0}},
 # {:project=>"Optimise HR", :dates=>{"2013-07-22"=>0, "2013-07-23"=>0, "2013-07-24"=>0, "2013-07-25"=>0, "2013-07-26"=>0}},
 # {:project=>"Architecture Assessment", :dates=>{"2013-07-22"=>0, "2013-07-23"=>0, "2013-07-24"=>0, "2013-07-25"=>0, "2013-07-26"=>0}}]
 
-# ==> day_total
+# ==> summ_by_date
+
+# ==> dashboard.day_total
 # {"2013-07-22"=>8, "2013-07-23"=>8, "2013-07-24"=>7, "2013-07-25"=>5, "2013-07-26"=>6}  
 
-  def summary
-    summ = []
+  def calc_summary
+    return self if @summ_by_project || @summ_by_date
+    @summ_by_project = []
     @day_total = {}
+    @proj_total = {}
+    @summ_by_date = []
     @employee.projects.each  do |proj|
       line, dates = {}, {}
       line[:project] = proj
@@ -27,25 +32,36 @@ class Dashboard
         hours = @employee.project_hours_by_day(:project_id => proj.id, :date => day)
         dates[day.to_s] = hours
         @day_total[day.to_s] ? @day_total[day.to_s] += hours : @day_total[day.to_s] = hours
+        @proj_total[proj.id] ? @proj_total[proj.id] += hours : @proj_total[proj.id] = hours
       end
       line[:dates] = dates
-      summ << line
+      @summ_by_project << line
 		end
-		summ
+		date_line = {}
+		@day_range.each do |day|
+		  date_line[:date] = day
+		  proj_line = {}
+		  @summ_by_project.each do |proj|
+		    selected = proj[:dates].select {|d, v| d == day}
+		    proj_line[:project] = proj
+		    proj_line[:total] = selected[day]
+	    end
+	    date_line[:projects] = proj_line
+	    @summ_by_date << date_line
+	  end
+		self
   end
   
   def set_date_range(state)
     if state
-      if state == "timesheet"
-        date_range = calc_date_range(Date.today)
-      end
+      date_range = calc_date_range(Date.today) if state == "timesheet"
     else
       @date_start ? date_range = calc_date_range(@date_start) : date_range = nil
     end
     if date_range
       @day_range = @employee.days.select {|d| date_range === d.date}.collect {|d| d.date}.sort {|x,y| x <=> y}
     else
-      @day_range = @employee.days.collect {|d| d.date}.sort {|x,y| x <=> y}
+      @day_range = @employee.all_days
     end
   end  
 

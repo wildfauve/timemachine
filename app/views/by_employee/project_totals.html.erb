@@ -1,15 +1,23 @@
 <%= render :partial => 'shared/employee_hrd' %>
 <%= link_to 'Refresh Totals', calc_totals_by_employee_path(@employee), :class => "small button", :method => :post%>
+<div class="row">
+	<div class="small-6 columns">
+		<h3 class="subheader">Billable U</h3>
+	</div>
+	<div class="small-6 columns">
+		<h3 class="subheader"><%= number_to_percentage(@employee.billable_u, :precision => 2) %></h3>
+	</div>
+<div>
 <table>
 	<thead>
 		<tr>
 			<th>Customer</th>
 			<th>Assignment</th>
 			<th>Total Hours</th>
-			<th>Start Date</th>
-			<th>End Date</th>
+			<th width="100">Start Date</th>
+			<th width="100">End Date</th>
 			<th>Utilisation</th>
-			<th>Average Effort (hours/week)</th>
+			<th width="100">Average Effort (hours/week)</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,7 +29,7 @@
 				<td><%= proj.start_date %></td>
 				<td><%= proj.end_date %></td>
 				<td><%= number_to_percentage(proj.total_utilisation, :precision => 2) %></td>
-				<td><%= proj.avg_effort %></td>
+				<td><%= number_with_precision(proj.avg_effort, precision: 2)   %></td>
 			</tr>
 		<% end %>
 	</tbody>

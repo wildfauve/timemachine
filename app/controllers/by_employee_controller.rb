@@ -6,6 +6,9 @@ class ByEmployeeController < ApplicationController
   def show
     @employee = Employee.find(params[:id])
     @dash = Dashboard.new(:employee => @employee, :date_state => params[:state], :date_start => params[:date_start])
+    respond_to do |format|
+      format.html {render 'show'}
+    end    
   end
   
   def date
@@ -19,7 +22,7 @@ class ByEmployeeController < ApplicationController
     #session[:employee_id] = params[:id]
     #session[:date_start] = params[:date_start]
     respond_to do |format|
-      format.html {redirect_to by_employee_path(params[:id], :date_start => params[:date_start])}
+      format.html {redirect_to by_employee_path(params[:id], :date_start => params[:date_start], :state => params[:state])}
     end
   end
   
@@ -35,6 +38,14 @@ class ByEmployeeController < ApplicationController
     @employee.refresh_totals
     respond_to do |format|
       format.html {redirect_to totals_by_employee_path(@employee)}
+    end    
+  end
+  
+  def summary
+    @employee = Employee.find(params[:id])
+    @dash = Dashboard.new(:employee => @employee)
+    respond_to do |format|
+      format.html {render 'summary'}
     end    
   end
   

@@ -1,7 +1,7 @@
 <div class="row">
 	<%= form_tag(date_employee_assignment_path(@employee, @project), :class => "custom", :remote => true) do %>
   		<div class="small-3 columns">
-			<%= select_tag(:date_opt, options_for_select(date_list), :include_blank => true, :prompt => "Change the  Date", :class => "medium") %>
+			<%= text_field_tag :date_opt, nil, :class => "date-picker-#{@project.hyphenise_name}", :placeholder => "New Date" %>
 		</div>
   		<div class="small-9 columns">		
 	    	<%= submit_tag 'Submit', :class => 'button small' %>
@@ -29,7 +29,7 @@
 		    <%= label_tag 'Custom', nil , class: "right inline" %>
 		  </div>
 		<div class="small-9 columns">
-			<%= number_field_tag('custom_num', @assigment_day_proj, :in => 1..10, :step => 0.1) %>
+			<%= number_field_tag('custom_num', @assigment_day_proj, :in => 0..10, :step => 0.1) %>
 		</div>
 	</div>
 	<div class="row">

@@ -4,6 +4,7 @@ class Employee
   include Mongoid::Timestamps  
   
   field :name, :type => String
+  field :billable_u, :type => Float
   
   validates_uniqueness_of :name
   
@@ -46,8 +47,9 @@ class Employee
     #projsum = self.projsummaries.find_or_create_by(:name)
     save
   end
-  
-  def set_date_range(state)
+=begin  
+  def set_date_range(state=nil)
+    raise
     if state
       if state == "timesheet"
         today = Date.today
@@ -63,6 +65,16 @@ class Employee
   
   def day_range
     c = self.days.select {|d| @date_range === d.date}.collect {|d| d.date}
+  end
+=end
+
+  def all_days
+    self.days.collect {|d| d.date}.sort {|x,y| x <=> y}
+  end
+  
+  def total_number_days
+    tot = self.all_days
+    (tot[-1] - tot[0]).to_f
   end
   
   def project_hours_by_day(params)
@@ -83,14 +95,20 @@ class Employee
     end
   end
   
+  def billable_calc
+    self.projsummaries.select {|ps| ps.assigned_project.billable}.inject(0) {|n, v| n += v.total_hours}
+  end
+  
   def erase_time
     self.days = nil
     save
   end
-  
+    
   def refresh_totals
-    Dashboard.new(:employee => self).summary.each do |proj|
+    # Only deals with 1 employee summary
+    Dashboard.new(:employee => self).calc_summary.summ_by_project.each do |proj|
       self.projsummaries << Projsummary.store(proj)
+      self.billable_u = (self.billable_calc / (self.total_number_days * 8)) * 100
       save
     end
   end

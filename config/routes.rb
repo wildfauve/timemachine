@@ -1,4 +1,7 @@
 Timemachine::Application.routes.draw do
+  
+  root :to => "employees#index"
+  
   resources :customers do
     resources :projects
   end
@@ -26,6 +29,7 @@ Timemachine::Application.routes.draw do
           post 'daterefresh'
           get 'totals'
           post 'calc_totals'
+          get 'summary'
         end
       end
     end

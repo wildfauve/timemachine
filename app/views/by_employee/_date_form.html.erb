@@ -2,6 +2,7 @@
 	<div class="small-7 columns">
 		<%= text_field_tag :date_start, nil, :class => "date-picker", :placeholder => "Start Date?" %>
 	</div>
+	<%= hidden_field_tag 'state', 'timesheet' %>
 	<div class="small-5 columns">		
     	<%= submit_tag 'Submit', :class => 'button tiny' %>
   </div>

@@ -13,7 +13,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<% for sum_line in @dash.summary %>
+		<% for sum_line in @dash.calc_summary.summ_by_project %>
 			<tr>
 				<td><%= sum_line[:project].name %></td>
 				<% sum_line[:dates].each  do |date, hours| %>

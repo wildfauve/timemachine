@@ -5,6 +5,7 @@ class Project
   
   field :name, :type => String
   field :desc, :type => String
+  field :billable, :type => Boolean
   
   validates_uniqueness_of :name
   
@@ -24,6 +25,10 @@ class Project
   
   def hyphenise_name
     self.name.gsub(/ /, '-')
+  end
+  
+  def is_billable?
+    billable
   end
   
 end

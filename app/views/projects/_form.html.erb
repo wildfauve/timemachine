@@ -16,6 +16,15 @@
 	  </div>
 	</div>
 	<div class="row">
+	  <div class="small-3 columns">
+	    <%= f.label :billable, class: "right inline" %>
+	  </div>
+	  <div class="small-9 columns">
+	    <%= f.check_box :billable %>
+	  </div>
+	</div>
+
+	<div class="row">
 	  <div class="small-9 small-offset-3 columns">
 	    <%= f.submit %>
 	  </div>
