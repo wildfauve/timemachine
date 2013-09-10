@@ -57,6 +57,15 @@ class EmployeesController < ApplicationController
     end
     
   end
+  
+  def projstate
+    @employee = Employee.find(params[:id])
+    @employee.mod_project_state(params)
+    respond_to do |format|
+      format.html { redirect_to edit_employee_path(@employee) }
+      format.json
+    end
+  end
       
   
 end

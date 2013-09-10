@@ -5,10 +5,12 @@ class Employee
   
   field :name, :type => String
   field :billable_u, :type => Float
+  field :summ_refresh_date, :type => Time
   
   validates_uniqueness_of :name
   
   has_and_belongs_to_many :projects
+  embeds_many :projectstates
   embeds_many :days
   has_many :projsummaries
 
@@ -74,7 +76,7 @@ class Employee
   
   def total_number_days
     tot = self.all_days
-    (tot[-1] - tot[0]).to_f
+    Utilities.working_days_between(tot[0], tot[-1]).to_f
   end
   
   def project_hours_by_day(params)
@@ -96,21 +98,38 @@ class Employee
   end
   
   def billable_calc
-    self.projsummaries.select {|ps| ps.assigned_project.billable}.inject(0) {|n, v| n += v.total_hours}
+    self.projsummaries.select {|ps| ps.assigned_project.billable}.inject(0.to_f) {|n, v| n += v.total_hours}
   end
   
   def erase_time
     self.days = nil
     save
   end
+  
+  def mod_project_state(params)
+    ps = self.projectstates.find_or_create_by(:project => params[:project])
+    ps.mod(params)
+    self.save!
+    self
+  end
+  
+  def project_viewable(proj)
+    ps = self.projectstates.where(:project => proj.id)
+    ps.count > 0 ? ps.first.viewable : true
+  end
+  
+  def viewable_projects
+    self.projects.select {|p| self.project_viewable(p)}.sort {|x, y| x.customer.name <=> y.customer.name }
+  end
     
   def refresh_totals
     # Only deals with 1 employee summary
     Dashboard.new(:employee => self).calc_summary.summ_by_project.each do |proj|
       self.projsummaries << Projsummary.store(proj)
-      self.billable_u = (self.billable_calc / (self.total_number_days * 8)) * 100
-      save
     end
+      self.billable_u = (self.billable_calc / (self.total_number_days * 8)) * 100
+      self.summ_refresh_date = Time.now
+      save
   end
     
 

@@ -41,5 +41,9 @@ class AssignmentsController < ApplicationController
     end      
   end
   
+  def time_change
+    raise
+  end
+  
   
 end

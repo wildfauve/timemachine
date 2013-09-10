@@ -29,10 +29,14 @@ class Projsummary
   
   def total_utilisation
     if self.start_date
-      (self.total_hours / 8) / (self.end_date.mjd - self.start_date.mjd + 1) * 100
+      (self.total_hours / 8) / (Utilities.working_days_between(self.start_date, self.end_date) + 1) * 100
     else
       0
     end
+  end
+  
+  def duration
+    self.start_date ? Utilities.working_days_between(self.start_date, self.end_date) : 0
   end
   
   def avg_effort

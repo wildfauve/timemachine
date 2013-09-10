@@ -12,11 +12,13 @@ Timemachine::Application.routes.draw do
      member do
       post 'date'
       post 'erase'
+      post 'projstate'
     end
     resources :assignments do
       member do
        post 'date'
        post 'calc'
+       get 'time_change'
       end
     end      
   end

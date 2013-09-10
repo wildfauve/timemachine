@@ -1,0 +1,16 @@
+<% for proj in @employee.projects %>
+   <div class='row' id=<%=proj.id%>>
+      <div class="small-3 columns">
+      <%= proj.name %>
+      </div>
+      <div class="small-3 columns">
+         <% if @employee.project_viewable(proj)%>    
+            <%= link_to 'hide', projstate_employee_path(@employee, :view_state => :hide, :project => proj), :class => 'button tiny', :method => :post%>
+         <% else %>
+            <%= link_to 'show', projstate_employee_path(@employee, :view_state => :show, :project => proj), :class => 'button tiny', :method => :post%>
+         <% end %>
+      </div>
+      <div class="small-6 columns" id="status-<%=proj.id%>">
+      </div>
+   </div>
+<% end %>

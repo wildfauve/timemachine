@@ -1,23 +1,24 @@
+<%= link_to "Enter Time", employee_path(@employee), :class => "button small" %>
 <%= form_for(@employee, :html => {:class => "custom"}) do |f| %>
-	<div class="row">
-	  <div class="small-3 columns">
-	    <%= f.label :name, class: "right inline", title: "A name the employee, must be unique", data: {tooltip: true } %>
-	  </div>
-	  <div class="small-9 columns">
-	    <%= f.text_field :name %>
-	  </div>	
-	</div>
-	<div class="row">
-		<div class="small-3 columns">
-			<%= f.label :projects, class: "right inline", title: "A name the employee, must be unique", data: {tooltip: true } %>
-		</div>
-		<div class="small-9 columns">	
-			<%= select_tag(:project, options_for_select(project_list_select), :include_blank => true, :prompt => "Select a Project to Assign", :class => "medium") %>
-		</div>
-	</div>
-	<div class="row">
-	  <div class="small-9 small-offset-3 columns">
-	    <%= f.submit 'Submit', :class => 'button small' %>
-	  </div>
-	</div>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :name, class: "right inline", title: "A name the employee, must be unique", data: {tooltip: true } %>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :name %>
+     </div> 
+   </div>
+   <div class="row">
+      <div class="small-3 columns">
+         <%= f.label :projects, class: "right inline", title: "A name the employee, must be unique", data: {tooltip: true } %>
+      </div>
+      <div class="small-9 columns"> 
+         <%= select_tag(:project, options_for_select(project_list_select), :include_blank => true, :prompt => "Select a Project to Assign", :class => "medium") %>
+      </div>
+   </div>
+   <div class="row">
+     <div class="small-9 small-offset-3 columns">
+       <%= f.submit 'Submit', :class => 'button small' %>
+     </div>
+   </div>
 <% end %>

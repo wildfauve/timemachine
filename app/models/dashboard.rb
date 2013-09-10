@@ -25,7 +25,7 @@ class Dashboard
     @day_total = {}
     @proj_total = {}
     @summ_by_date = []
-    @employee.projects.each  do |proj|
+    @employee.projects.sort {|x,y| x.customer.name <=> y.customer.name}.each  do |proj|
       line, dates = {}, {}
       line[:project] = proj
       @day_range.each do |day|
@@ -54,9 +54,9 @@ class Dashboard
   
   def set_date_range(state)
     if state
-      date_range = calc_date_range(Date.today) if state == "timesheet"
-    else
-      @date_start ? date_range = calc_date_range(@date_start) : date_range = nil
+      date_range = calc_date_range(Date.today) if state == "timesheet" && @date_start.nil?
+      date_range = calc_date_range(@date_start) if @date_start
+      date_range = nil if state.nil? && @date_start.nil?
     end
     if date_range
       @day_range = @employee.days.select {|d| date_range === d.date}.collect {|d| d.date}.sort {|x,y| x <=> y}
@@ -68,8 +68,12 @@ class Dashboard
   def calc_date_range(date)
     today = date
     start_month = (today.change({:day => 1})..today.change({:day => 15}))
-    end_month = (today.change({:day => 15})..today.end_of_month)
+    end_month = (today.change({:day => 16})..today.end_of_month)
     today <= date.change({:day => 15}) ? start_month : end_month
+  end
+  
+  def project_total(project)
+    @proj_total[project.id]
   end
   
 end

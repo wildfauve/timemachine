@@ -1,31 +1,31 @@
 <%= render :partial => 'shared/employee_hrd' %>
 <h2 class="subheader"></h2>
 <table>
-	<thead>
-		<tr>
-			<th>Date Range</th>
-			<% for proj in @dash.calc_summary.summ_by_project %>
-				<th>
-					<p><%= proj[:project].name %></p>
-				</th>
-			<% end %>
-		</tr>
-	</thead>
-	<tbody>
-		<% for day in @dash.day_range %>
-			<tr>
-				<td><%= day %>
-				<% for proj in @dash.summ_by_project %>
-					<% day_tot = proj[:dates].select {|k,v| k == day.to_s}.flatten[1] %>
-					<td><%= day_tot.nil? || day_tot == 0 ? "" : day_tot.to_s %></td>
-				<% end %>
-			</tr>
-		<% end %>
-		<tr>
-			<td>Totals</td>
-			<% @dash.proj_total.each do |proj_id, tot| %>
-				<td><%= tot %></td>
-			<% end %>
-		</tr>
-	</tbody>
+   <thead>
+      <tr>
+         <th>Date Range</th>
+         <% for proj in @dash.calc_summary.summ_by_project %>
+            <th>
+               <p><%= proj[:project].name %></p>
+            </th>
+         <% end %>
+      </tr>
+   </thead>
+   <tbody>
+      <% for day in @dash.day_range %>
+         <tr>
+            <td><%= day %>
+            <% for proj in @dash.summ_by_project %>
+               <% day_tot = proj[:dates].select {|k,v| k == day.to_s}.flatten[1] %>
+               <td><%= day_tot.nil? || day_tot == 0 ? "" : day_tot.to_s %></td>
+            <% end %>
+         </tr>
+      <% end %>
+      <tr>
+         <td>Totals</td>
+         <% @dash.proj_total.each do |proj_id, tot| %>
+            <td><%= tot %></td>
+         <% end %>
+      </tr>
+   </tbody>
 </table>
