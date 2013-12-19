@@ -22,6 +22,7 @@
 				<%= link_to 'Show', customer_path(c), :class => "tiny button"%>
 				<%= link_to 'Edit', edit_customer_path(c), :class => "tiny button"%>
 				<%= link_to 'New Project', new_customer_project_path(c), :class => "tiny button"%>
+        <%= link_to 'Invoice', invoice_customer_path(c, state: :invoice), :class => "tiny button"%>
 			</td>
 		</tr>
 	<% end %>

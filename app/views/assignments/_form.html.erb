@@ -6,12 +6,14 @@
   		<div class="small-9 columns">		
 	    	<%= submit_tag 'Submit', :class => 'button small' %>
 			<%= link_to 'Go To Today', date_employee_assignment_path(@employee, @project, :date_opt => Date.today), :remote => true, :method => :post, :class => 'button small' %>	
+			<%= link_to '<', date_employee_assignment_path(@employee, @project, :date_opt => @date - 1), :remote => true, :method => :post, :class => 'button small' %>	
+			<%= link_to '>', date_employee_assignment_path(@employee, @project, :date_opt => @date + 1), :remote => true, :method => :post, :class => 'button small' %>	
 	  </div>
 	<% end %>
 </div>
 <div class="row">
 	<div class="small-3 columns">
-		<h3 class='subheader center inline'><%= @date %></h3>
+		<h4 class='subheader center inline'><%= "#{@date} (#{@date.strftime("%a")})" %></h4>
 	</div>
 	<div class="small-9 columns">
 		<%= link_to '1hr', calc_employee_assignment_path(@employee, @project.id, :hour => "1", :date => @date), :class => 'button small', :method => :post, :remote => true %>

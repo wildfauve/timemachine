@@ -4,6 +4,9 @@ Timemachine::Application.routes.draw do
   
   resources :customers do
     resources :projects
+    member do
+      get 'invoice'
+    end
   end
   
   resources :assignments

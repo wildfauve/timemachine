@@ -3,8 +3,9 @@ class Dashboard
   attr_accessor :day_range, :day_total, :proj_total, :summ_by_date, :summ_by_project
   
   def initialize(params)
-    @employee = params[:employee]
+    @employee.nil? ? @employee = Employee.where(name: "Col").first : @employee = params[:employee]
     @date_start = Date.parse(params[:date_start]) if params[:date_start]
+    @customer = params[:customer]
     set_date_range(params[:date_state])
   end
 
@@ -25,17 +26,26 @@ class Dashboard
     @day_total = {}
     @proj_total = {}
     @summ_by_date = []
-    @employee.projects.sort {|x,y| x.customer.name <=> y.customer.name}.each  do |proj|
+    if @customer
+      proj_list = @customer.projects.sort {|x,y| x.customer.name <=> y.customer.name}
+    else
+      proj_list = @employee.projects.sort {|x,y| x.customer.name <=> y.customer.name}
+    end
+    proj_list.each do |proj|
       line, dates = {}, {}
       line[:project] = proj
       @day_range.each do |day|
         hours = @employee.project_hours_by_day(:project_id => proj.id, :date => day)
-        dates[day.to_s] = hours
-        @day_total[day.to_s] ? @day_total[day.to_s] += hours : @day_total[day.to_s] = hours
-        @proj_total[proj.id] ? @proj_total[proj.id] += hours : @proj_total[proj.id] = hours
+        if hours > 0
+          dates[day.to_s] = hours          
+          @day_total[day.to_s] ? @day_total[day.to_s] += hours : @day_total[day.to_s] = hours
+          @proj_total[proj.id] ? @proj_total[proj.id] += hours : @proj_total[proj.id] = hours
+        end
       end
-      line[:dates] = dates
-      @summ_by_project << line
+      if !dates.empty?
+        line[:dates] = dates
+        @summ_by_project << line
+      end
 		end
 		date_line = {}
 		@day_range.each do |day|
@@ -55,7 +65,8 @@ class Dashboard
   def set_date_range(state)
     if state
       date_range = calc_date_range(Date.today) if state == "timesheet" && @date_start.nil?
-      date_range = calc_date_range(@date_start) if @date_start
+      date_range = Date.today.change({day: 1})..Date.today.end_of_month 
+      date_range = calc_date_range(@date_start) if @date_start if state == "invoice" && @date_start.nil?
       date_range = nil if state.nil? && @date_start.nil?
     end
     if date_range

@@ -1,0 +1,40 @@
+<h2 class="subheader"></h2>
+<table>
+   <thead>
+      <tr>
+         <th>Assignment</th>
+         <% for day in @dash.day_range %>
+            <th>
+               <p><%= day.strftime('%d %b') %></p>
+               <p><%= day.strftime('%a')%></p>
+            </th>
+         <% end %>
+         <th><h3 class="subheader">Total</h3></th>
+      </tr>
+   </thead>
+   <tbody>
+      <% for sum_line in @dash.calc_summary.summ_by_project %>
+         <tr>
+            <td>
+               <h4 class="subheader"><%= sum_line[:project].customer.name %></h4>
+               <h6 class="subheader"><%= sum_line[:project].name %></h6>
+            </td>
+            <% sum_line[:dates].each  do |date, hours| %>
+               <td>
+                  <div class="time-entry" data-date="<%= date %>" data-proj="<%= sum_line[:project].name %>" >
+                     <% hours == 0 ? num = "" : num = hours %>
+                  </div>
+               </td>
+            <% end %>
+            <td><h3 class="subheader"><%= @dash.project_total(sum_line[:project]) %></h3></td>
+               
+         </tr>
+      <% end %>
+      <tr>
+         <td><h2 class="subheader">Totals</h2></td>
+         <% @dash.day_total.each do |day, tot| %>
+            <td><h3 class="subheader"><%= tot %></h3></td>
+         <% end %>
+      </tr>
+   </tbody>
+</table>
