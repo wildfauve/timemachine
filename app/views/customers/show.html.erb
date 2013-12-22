@@ -13,28 +13,29 @@
       </tr>
    </thead>
    <tbody>
-      <% for sum_line in @dash.calc_summary.summ_by_project %>
-         <tr>
+      <% sum_proj = @dash.calc_summary.summ_by_project %>
+      <% for proj in sum_proj %>
+        <tr>
+          <td>
+             <h4 class="subheader"><%= proj[:project].customer.name %></h4>
+             <h6 class="subheader"><%= proj[:project].name %></h6>
+          </td>      
+          <% for day in @dash.day_range %>
             <td>
-               <h4 class="subheader"><%= sum_line[:project].customer.name %></h4>
-               <h6 class="subheader"><%= sum_line[:project].name %></h6>
+              <div class="time-entry" data-date="<%= day %>" data-proj="<%= proj[:project].name %>" >
+                <%= @dash.hours_for_day(day, proj).to_s %>
+              </div>
             </td>
-            <% sum_line[:dates].each  do |date, hours| %>
-               <td>
-                  <div class="time-entry" data-date="<%= date %>" data-proj="<%= sum_line[:project].name %>" >
-                     <% hours == 0 ? num = "" : num = hours %>
-                  </div>
-               </td>
-            <% end %>
-            <td><h3 class="subheader"><%= @dash.project_total(sum_line[:project]) %></h3></td>
-               
-         </tr>
+          <% end %>
+          <td class="subheader"><%= @dash.proj_total[proj[:project].id] %></td>
+        </tr>          
       <% end %>
       <tr>
          <td><h2 class="subheader">Totals</h2></td>
          <% @dash.day_total.each do |day, tot| %>
             <td><h3 class="subheader"><%= tot %></h3></td>
          <% end %>
+         <td><h3 class="subheader"><%= @dash.overall_total %></h3></td>         
       </tr>
    </tbody>
 </table>

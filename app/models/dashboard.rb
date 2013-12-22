@@ -15,6 +15,10 @@ class Dashboard
 # {:project=>"Optimise HR", :dates=>{"2013-07-22"=>0, "2013-07-23"=>0, "2013-07-24"=>0, "2013-07-25"=>0, "2013-07-26"=>0}},
 # {:project=>"Architecture Assessment", :dates=>{"2013-07-22"=>0, "2013-07-23"=>0, "2013-07-24"=>0, "2013-07-25"=>0, "2013-07-26"=>0}}]
 
+# proj_total
+
+# {"51f05fb5e4df1c834a000008"=>17.0, "5215305be4df1c285a000002"=>1.0, "5215303ee4df1c285a000001"=>16.0}
+
 # ==> summ_by_date
 
 # ==> dashboard.day_total
@@ -65,8 +69,8 @@ class Dashboard
   def set_date_range(state)
     if state
       date_range = calc_date_range(Date.today) if state == "timesheet" && @date_start.nil?
-      date_range = Date.today.change({day: 1})..Date.today.end_of_month 
-      date_range = calc_date_range(@date_start) if @date_start if state == "invoice" && @date_start.nil?
+      date_range = Date.today.change({day: 1})..Date.today.end_of_month if state == "invoice" && @date_start.nil?
+      date_range = calc_date_range(@date_start) if @date_start
       date_range = nil if state.nil? && @date_start.nil?
     end
     if date_range
@@ -85,6 +89,16 @@ class Dashboard
   
   def project_total(project)
     @proj_total[project.id]
+  end
+  
+  def hours_for_day(day,proj)
+    p = @summ_by_project.select {|p| p[:project].id == proj[:project].id}.first
+    hours = p[:dates].select{|d, n| d == day.to_s}[day.to_s]
+    hours
+  end
+  
+  def overall_total
+    @proj_total.inject(0.0) {|r, (k,v)| r += v}
   end
   
 end
