@@ -1,5 +1,14 @@
 <%= render :partial => 'shared/employee_hrd' %>
 <h2 class="subheader"></h2>
+<div class="row">
+	<div class="small-3 columns">
+		<%= link_to '<', by_employee_path(@employee, :state => :timesheet, date_start: @dash.day_range.first - 15), :class => 'button small' %>	
+		<%= link_to '>', by_employee_path(@employee, state: :timesheet, date_start: @dash.day_range.first + 16), :class => 'button small' %>	
+	</div>
+	<div class="small-9 columns">		
+  </div>
+</div>
+  
 <table>
    <thead>
       <tr>

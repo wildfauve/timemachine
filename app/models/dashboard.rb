@@ -1,6 +1,6 @@
 class Dashboard
   
-  attr_accessor :day_range, :day_total, :proj_total, :summ_by_date, :summ_by_project
+  attr_accessor :day_total, :proj_total, :summ_by_date, :summ_by_project
   
   def initialize(params)
     @employee.nil? ? @employee = Employee.where(name: "Col").first : @employee = params[:employee]
@@ -68,10 +68,21 @@ class Dashboard
   
   def set_date_range(state)
     if state
-      date_range = calc_date_range(Date.today) if state == "timesheet" && @date_start.nil?
-      date_range = Date.today.change({day: 1})..Date.today.end_of_month if state == "invoice" && @date_start.nil?
-      date_range = calc_date_range(@date_start) if @date_start
-      date_range = nil if state.nil? && @date_start.nil?
+      if state == "timesheet" && @date_start.nil?
+        date_range = calc_date_range(Date.today)
+      elsif state == "timesheet" && !@date_start.nil?
+        date_range = calc_date_range(@date_start)
+      elsif state == "invoice" && @date_start.nil?  
+        date_range = Date.today.change({day: 1})..Date.today.end_of_month
+      elsif state == "invoice" && !@date_start.nil? 
+        date_range = @date_start.change({day: 1})..@date_start.end_of_month
+      elsif @date_start
+        date_range = calc_date_range(@date_start)
+      elsif state.nil? && @date_start.nil?
+        date_range = nil 
+      else
+        raise
+      end
     end
     if date_range
       @day_range = @employee.days.select {|d| date_range === d.date}.collect {|d| d.date}.sort {|x,y| x <=> y}
@@ -80,11 +91,11 @@ class Dashboard
     end
   end  
 
-  def calc_date_range(date)
+  def calc_date_range(date, period: 15)
     today = date
-    start_month = (today.change({:day => 1})..today.change({:day => 15}))
-    end_month = (today.change({:day => 16})..today.end_of_month)
-    today <= date.change({:day => 15}) ? start_month : end_month
+    start_month = (today.change({:day => 1})..today.change({:day => period}))
+    end_month = (today.change({:day => period + 1})..today.end_of_month)
+    today <= date.change({:day => period}) ? start_month : end_month
   end
   
   def project_total(project)
@@ -99,6 +110,10 @@ class Dashboard
   
   def overall_total
     @proj_total.inject(0.0) {|r, (k,v)| r += v}
+  end
+  
+  def day_range
+    @day_range.empty? ? [Date.today] : @day_range 
   end
   
 end
