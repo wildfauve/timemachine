@@ -1,10 +1,13 @@
 <%= render :partial => 'shared/employee_hrd' %>
-<% for p in @employee.viewable_projects %>
-   
-   <div class=<%=p.name%>>
-      <h3 class="subheader"><%= link_to "#{p.customer.name}:#{p.name}", new_employee_assignment_path(@employee, :project_id => p.id), :remote => true %></h3>
-      <div id='<%=p.hyphenise_name%>' class='time-form'>
-      </div>         
-   </div>
-<% end %>
 
+<% for cust in @employee.customers %>
+  <h3 class="subheader"><%= cust.name %></h3>
+  
+  <% for cust_proj in @employee.viewable_customer_projects(cust)%>
+    <div class=<%=cust_proj.name%>>  
+      <h3 class="subheader"><%= link_to cust_proj.name, new_employee_assignment_path(@employee, project_id: cust_proj.id), :remote => true %></h3>
+      <div id='<%=cust_proj.hyphenise_name%>' class='time-form'></div>
+    </div>
+  <% end %>
+  
+<% end %>

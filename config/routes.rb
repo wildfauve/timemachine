@@ -6,6 +6,7 @@ Timemachine::Application.routes.draw do
     resources :projects
     member do
       get 'invoice'
+      get 'export'
     end
   end
   

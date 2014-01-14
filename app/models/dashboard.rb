@@ -116,4 +116,17 @@ class Dashboard
     @day_range.empty? ? [Date.today] : @day_range 
   end
   
+  def to_csv
+    CSV.generate do |csv|
+      csv << [" "] + self.day_range
+      self.calc_summary.summ_by_project.each do |proj|
+        row = []
+        row << proj[:project].name
+        self.day_range.each {|day| row << self.hours_for_day(day, proj).to_s}
+        row << self.proj_total[proj[:project].id]  
+        csv << row    
+      end    
+    end
+  end
+  
 end

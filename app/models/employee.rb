@@ -121,6 +121,14 @@ class Employee
   def viewable_projects
     self.projects.select {|p| self.project_viewable(p)}.sort {|x, y| x.customer.name <=> y.customer.name }
   end
+  
+  def viewable_customer_projects(customer)
+    self.viewable_projects.select {|vp| vp.customer == customer}
+  end
+  
+  def customers
+    self.viewable_projects.collect {|vp| vp.customer}.uniq!
+  end
     
   def refresh_totals
     # Only deals with 1 employee summary

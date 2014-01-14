@@ -39,4 +39,13 @@ class CustomersController < ApplicationController
     end    
   end
   
+  def export
+    @customer = Customer.find(params[:id])
+    @dash = Dashboard.new(customer: @customer, date_state: :invoice, date_start: params[:date_start])
+    respond_to do |format|
+      format.csv { render text: @dash.to_csv }
+    end    
+  end
+  
+  
 end

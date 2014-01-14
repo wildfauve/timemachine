@@ -2,7 +2,8 @@
 <div class="row">
 	<div class="small-3 columns">
 		<%= link_to '<', invoice_customer_path(@customer, state: :invoice, date_start: @dash.day_range.first - 1.month), :class => 'button small' %>	
-		<%= link_to '>', invoice_customer_path(@customer, state: :invoice, date_start: @dash.day_range.first + 1.month), :class => 'button small' %>	
+		<%= link_to '>', invoice_customer_path(@customer, state: :invoice, date_start: @dash.day_range.first + 1.month), :class => 'button small' %>
+		<%= link_to 'Export', export_customer_path(@customer, params.merge(format: :csv, date_start: @dash.day_range.first)), :class => 'button small' %>    
 	</div>
 	<div class="small-9 columns">		
   </div>
