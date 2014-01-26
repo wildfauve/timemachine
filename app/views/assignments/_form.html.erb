@@ -1,4 +1,5 @@
 <div class="row">
+  <h4 class="subheader"><%= @project.name %></h4>
 	<%= form_tag(date_employee_assignment_path(@employee, @project), :class => "custom", :remote => true) do %>
   		<div class="small-3 columns">
 			<%= text_field_tag :date_opt, nil, :id => "date-picker-#{@project.hyphenise_name}", :placeholder => "New Date" %>

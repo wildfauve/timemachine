@@ -41,8 +41,8 @@
       <% end %>
       <tr>
          <td><h2 class="subheader">Totals</h2></td>
-         <% @dash.day_total.each do |day, tot| %>
-            <td><h3 class="subheader"><%= tot %></h3></td>
+         <% for day in @dash.day_range %>
+            <td><h3 class="subheader"><%= @dash.total_for_day(day) %></h3></td>
          <% end %>
          <td><h3 class="subheader"><%= @dash.overall_total %></h3></td>         
       </tr>

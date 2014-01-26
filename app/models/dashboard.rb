@@ -108,6 +108,10 @@ class Dashboard
     hours
   end
   
+  def total_for_day(day)
+    self.day_total.select {|d, n| d == day.to_s}[day.to_s]
+  end
+  
   def overall_total
     @proj_total.inject(0.0) {|r, (k,v)| r += v}
   end
