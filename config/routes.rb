@@ -2,6 +2,10 @@ Timemachine::Application.routes.draw do
   
   root :to => "employees#index"
   
+  get "sign_in" => 'users#new', as: "sign_in"
+  
+  resources :users
+  
   resources :customers do
     resources :projects
     member do
