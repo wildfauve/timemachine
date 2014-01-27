@@ -49,26 +49,6 @@ class Employee
     #projsum = self.projsummaries.find_or_create_by(:name)
     save
   end
-=begin  
-  def set_date_range(state=nil)
-    raise
-    if state
-      if state == "timesheet"
-        today = Date.today
-        start_month = (today.change({:day => 1})..today.change({:day => 15}))
-        end_month = (today.change({:day => 15})..today.end_of_month)
-        today <= Date.today.change({:day => 15}) ? @date_range = start_month : @date_range = end_month
-      end
-    else
-      @date_range = nil
-    end
-    self
-  end
-  
-  def day_range
-    c = self.days.select {|d| @date_range === d.date}.collect {|d| d.date}
-  end
-=end
 
   def all_days
     self.days.collect {|d| d.date}.sort {|x,y| x <=> y}

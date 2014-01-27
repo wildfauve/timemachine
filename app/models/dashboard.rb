@@ -16,7 +16,6 @@ class Dashboard
 # {:project=>"Architecture Assessment", :dates=>{"2013-07-22"=>0, "2013-07-23"=>0, "2013-07-24"=>0, "2013-07-25"=>0, "2013-07-26"=>0}}]
 
 # proj_total
-
 # {"51f05fb5e4df1c834a000008"=>17.0, "5215305be4df1c285a000002"=>1.0, "5215303ee4df1c285a000001"=>16.0}
 
 # ==> summ_by_date

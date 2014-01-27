@@ -27,25 +27,20 @@
 	    <!-- Left Nav Section -->
 	    <ul class="left">
 	      <li class="divider"></li>
-	      <li class="active"><%= link_to 'Employees', employees_path%></li>
-	      <li class="divider"></li>
+	      <li class="active has-dropdown"><%= link_to 'Employees', employees_path%>
+            <ul class="dropdown">
+               <li><%= link_to 'New', new_employee_path%></li>
+            </ul>
+         </li>
+	      <li class="has-dropdown"><%= link_to 'Customers', customers_path %>
+	        <ul class="dropdown">
+	          <li><%= link_to 'New', new_customer_path%></li>
+	          <li><%= link_to 'List', customers_path%></li>
+	        </ul>
+	      </li>
 	      <li class="has-dropdown"><%= link_to 'Assignments', assignments_path %>
 				<%= project_list %>
 			</li>
-	      <li class="divider"></li>
-	      <li class="has-dropdown"><%= link_to 'Customers', customers_path%>
-
-	        <ul class="dropdown">
-	          <li><a href="#"><%= link_to 'New', new_customer_path%></a></li>
-	          <li><%= link_to 'List', customers_path%></li>
-	          <li class="divider"></li>
-	          <li><a href="#">Dropdown Level 1d</a></li>
-	          <li><a href="#">Dropdown Level 1e</a></li>
-	          <li><a href="#">Dropdown Level 1f</a></li>
-	          <li class="divider"></li>
-	          <li><a href="#">See all &rarr;</a></li>
-	        </ul>
-	      </li>
 	      <li class="divider"></li>
 	    </ul>
 

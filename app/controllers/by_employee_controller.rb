@@ -1,7 +1,6 @@
 class ByEmployeeController < ApplicationController
   
   def index
-    raise
   end
   
   def show
