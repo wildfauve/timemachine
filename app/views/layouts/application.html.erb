@@ -27,20 +27,42 @@
 	    <!-- Left Nav Section -->
 	    <ul class="left">
 	      <li class="divider"></li>
-	      <li class="active has-dropdown"><%= link_to 'Employees', employees_path%>
-            <ul class="dropdown">
-               <li><%= link_to 'New', new_employee_path%></li>
-            </ul>
-         </li>
-	      <li class="has-dropdown"><%= link_to 'Customers', customers_path %>
-	        <ul class="dropdown">
-	          <li><%= link_to 'New', new_customer_path%></li>
-	          <li><%= link_to 'List', customers_path%></li>
-	        </ul>
-	      </li>
-	      <li class="has-dropdown"><%= link_to 'Assignments', assignments_path %>
-				<%= project_list %>
-			</li>
+         <% if can? :manage, Employee %>
+   	      <li class="active has-dropdown"><%= link_to 'Employees', employees_path%>
+               <ul class="dropdown">
+                  <li><%= link_to 'New', new_employee_path%></li>
+               </ul>
+            </li>
+         <% else %>
+            <% if current_user && current_user.employee %>
+               <li class="has-dropdown"><%= link_to current_user.name, employee_path(current_user.employee) %>
+                  <ul class="dropdown">
+                     <li><%= link_to 'edit', "#"%></li>
+                  </ul>
+               </li>         
+            <% end %>                  
+         <% end %>
+         <% if can? :view, Customer %>         
+   	      <li class="has-dropdown"><%= link_to 'Customers', customers_path %>
+   	        <ul class="dropdown">
+   	          <li><%= link_to 'New', new_customer_path%></li>
+   	          <li><%= link_to 'List', customers_path%></li>
+   	        </ul>
+   	      </li>
+         <% end %>
+         <% if can? :manage, User %>
+   	      <li class="has-dropdown"><%= link_to 'Assignments', assignments_path %>
+   				<%= project_list %>
+   			</li>
+         <% end %>
+         <% if can? :manage, User %>
+   	      <li class="has-dropdown"><%= link_to 'Admin', admins_path %>
+               <ul class="dropdown">
+   	            <li><%= link_to 'Users', users_path%></li>
+   	            <li><%= link_to 'New User', new_user_path%></li>               
+               </ul>
+   			</li>   
+         <% end %>      
 	      <li class="divider"></li>
 	    </ul>
 
@@ -48,6 +70,19 @@
 	    <ul class="right">
 	      <li class="divider hide-for-small"></li>
 	      <li class="divider"></li>
+         <% if current_user  %>
+            <% if current_user.employee %>
+               <li class="has-dropdown"><%= link_to current_user.name, employee_path(current_user.employee) %>
+            <% else%>
+               <li class="has-dropdown"><%= link_to current_user.name, admins_path %>            
+            <% end %>                  
+               <ul class="dropdown">
+	               <li><%= link_to 'Logout', log_out_path%></li>
+               </ul>
+			   </li>         
+         <% else %>
+      	   <li class="has-dropdown"><%= link_to "Login", log_in_path %></li>
+         <% end %>
 	      <li class="has-form">
 	        <form>
 	          <div class="row collapse">
@@ -60,15 +95,14 @@
 	          </div>
 	        </form>
 	      </li>
-	      <li class="divider show-for-small"></li>
-	      <li class="has-form">
-	        <a class="button" href="#">Button!</a>
-	      </li>
 	    </ul>
 	  </section>
 	</nav>
 	<div class="row">
 		<div class="small-10 small-uncentered columns">
+         <% flash.each do |name, msg| %>
+            <%= content_tag :div, msg, id: "flash_#{name}" %>
+         <% end %>
 			<%= yield %>
 		</div>
 		<div class="small-2 columns">

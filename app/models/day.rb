@@ -17,6 +17,11 @@ class Day
     entries.inject(0) {|t, e| t += e.hours}
   end
 
+  def entry(project)
+    e = self.entries.where(project: project.id)
+    e.count > 0 ? e.first : nil 
+  end
+
   def add_time(params)
     self.date = params[:date]
     ass_find = self.entries.where(:project => params[:project].id)

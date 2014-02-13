@@ -33,7 +33,7 @@ class CustomersController < ApplicationController
   
   def invoice
     @customer = Customer.find(params[:id])
-    @dash = Dashboard.new(employee: @employee, customer: @customer, date_state: params[:state], date_start: params[:date_start])
+    @dash = Dashboard.new(employee: @employee, customer: @customer, date_state: params[:state].to_sym, date_start: params[:date_start])
     respond_to do |format|
       format.html {render 'show'}
     end    

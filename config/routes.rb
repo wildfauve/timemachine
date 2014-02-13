@@ -1,10 +1,18 @@
 Timemachine::Application.routes.draw do
   
-  root :to => "employees#index"
+  root :to => "sessions#new"
   
   get "sign_in" => 'users#new', as: "sign_in"
   
+  get "log_in" => 'sessions#new', as: 'log_in' 
+  
+  get "log_out" => 'sessions#destroy', as: 'log_out' 
+  
+  resources :admins
+  
   resources :users
+  
+  resources :sessions
   
   resources :customers do
     resources :projects

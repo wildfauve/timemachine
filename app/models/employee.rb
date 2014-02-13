@@ -13,6 +13,7 @@ class Employee
   embeds_many :projectstates
   embeds_many :days
   has_many :projsummaries
+  belongs_to :user
 
   def self.create_it(params)
     emp = self.new(params)
@@ -58,6 +59,19 @@ class Employee
     tot = self.all_days
     Utilities.working_days_between(tot[0], tot[-1]).to_f
   end
+
+  def project_entry_for_day(params)
+    # TODO: This will probably break for Time Entry as I'm using project_id and date string
+    return @day_entry if @day_entry && @day_entry.project == params[:project_id].id && @day_find.date == params[:date]   
+    day_find = self.days.where(:date => params[:date])
+    if day_find.count == 0
+      nil
+    else
+      @day_find = day_find.first
+      params[:project_id].class == Project ? @day_entry = @day_find.entry(params[:project_id]) : @day_entry = @day_find.entry(Project.find(params[:project_id]))
+    end    
+  end
+
   
   def project_hours_by_day(params)
     day_find = self.days.where(:date => params[:date])

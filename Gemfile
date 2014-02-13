@@ -31,9 +31,10 @@ gem 'jquery-rails'
 gem "mongoid", "~> 3.0.0"
 gem "origin", "~> 1.0.4"
 gem 'tablecloth-rails', '~> 1.0'
+gem 'cancan'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0', require: 'bcrypt'
 
 # To use Jbuilder templates for JSON
 gem 'jbuilder'

@@ -1,0 +1,28 @@
+<%= form_tag sessions_path do %>
+
+<div class="row">
+  <div class="small-3 columns">
+    <%= label_tag :name %>
+  </div>
+  <div class="small-9 columns">
+    <%= text_field_tag :name, params[:name] %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-3 columns">
+    <%= label_tag :password %>       
+  </div>
+  <div class="small-9 columns">
+    <%= password_field_tag :password %>       
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="small-9 small-offset-3 columns">
+    <%= submit_tag "Log In", :class => "button small"%>
+  </div>
+</div>
+
+<% end %>

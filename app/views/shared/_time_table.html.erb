@@ -21,9 +21,16 @@
           </td>      
           <% for day in @dash.day_range %>
             <td>
-              <div class="time-entry" data-date="<%= day %>" data-proj="<%= proj[:project].name %>" >
-                <%= @dash.hours_for_day(day, proj).to_s %>
-              </div>
+               <% entry = @dash.entry(day,proj) %>
+               <% if entry.try(:note) %>
+                  <span data-tooltip class="has-tip" title="<%= entry.try(:note) %>">
+               <% else %>
+                  <span>
+               <% end %>
+                  <div class="time-entry" data-date="<%= day %>" data-proj="<%= proj[:project].name %>" >
+                     <%= @dash.hours_for_day(day, proj).to_s %>
+                  </div>
+              </span>
             </td>
           <% end %>
           <td class="subheader"><%= @dash.proj_total[proj[:project].id] %></td>

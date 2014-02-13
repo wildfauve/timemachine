@@ -1,0 +1,24 @@
+<% model_class = User %>
+<% title model_class.to_s %>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Name</th>
+      <th>Employee</th>            
+      <th>Roles</th>      
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+   <% for u in @users %>
+      <tr>
+         <td><%= u.name %></td>
+         <td><%= u.employee.name if u.employee.present? %></td>         
+         <td><%= u.role %></td>
+         <td>
+            <%= link_to 'Edit', edit_user_path(u), :class => "tiny button"%>
+         </td>
+      </tr>
+   <% end %>
+   </tbody>
+</table>

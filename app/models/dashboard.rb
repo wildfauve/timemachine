@@ -1,6 +1,6 @@
 class Dashboard
   
-  attr_accessor :day_total, :proj_total, :summ_by_date, :summ_by_project
+  attr_accessor :day_total, :proj_total, :summ_by_date, :summ_by_project, :employee
   
   def initialize(params)
     @employee.nil? ? @employee = Employee.where(name: "Col").first : @employee = params[:employee]
@@ -67,13 +67,13 @@ class Dashboard
   
   def set_date_range(state)
     if state
-      if state == "timesheet" && @date_start.nil?
+      if state == :timesheet && @date_start.nil?
         date_range = calc_date_range(Date.today)
-      elsif state == "timesheet" && !@date_start.nil?
+      elsif state == :timesheet && !@date_start.nil?
         date_range = calc_date_range(@date_start)
-      elsif state == "invoice" && @date_start.nil?  
+      elsif state == :invoice && @date_start.nil?  
         date_range = Date.today.change({day: 1})..Date.today.end_of_month
-      elsif state == "invoice" && !@date_start.nil? 
+      elsif state == :invoice && !@date_start.nil? 
         date_range = @date_start.change({day: 1})..@date_start.end_of_month
       elsif @date_start
         date_range = calc_date_range(@date_start)
@@ -105,6 +105,10 @@ class Dashboard
     p = @summ_by_project.select {|p| p[:project].id == proj[:project].id}.first
     hours = p[:dates].select{|d, n| d == day.to_s}[day.to_s]
     hours
+  end
+  
+  def entry(day, proj)
+    @employee.project_entry_for_day(date: day, project_id: proj[:project])
   end
   
   def total_for_day(day)

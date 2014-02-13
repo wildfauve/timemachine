@@ -1,0 +1,39 @@
+<%= form_for(@user, :html => {:class => "custom"}) do |f| %>
+	<div class="row">
+	  <div class="small-3 columns">
+	    <%= f.label :name, class: "right inline" %>
+	  </div>
+	  <div class="small-9 columns">
+	    <%= f.text_field :name %>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-3 columns">
+	    <%= f.label :password, class: "right inline" %>       
+	  </div>
+	  <div class="small-9 columns">
+	    <%= f.password_field :password %>       
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-3 columns">
+	    <%= f.label :role, class: "right inline" %>       
+	  </div>
+     <div class="small-9 columns"> 
+        <%= select(:user, :role, options_for_select(role_list, @user.role), :include_blank => true, :prompt => "Select a Role", :class => "medium") %>
+     </div>
+	</div>
+   <div class="row">
+      <div class="small-3 columns">
+         <%= f.label :employee, class: "right inline", title: "User related to Employee", data: {tooltip: true } %>
+      </div>
+      <div class="small-9 columns"> 
+         <%= select_tag(:employee, options_for_select(employee_list_select, selected_employee(@user)), :include_blank => true, :prompt => "Select an Employee for the User", :class => "medium") %>
+      </div>
+   </div>   
+	<div class="row">
+	  <div class="small-9 small-offset-3 columns">
+	    <%= f.submit :class => "button small"%>
+	  </div>
+	</div>
+<% end %>

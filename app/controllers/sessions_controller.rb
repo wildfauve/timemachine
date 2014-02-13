@@ -11,17 +11,25 @@ class SessionsController < ApplicationController
   end
   
   def create
-    @user = User.create_it(params)
+    user = User.authenticate(params[:name], params[:password])
     respond_to do |format|
-      if @user.valid?
-        format.html { redirect_to root_url, notice: "Signed Up" }
-        format.json
+      if user
+        session[:user_id] = user.id
+        if user.employee
+          format.html { redirect_to employee_path(user.employee), notice: "Logged In" }
+        else
+          format.html { redirect_to admins_path, notice: "Logged In" }
+        end
       else
+        flash.now.alert = "Invalid Login"
         format.html { render action: "new" }
-        format.json
       end
     end
-    
+  end
+  
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_url, notice: "Logged out"
   end
   
 end

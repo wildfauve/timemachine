@@ -19,6 +19,18 @@ module ApplicationHelper
   def project_list_select
     Customer.all_projects.map{|p| [p.name, p.id]}
   end
+
+  def employee_list_select
+    Employee.all.map{|e| [e.name, e.id]}
+  end
+  
+  def selected_employee(user)
+    user.employee.present? ? user.employee.id : nil
+  end
+  
+  def role_list
+    [["Admin", 'admin'],["User", 'user']] 
+  end
   
   def date_list
     list = []

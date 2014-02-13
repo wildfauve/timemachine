@@ -5,10 +5,12 @@ class Entry
   
   field :hours, :type => Float
   field :project, :type => Moped::BSON::ObjectId
+  field :note, type: String
   embedded_in :day, :inverse_of => :entries
 
   def add_time(params)
     self.project = params[:project].id
+    self.note = params[:note]
     if params[:hour].present?
       self.hours = params[:hour]
     elsif params[:custom_num].present?
