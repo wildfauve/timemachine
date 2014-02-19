@@ -60,15 +60,17 @@ class Employee
     Utilities.working_days_between(tot[0], tot[-1]).to_f
   end
 
-  def project_entry_for_day(params)
+  def project_entry_for_day(day: nil, project: nil)
     # TODO: This will probably break for Time Entry as I'm using project_id and date string
-    return @day_entry if @day_entry && @day_entry.project == params[:project_id].id && @day_find.date == params[:date]   
-    day_find = self.days.where(:date => params[:date])
+    project = Project.find(project) if project.class != Project
+    day = Date.parse(day) if day.class != Date
+    return @day_entry if @day_entry && @day_entry.project == project.id && @day_find.date == day
+    day_find = self.days.where(:date => day)
     if day_find.count == 0
       nil
     else
       @day_find = day_find.first
-      params[:project_id].class == Project ? @day_entry = @day_find.entry(params[:project_id]) : @day_entry = @day_find.entry(Project.find(params[:project_id]))
+      @day_entry = @day_find.entry(project)
     end    
   end
 

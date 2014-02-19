@@ -1,3 +1,5 @@
+<div id="day-form" title="day" style="display:none"></div>
+
 <table>
    <thead>
       <tr>
@@ -20,18 +22,12 @@
              <h6 class="subheader"><%= proj[:project].name %></h6>
           </td>      
           <% for day in @dash.day_range %>
-            <td>
-               <% entry = @dash.entry(day,proj) %>
-               <% if entry.try(:note) %>
-                  <span data-tooltip class="has-tip" title="<%= entry.try(:note) %>">
-               <% else %>
-                  <span>
-               <% end %>
-                  <div class="time-entry" data-date="<%= day %>" data-proj="<%= proj[:project].name %>" >
-                     <%= @dash.hours_for_day(day, proj).to_s %>
-                  </div>
-              </span>
-            </td>
+             <td>
+                <% entry = @dash.entry(day: day, project: proj) %>
+                <div "time-entry" data-date="<%= day %>" data-proj="<%= proj[:project].name %>" >
+                   <%= render 'shared/time_table_cell', entry: entry, employee: @employee, proj: proj[:project], day: day %>
+                </div>
+             </td>
           <% end %>
           <td class="subheader"><%= @dash.proj_total[proj[:project].id] %></td>
         </tr>          

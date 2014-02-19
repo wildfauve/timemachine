@@ -107,8 +107,8 @@ class Dashboard
     hours
   end
   
-  def entry(day, proj)
-    @employee.project_entry_for_day(date: day, project_id: proj[:project])
+  def entry(day: nil, project: nil)
+    @employee.project_entry_for_day(day: day, project: project[:project])
   end
   
   def total_for_day(day)

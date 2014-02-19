@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 // require tablecloth-rails
-//= require jquery.ui.datepicker
+//= require jquery.ui.all
 //= require_tree .
 
 $(document).foundation();

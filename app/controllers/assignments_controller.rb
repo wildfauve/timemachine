@@ -9,7 +9,32 @@ class AssignmentsController < ApplicationController
     @date = Date.today
     respond_to do |format|
       format.js {render 'time_form', :layout => false }
+      format.html {render 'time_form'}
     end
+  end
+  
+  def edit
+    @employee = Employee.find(params[:employee_id])
+    @project = Project.find(params[:project_id])
+    @date = params[:day]
+    respond_to do |format|
+      format.js {render 'modal_time_form', :layout => false }
+    end    
+  end
+  
+  def update
+    @employee = Employee.find(params[:employee_id])
+    @project = Project.find(params[:id])
+    @employee.add_time(params.merge({:project => @project}))
+    @date = params[:date]    
+    @entry = @employee.project_entry_for_day(day: @date, project: @project)    
+    respond_to do |format|
+      if @employee.valid?
+        format.js { render layout: false }
+      else
+        raise
+      end
+    end    
   end
   
   def date

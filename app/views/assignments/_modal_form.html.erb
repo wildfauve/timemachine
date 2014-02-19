@@ -1,0 +1,25 @@
+<%= form_tag(employee_assignment_path(@employee, @project), method: :put, :class => "custom", remote: true) do %>
+	<%= hidden_field_tag 'project', @project.id %>
+	<%= hidden_field_tag 'date', @date %>	
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag 'Hours', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= number_field_tag('custom_num', @employee.project_entry_for_day(day: @date, project: @project).try(:hours), :in => 0..10, :step => 0.1) %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag 'Note', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+			<%= text_field_tag('note', @employee.project_entry_for_day(day: @date, project: @project).try(:note)) %>
+		</div>
+	</div>
+	<div class="row">
+	  <div class="small-9 small-offset-3 columns">
+	    <%= submit_tag 'Submit', :class => 'button small' %>
+	  </div>
+	</div>
+<% end %>

@@ -17,7 +17,9 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'zurb-foundation', '~> 4.0.0'  
+  gem 'foundation-rails'
+#  gem 'foundation-icons-rails'  
+  gem 'foundicons-rails'
 end
 
 group :development do
@@ -27,6 +29,7 @@ group :development do
 end
 
 gem 'jquery-ui-rails'
+# gem 'jquery-modal-rails'
 gem 'jquery-rails'
 gem "mongoid", "~> 3.0.0"
 gem "origin", "~> 1.0.4"

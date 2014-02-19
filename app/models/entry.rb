@@ -10,7 +10,7 @@ class Entry
 
   def add_time(params)
     self.project = params[:project].id
-    self.note = params[:note]
+    self.note = params[:note] if params[:note].present?
     if params[:hour].present?
       self.hours = params[:hour]
     elsif params[:custom_num].present?
