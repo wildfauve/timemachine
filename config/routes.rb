@@ -15,7 +15,9 @@ Timemachine::Application.routes.draw do
   resources :sessions
   
   resources :customers do
-    resources :projects
+    resources :projects do
+      resources :costcodes
+    end
     member do
       get 'invoice'
       get 'export'
@@ -28,7 +30,8 @@ Timemachine::Application.routes.draw do
      member do
       post 'date'
       post 'erase'
-      post 'projstate'
+      put 'projstate'
+      get 'project'
     end
     resources :assignments do
       member do

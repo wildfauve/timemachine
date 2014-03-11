@@ -85,6 +85,8 @@ class Dashboard
     end
     if date_range
       @day_range = @employee.days.select {|d| date_range === d.date}.collect {|d| d.date}.sort {|x,y| x <=> y}
+      @day_range << date_range.first if @day_range.empty?
+      @day_range << @day_range.last + 1 if @day_range.last != date_range.last
     else
       @day_range = @employee.all_days
     end

@@ -3,12 +3,13 @@
 		<div class="small-3 columns">
 		<%= proj.name %>
 		</div>
-	  	<div class="small-3 columns">		
+	  	<div class="small-5 columns">		
 			<%= link_to 'edit', edit_customer_project_path(@customer, proj), :class => 'button tiny', :remote => true%>
+			<%= link_to 'Add Cost Code', new_customer_project_costcode_path(@customer, proj), :class => 'button tiny', remote: true%>         
 			<%= link_to 'remove', customer_project_path(@customer, proj), :method => :delete, :class => 'button tiny alert', :remote => true%>
-			
 		</div>
-		<div class="small-6 columns" id="status-<%=proj.id%>">
+		<div class="small-4 columns" id="status-<%=proj.id%>">
 		</div>
 	</div>
+   <%= render :partial => 'costcodes/for_project', locals: {proj: proj} %>
 <% end %>

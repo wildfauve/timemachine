@@ -58,13 +58,29 @@ class EmployeesController < ApplicationController
     
   end
   
+  
+  # POST
   def projstate
     @employee = Employee.find(params[:id])
     @employee.mod_project_state(params)
     respond_to do |format|
-      format.html { redirect_to edit_employee_path(@employee) }
-      format.json
+      if @employee.valid?
+        format.js { render layout: false }
+      else
+        raise
+      end
+    end    
+  end
+  
+  # GET
+  def project
+    @employee = Employee.find(params[:id])
+    @project = Project.find(params[:project])
+    @projectstate = @employee.projectstates.where(project: params[:project]).first
+    respond_to do |format|
+      format.js {render 'modal_project_form', :layout => false }
     end
+    
   end
       
   

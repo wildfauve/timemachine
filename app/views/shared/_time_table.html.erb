@@ -1,5 +1,4 @@
 <div id="day-form" title="day" style="display:none"></div>
-
 <table>
    <thead>
       <tr>
@@ -25,7 +24,7 @@
              <td>
                 <% entry = @dash.entry(day: day, project: proj) %>
                 <div "time-entry" data-date="<%= day %>" data-proj="<%= proj[:project].name %>" >
-                   <%= render 'shared/time_table_cell', entry: entry, employee: @employee, proj: proj[:project], day: day %>
+                   <%= render 'shared/time_table_cell', entry: entry,  proj: proj[:project], day: day %>
                 </div>
              </td>
           <% end %>
@@ -35,9 +34,21 @@
       <tr>
          <td><h2 class="subheader">Totals</h2></td>
          <% for day in @dash.day_range %>
-            <td><h3 class="subheader"><%= @dash.total_for_day(day) %></h3></td>
+            <td>
+               <h3 class="subheader">
+                  <div id="<%= "total-#{day}" %>">
+                     <%= @dash.total_for_day(day) %>
+                  <div>
+               </h3>
+            </td>
          <% end %>
-         <td><h3 class="subheader"><%= @dash.overall_total %></h3></td>         
+         <td>
+            <h3 class="subheader">
+               <div id="total">
+                  <%= @dash.overall_total %>
+               </div>
+            </h3>
+         </td>         
       </tr>
    </tbody>
 </table>

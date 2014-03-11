@@ -1,0 +1,23 @@
+<%= form_for([@customer, @project, @costcode], remote: true) do |f| %>
+	<div class="row">
+	  <div class="small-3 columns">
+	    <%= f.label :code, class: "right inline" %>
+	  </div>
+	  <div class="small-9 columns">
+	    <%= f.text_field :code %>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-3 columns">
+	    <%= f.label :name, class: "right inline" %>
+	  </div>
+	  <div class="small-9 columns">
+	    <%= f.text_area :name %>
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="small-9 small-offset-3 columns">
+	    <%= f.submit 'Go', :class => "button small"%>
+	  </div>
+	</div>
+<% end %>

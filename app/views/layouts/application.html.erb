@@ -37,7 +37,7 @@
             <% if current_user && current_user.employee %>
                <li class="has-dropdown"><%= link_to current_user.name, employee_path(current_user.employee) %>
                   <ul class="dropdown">
-                     <li><%= link_to 'edit', "#"%></li>
+                     <li><%= link_to 'edit', edit_employee_path(current_user.employee)%></li>
                   </ul>
                </li>         
             <% end %>                  

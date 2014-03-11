@@ -10,6 +10,8 @@ class Project
   validates_uniqueness_of :name
   
   belongs_to :customer
+  
+  embeds_many :costcodes
 
   has_and_belongs_to_many :employees
   
@@ -22,6 +24,13 @@ class Project
     self.attributes = params
     save!
   end
+  
+  def create_costcode(params)
+    self.costcodes << Costcode.create_it(params)
+    save!
+    self
+  end
+  
   
   def hyphenise_name
     self.name.gsub(/ /, '-')

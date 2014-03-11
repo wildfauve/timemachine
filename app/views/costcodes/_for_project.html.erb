@@ -1,0 +1,11 @@
+<% for code in proj.costcodes %>
+   <div class='row'>
+      <div class="small-3 columns">
+      </div>
+      <div class="small-9 columns">
+         <%= code.code %>
+         <%= code.name %>
+         <%= link_to "edit", edit_customer_project_costcode_path([@customer, proj, code])%>
+      </div>
+   </div>         
+<% end %>
