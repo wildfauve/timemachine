@@ -49,6 +49,9 @@ class AssignmentsController < ApplicationController
   end
   
   def calc
+# Params: 
+#    {"project"=>"5215303ee4df1c285a000001", "date"=>"2014-03-13", "custom_num"=>"2", "fill-value"=>"", "note"=>"", "costcodes"=>{"532157f7f3654e73bf00000a"=>"1", "53215807f3654e73bf00000b"=>"2", "53215816f3654e73bf00000c"=>"3"}, "commit"=>"Submit", "action"=>"calc", "controller"=>"assignments", "employee_id"=>"51efb2a5e4df1c5434000001", "id"=>"5215303ee4df1c285a000001"}}
+    
     @employee = Employee.find(params[:employee_id])
     @project = Project.find(params[:id])
     @employee.add_time(params.merge({:project => @project}))

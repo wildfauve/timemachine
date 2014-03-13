@@ -31,6 +31,18 @@ class Project
     self
   end
   
+  def update_costcode(params)
+    self.costcodes.find(params[:id]).update_it(params[:costcode])
+    save!
+    self
+  end
+  
+  def delete_costcode(params)
+    self.costcodes.find(params[:id]).destroy
+    save!
+    self
+  end
+  
   
   def hyphenise_name
     self.name.gsub(/ /, '-')

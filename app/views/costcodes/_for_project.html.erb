@@ -1,11 +1,25 @@
-<% for code in proj.costcodes %>
-   <div class='row'>
-      <div class="small-3 columns">
-      </div>
+<div id="<%="proj-table-#{proj.id}"%>">
+   <div class="row">
+      <div class="small-3 columns"></div>
       <div class="small-9 columns">
-         <%= code.code %>
-         <%= code.name %>
-         <%= link_to "edit", edit_customer_project_costcode_path([@customer, proj, code])%>
+         <table>
+            <tbody>
+               <% for code in proj.costcodes %>
+                  <tr>      
+                     <td>
+                        <%= code.code %>
+                     </td>
+                     <td>
+                        <%= code.name %>
+                     </td>
+                     <td>                  
+                        <%= link_to "edit", edit_customer_project_costcode_path(@customer, proj, code), remote: true%>
+                        <%= link_to "Delete", customer_project_costcode_path(@customer, proj, code), method: :delete%>         
+                     </td>        
+                  </tr>
+               <% end %>
+            </tbody>
+         </table>
       </div>
-   </div>         
-<% end %>
+   </div>
+</div>

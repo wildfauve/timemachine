@@ -24,7 +24,7 @@
 		<%= link_to '8hr', calc_employee_assignment_path(@employee, @project.id, :hour => "8", :date => @date), :class => 'button small', :method => :post, :remote => true %>
 	</div>
 </div>
-<%= form_tag(calc_employee_assignment_path(@employee, @project), :class => "custom", :remote => true) do %>
+<%= form_tag(calc_employee_assignment_path(@employee, @project), :class => "custom") do %>
 	<%= hidden_field_tag 'project', @project.id %>
 	<%= hidden_field_tag 'date', @date %>	
 	<div class="row">
@@ -61,6 +61,16 @@
 		</div>
 	</div>
 
+   <% for code in @project.costcodes %>
+   	<div class="row">
+         <div class="small-9 columns">         
+            <%= label_tag "#{code.code}: #{code.name}" %>
+         </div>
+         <div class="small-3 columns">                  
+            <%= number_field_tag("costcodes[#{code.id}]", nil, :in => 1..15) %>
+         </div>
+      </div>
+   <% end %>
 
 	<div class="row">
 	  <div class="small-9 small-offset-3 columns">
