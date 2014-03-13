@@ -93,6 +93,10 @@ class Employee
     end
   end
   
+  def cost_code_entry_by_day(day: nil, project: nil, code: nil)
+    10
+  end
+  
   def billable_calc
     self.projsummaries.select {|ps| ps.assigned_project.billable}.inject(0.to_f) {|n, v| n += v.total_hours}
   end

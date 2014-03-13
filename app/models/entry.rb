@@ -30,13 +30,17 @@ class Entry
   end
   
   def cost_codes=(codes)
-    raise
     proj_codes = self.assigned_project.costcodes.collect {|c| c.id}
-    codes.select {|n,v| !v.empty?}.each do |in_code|
+    codes.select {|n,v| !v.empty?}.each do |in_code, value|
       #self.assigned_project.costcodes.find(a.find {|c| c.to_s == v})
       
       #ce = self.code_entries.find_or_create_by(:)
-      
+      ce = self.costcodeentries.where(_id: in_code).first
+      if ce
+        raise
+      else
+        self.costcodeentries << Costcodeentry.create_it(costcode: in_code, value: value)
+      end
     end
   end
 
