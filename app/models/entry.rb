@@ -35,13 +35,17 @@ class Entry
       #self.assigned_project.costcodes.find(a.find {|c| c.to_s == v})
       
       #ce = self.code_entries.find_or_create_by(:)
-      ce = self.costcodeentries.where(_id: in_code).first
+      ce = self.costcodeentries.where(costcode: in_code).first
       if ce
-        raise
+        ce.code_hours = value
       else
-        self.costcodeentries << Costcodeentry.create_it(costcode: in_code, value: value)
+        self.costcodeentries << Costcodeentry.create_it(costcode: in_code, hours: value)
       end
-    end
+    end 
+  end
+  
+  def cost_code(code)
+    self.costcodeentries.where(costcode: code).try(:first)
   end
 
 end

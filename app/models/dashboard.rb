@@ -133,7 +133,13 @@ class Dashboard
         row << proj[:project].name
         self.day_range.each {|day| row << self.hours_for_day(day, proj).to_s}
         row << self.proj_total[proj[:project].id]  
-        csv << row    
+        csv << row
+        proj[:project].costcodes.each do |code|
+          row = []
+          row << code.name
+          self.day_range.each {|day| row << self.entry(day: day, project: proj).try(:cost_code, code).try(:hours).to_s}
+          csv << row
+        end 
       end    
     end
   end

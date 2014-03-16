@@ -18,7 +18,7 @@
         <tr>
           <td>
              <h4 class="subheader"><%= proj[:project].customer.name %></h4>
-             <h6 class="subheader"><%= proj[:project].name %></h6>
+             <h5 class="subheader"><%= proj[:project].name %></h5>
           </td>      
           <% for day in @dash.day_range %>
              <td>
@@ -29,7 +29,17 @@
              </td>
           <% end %>
           <td class="subheader"><%= @dash.proj_total[proj[:project].id] %></td>
-        </tr>          
+        </tr>
+        <% for code in proj[:project].costcodes %>
+           <tr>
+              <td><h7 class="subheader"><%= code.name %></h7></td>
+             <% for day in @dash.day_range %>
+                <td>
+                   <%= @dash.entry(day: day, project: proj).try(:cost_code, code).try(:hours) %>
+                </td>
+             <% end %>              
+            </tr>
+         <% end %>
       <% end %>
       <tr>
          <td><h2 class="subheader">Totals</h2></td>

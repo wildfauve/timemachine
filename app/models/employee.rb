@@ -94,7 +94,9 @@ class Employee
   end
   
   def cost_code_entry_by_day(day: nil, project: nil, code: nil)
-    10
+    pe = project_entry_for_day(day: day, project: project)
+    return nil if pe.nil?
+    pe.cost_code(code).try(:hours)
   end
   
   def billable_calc

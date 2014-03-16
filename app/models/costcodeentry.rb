@@ -11,4 +11,8 @@ class Costcodeentry
     Costcodeentry.new(params)
   end
   
+  def code_hours=(hours)
+    self.hours = hours
+  end
+  
 end
