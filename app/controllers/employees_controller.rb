@@ -26,11 +26,11 @@ class EmployeesController < ApplicationController
   end
   
   def show
-    @employee = Employee.find(params[:id])
+    @employee = Employee.find(params[:id]) if !@employee
   end
   
   def edit
-    @employee = Employee.find(params[:id])
+    @employee = Employee.find(params[:id]) if !@employee    
   end
   
   def update
@@ -82,6 +82,8 @@ class EmployeesController < ApplicationController
     end
     
   end
-      
+
+  def assignments
+  end
   
 end

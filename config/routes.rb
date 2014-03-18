@@ -1,6 +1,8 @@
 Timemachine::Application.routes.draw do
   
-  root :to => "sessions#new"
+  root :to => "home#show"
+  
+  #root :to => "sessions#new"
   
   get "sign_in" => 'users#new', as: "sign_in"
   
@@ -32,6 +34,7 @@ Timemachine::Application.routes.draw do
       post 'erase'
       put 'projstate'
       get 'project'
+      get 'assignments'
     end
     resources :assignments do
       member do

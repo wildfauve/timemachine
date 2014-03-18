@@ -4,7 +4,6 @@ class ByEmployeeController < ApplicationController
   end
   
   def show
-    @employee = Employee.find(params[:id])
     @dash = Dashboard.new(:employee => @employee, :date_state => params[:state].to_sym, :date_start => params[:date_start])
     respond_to do |format|
       format.html {render 'show'}
@@ -12,7 +11,6 @@ class ByEmployeeController < ApplicationController
   end
   
   def date
-    @employee = Employee.find(params[:id])    
     respond_to do |format|
       format.js {render 'set_date', :layout => false }
     end
@@ -27,14 +25,12 @@ class ByEmployeeController < ApplicationController
   end
   
   def totals
-    @employee = Employee.find(params[:id])
     respond_to do |format|
       format.html {render 'project_totals'}
     end
   end
   
   def calc_totals
-    @employee = Employee.find(params[:id])
     @employee.refresh_totals
     respond_to do |format|
       format.html {redirect_to totals_by_employee_path(@employee)}
@@ -42,7 +38,6 @@ class ByEmployeeController < ApplicationController
   end
   
   def summary
-    @employee = Employee.find(params[:id])
     @dash = Dashboard.new(:employee => @employee)
     respond_to do |format|
       format.html {render 'summary'}

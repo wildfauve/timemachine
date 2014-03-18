@@ -17,6 +17,17 @@
 			<%= text_field_tag('note', @employee.project_entry_for_day(day: @date, project: @project).try(:note)) %>
 		</div>
 	</div>
+   <% for code in @project.costcodes %>
+   	<div class="row">
+         <div class="small-9 columns">         
+            <%= label_tag "#{code.code}: #{code.name}" %>
+         </div>
+         <div class="small-3 columns">                  
+            <%= number_field_tag("costcodes[#{code.id}]", @employee.cost_code_entry_by_day(day: @date, project: @project, code: code), :in => 1..15) %>
+         </div>
+      </div>
+   <% end %>
+   
 	<div class="row">
 	  <div class="small-9 small-offset-3 columns">
 	    <%= submit_tag 'Submit', :class => 'button small' %>
