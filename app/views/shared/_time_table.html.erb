@@ -22,10 +22,8 @@
           </td>      
           <% for day in @dash.day_range %>
              <td>
-                <% entry = @dash.entry(day: day, project: proj) %>
-                <div "time-entry" data-date="<%= day %>" data-proj="<%= proj[:project].name %>" >
-                   <%= render 'shared/time_table_cell', entry: entry,  proj: proj[:project], day: day %>
-                </div>
+                  <% entry = @dash.entry(day: day, project: proj[:project]) %>
+                  <%= render 'shared/time_table_cell', entry: entry,  proj: proj[:project], day: day %>
              </td>
           <% end %>
           <td class="subheader"><%= @dash.proj_total[proj[:project].id] %></td>
@@ -35,7 +33,7 @@
               <td><h7 class="subheader"><%= code.name %></h7></td>
              <% for day in @dash.day_range %>
                 <td>
-                   <%= @dash.entry(day: day, project: proj).try(:cost_code, code).try(:hours) %>
+                   <%= render 'shared/time_table_cost_cell', proj: proj[:project], day: day, code: code %>
                 </td>
              <% end %>              
             </tr>

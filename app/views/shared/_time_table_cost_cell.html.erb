@@ -1,0 +1,3 @@
+<div class="costentry" data-date="<%= day %>" data-proj="<%= proj.name %>" data-code="<%= code.id %>">
+   <%= @dash.entry(day: day, project: proj).try(:cost_code, code).try(:hours) %>
+</div>
