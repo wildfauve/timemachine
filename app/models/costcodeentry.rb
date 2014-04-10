@@ -14,5 +14,5 @@ class Costcodeentry
   def code_hours=(hours)
     self.hours = hours
   end
-  
+    
 end

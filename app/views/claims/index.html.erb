@@ -1,0 +1,32 @@
+<% model_class = Claim %>
+<% title model_class.to_s %>
+
+<%= render partial: 'shared/employee_hrd' %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Claim</th>
+      <th width="200">Date</th>
+      <th>State</th>
+      <th>Total</th>
+      <th>Items</th>
+      <th>Action</th>      
+    </tr>
+  </thead>
+  <tbody>
+   <% for claim in @claims %>
+      <tr>
+         <td><%= claim.name %></td>            
+         <td><%= claim.created_at %></td>
+         <td><%= claim.state %></td>
+         <td><%= "#{claim.total_value.symbol}#{claim.total_value}" %></td>
+         <td><%= claim.total_items %></td>         
+         <td>
+            <%= link_to "Submit", employee_claim_submitted_path(@employee, claim, method: :put), class: "tiny button" %>
+            <%= link_to "Paid", employee_claim_paid_path(@employee, claim, method: :put), class: "tiny button" %>
+         </td>
+      </tr>
+   <% end %>
+   </tbody>
+</table>

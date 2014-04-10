@@ -36,6 +36,7 @@ gem "origin", "~> 1.0.4"
 gem 'tablecloth-rails', '~> 1.0'
 gem 'cancan'
 gem 'money'
+gem 'pry'
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0', require: 'bcrypt'

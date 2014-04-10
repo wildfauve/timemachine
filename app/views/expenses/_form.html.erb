@@ -1,0 +1,32 @@
+<%= form_for([@employee, @expense], html: { class: "custom"}) do |f| %>
+   <%= hidden_field_tag 'claim', @claim.try(:id) %>
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :description, class: "right inline"%>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_area :desc %>
+     </div> 
+   </div>
+   <div class="row">
+      <div class="small-3 columns">
+         <%= f.label :expense_type, class: "right inline" %>
+      </div>
+      <div class="small-9 columns"> 
+         <%= f.select(:expense_type, options_for_select(expense_type_select, @expense.expense_type), include_blank: false, :prompt => "Select a Type", :class => "medium") %>
+      </div>
+   </div>   
+   <div class="row">
+     <div class="small-3 columns">
+       <%= f.label :amount, class: "right inline"%>
+     </div>
+     <div class="small-9 columns">
+       <%= f.text_field :amt %>
+     </div> 
+   </div>
+   <div class="row">
+     <div class="small-9 small-offset-3 columns">
+       <%= f.submit 'Submit', :class => 'button small' %>
+     </div>
+   </div>
+<% end %>

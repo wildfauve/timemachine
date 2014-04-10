@@ -20,6 +20,10 @@ module ApplicationHelper
     Customer.all_projects.map{|p| [p.name, p.id]}
   end
 
+  def expense_type_select
+    Expense.expense_types.map {|et| [et.to_s, et]}
+  end
+
   def employee_list_select
     Employee.all.map{|e| [e.name, e.id]}
   end
@@ -43,7 +47,9 @@ module ApplicationHelper
     return "active" if test == :summary_all && !params[:state] && params[:action] == 'summary' && params[:controller] == "by_employee"
     return "active" if test == :timesheet && params[:state]
     return "active" if test == :projsummary && params[:action] == 'totals' && params[:controller] == "by_employee"    
-    ""
+    return "active" if test == :expenses && params[:controller] == "expenses"   
+    return "active" if test == :claims && params[:controller] == "claims"
+    ""    
   end
   
 end

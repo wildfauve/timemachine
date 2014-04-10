@@ -1,6 +1,6 @@
 class Dashboard
   
-  attr_accessor :day_total, :proj_total, :summ_by_date, :summ_by_project, :employee
+  attr_accessor :day_total, :proj_total, :summ_by_date, :summ_by_project, :employee, :date_start
   
   def initialize(params)
     @employee.nil? ? @employee = Employee.where(name: "Col").first : @employee = params[:employee]
@@ -38,12 +38,19 @@ class Dashboard
       line, dates = {}, {}
       line[:project] = proj
       @day_range.each do |day|
+        
+        # Find hours for the day for the project
         hours = @employee.project_hours_by_day(:project_id => proj.id, :date => day)
         if hours > 0
           dates[day.to_s] = hours          
           @day_total[day.to_s] ? @day_total[day.to_s] += hours : @day_total[day.to_s] = hours
           @proj_total[proj.id] ? @proj_total[proj.id] += hours : @proj_total[proj.id] = hours
         end
+        
+        # Find hours for any costcodes
+        codes = @employee.cost_codes_by_project_by_day(project: proj, day: day)
+        
+        
       end
       if !dates.empty?
         line[:dates] = dates
@@ -121,8 +128,16 @@ class Dashboard
     @proj_total.inject(0.0) {|r, (k,v)| r += v}
   end
   
+  def timesheet_total
+    @employee.days.select {|d| @day_range.include?(d.date) }.inject(0.0) {|t, d| t += d.total_hours }
+  end
+  
   def day_range
     @day_range.empty? ? [Date.today] : @day_range 
+  end
+  
+  def total_for_cost_codes(params)
+    0
   end
   
   def to_csv
@@ -136,8 +151,8 @@ class Dashboard
         csv << row
         proj[:project].costcodes.each do |code|
           row = []
-          row << code.name
-          self.day_range.each {|day| row << self.entry(day: day, project: proj).try(:cost_code, code).try(:hours).to_s}
+          row << "#{code.code}: #{code.name}"
+          self.day_range.each {|day| row << self.entry(day: day, project: proj[:project]).try(:cost_code, code).try(:hours).to_s}
           csv << row
         end 
       end    

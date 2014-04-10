@@ -13,7 +13,7 @@
       </tr>
    </thead>
    <tbody>
-      <% sum_proj = @dash.calc_summary.summ_by_project %>
+      <% sum_proj = @dash.calc_summary.summ_by_project %>      
       <% for proj in sum_proj %>
         <tr>
           <td>
@@ -26,17 +26,18 @@
                   <%= render 'shared/time_table_cell', entry: entry,  proj: proj[:project], day: day %>
              </td>
           <% end %>
-          <td class="subheader"><%= @dash.proj_total[proj[:project].id] %></td>
+          <td class="subheader"><%= @dash.project_total(proj[:project]) %></td>
         </tr>
         <% for code in proj[:project].costcodes %>
            <tr>
               <td><h7 class="subheader"><%= code.name %></h7></td>
-             <% for day in @dash.day_range %>
-                <td>
-                   <%= render 'shared/time_table_cost_cell', proj: proj[:project], day: day, code: code %>
-                </td>
-             <% end %>              
-            </tr>
+               <% for day in @dash.day_range %>
+                   <td>
+                      <%= render 'shared/time_table_cost_cell', entry: @dash.entry(project: proj[:project], day: day), proj: proj[:project], day: day, code: code.id %>
+                   </td>
+                <% end %>              
+                <td class="subheader"><%=  @dash.total_for_cost_codes(project: proj[:project], code: code) %> </td>
+            </tr>             
          <% end %>
       <% end %>
       <tr>

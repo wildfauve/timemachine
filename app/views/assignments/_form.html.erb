@@ -67,7 +67,7 @@
             <%= label_tag "#{code.code}: #{code.name}" %>
          </div>
          <div class="small-3 columns">                  
-            <%= number_field_tag("costcodes[#{code.id}]", @employee.cost_code_entry_by_day(day: @date, project: @project, code: code), :in => 1..15) %>
+            <%= number_field_tag("costcodes[#{code.id}]", @employee.cost_code_entry_by_day(day: @date, project: @project, code: code), :in => 0..15) %>
          </div>
       </div>
    <% end %>

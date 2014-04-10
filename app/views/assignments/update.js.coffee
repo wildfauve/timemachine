@@ -7,9 +7,12 @@
   day_tot = <%= @employee.total_hours_by_day(date: @date).to_s %>
   $('#day-form').dialog('close')
   cell_loc.html(cell_html)
-  <% for code in @entry.costcodeentries %>
+  <% for cost_code_entry in @entry.costcodeentries %>
+  cost_html = "<%= escape_javascript(render(partial: 'shared/time_table_cost_cell', locals: {entry: @entry, proj: @project, day: @date, code: cost_code_entry.costcode})) %>"
+  cost_cell_loc = $(".costentry[data-date='<%= @date %>'][data-proj='<%= @project.name %>'][data-code-id='<%= cost_code_entry.costcode %>']")
+  cell_loc = $(".time-entry[data-date='<%= @date %>'][data-proj='<%= @project.name %>']")
+  cost_cell_loc.html(cost_html)
   <% end %>
   $('#total-<%=@date%>').text(day_tot)
-  #tot = parseInt($('#total').text())
-  #$('#total').text(tot + <%= @entry.hours %>)
+  $('#total').text(<%= @dash.timesheet_total %> )
 <% end %>

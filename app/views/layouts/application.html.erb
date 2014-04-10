@@ -35,14 +35,27 @@
             </li>
          <% else %>
             <% if current_user && current_user.employee %>
-               <li class="has-dropdown"><%= link_to "Me", employee_path(current_user.employee) %>
+               <li class="has-dropdown"><%= link_to "Time", employee_path(current_user.employee) %>
                   <ul class="dropdown">
                      <li><%= link_to 'Update Time', employee_path(current_user.employee)%></li>
                      <li><%= link_to 'Timesheet', by_employee_path(@employee, :state => :timesheet) %></li>
-                     <li><%= link_to 'Edit Assignments', assignments_employee_path(@employee) %></li>                     
+                     <li><%= link_to 'Edit Assignments', assignments_employee_path(@employee) %></li>
+                     <li><%= link_to 'Expenses', employee_expenses_path(@employee) %></li>                     
                   </ul>
                </li>         
+               <li class="has-dropdown"><%= link_to "Expenses", employee_expenses_path(current_user.employee) %>
+                  <ul class="dropdown">
+                     <li><%= link_to 'Expense', employee_expenses_path(@employee) %></li>                     
+                  </ul>
+               </li>                        
             <% end %>                  
+         <% end %>
+         <% if current_user && current_user.employee %>
+            <li class="has-dropdown"><%= link_to "Assignments", assignments_employee_path(@employee) %>
+               <ul class="dropdown">
+                  <li><%= link_to 'Edit', assignments_employee_path(@employee) %></li>                     
+               </ul>
+            </li>         
          <% end %>
 	      <li class="has-dropdown"><%= link_to 'Customers', customers_path %>
 	        <ul class="dropdown">

@@ -13,10 +13,11 @@ class AssignmentsController < ApplicationController
     end
   end
   
-  def edit
+  def edit    
     @employee = Employee.find(params[:employee_id])
     @project = Project.find(params[:project_id])
     @date = params[:day]
+    @timesheer_date_start = params[:date_start]
     respond_to do |format|
       format.js {render 'modal_time_form', :layout => false }
     end    
@@ -28,6 +29,7 @@ class AssignmentsController < ApplicationController
     @employee.add_time(params.merge({:project => @project}))
     @date = params[:date]    
     @entry = @employee.project_entry_for_day(day: @date, project: @project)    
+    @dash = Dashboard.new(:employee => @employee, :date_state => :timesheet, :date_start => params[:timesheet_date_start])        
     respond_to do |format|
       if @employee.valid?
         format.js { render layout: false }

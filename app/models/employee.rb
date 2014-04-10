@@ -13,6 +13,7 @@ class Employee
   embeds_many :projectstates
   embeds_many :days
   has_many :projsummaries
+  has_many :claims
   belongs_to :user
 
   def self.create_it(params)
@@ -51,6 +52,29 @@ class Employee
     save
   end
 
+  # Expenses Management
+
+  def create_expense(params)
+    self.claims << Claim.add_expense(params)
+    self
+  end
+
+  def update_expense(params)
+    self.claims.find(params[:claim]).update_expense(params)
+    self
+    
+#    Expense.find(params[:id]).update_it(params[:expense])
+#    self
+  end
+
+  def delete_expense(params)
+    expense = Expense.find(params[:id])
+    self.expenses.delete(expense)
+    self
+  end
+
+  # Utility Helpers
+
   def all_days
     self.days.collect {|d| d.date}.sort {|x,y| x <=> y}
   end
@@ -70,7 +94,7 @@ class Employee
       nil
     else
       @day_find = day_find.first
-      @day_entry = @day_find.entry(project)
+      return @day_entry = @day_find.entry(project)
     end    
   end
 
@@ -97,6 +121,15 @@ class Employee
     pe = project_entry_for_day(day: day, project: project)
     return nil if pe.nil?
     pe.cost_code(code).try(:hours)
+  end
+
+  # Not implemented yet
+  
+  def cost_codes_by_project_by_day(project: nil, day: nil)
+    pe = project_entry_for_day(day: day, project: project)
+    if pe.try(:costcodeentries) && !pe.costcodeentries.empty?
+      pe.costcodeentries.collect {|c| {project: project, costcodeentry: c}}
+    end
   end
   
   def billable_calc
@@ -126,6 +159,10 @@ class Employee
   
   def viewable_customer_projects(customer)
     self.viewable_projects.select {|vp| vp.customer == customer}
+  end
+  
+  def project_state(project)
+    self.projectstates.where(project: project.id).first
   end
   
   def customers

@@ -29,6 +29,11 @@ Timemachine::Application.routes.draw do
   resources :assignments
   
   resources :employees do
+    resources :expenses
+    resources :claims do
+      put 'submitted'
+      put 'paid'
+    end
      member do
       post 'date'
       post 'erase'
