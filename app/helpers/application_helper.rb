@@ -16,6 +16,11 @@ module ApplicationHelper
     end
   end
   
+  def assigned_customer_list_select(employee)
+    employee.assigned_customers.map{|c| [c.name, c.id]}
+  end
+  
+  
   def project_list_select
     Customer.all_projects.map{|p| [p.name, p.id]}
   end

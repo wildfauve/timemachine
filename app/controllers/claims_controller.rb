@@ -1,12 +1,17 @@
 class ClaimsController < ApplicationController
   
   def index
-    @employee = Employee.find(params[:employee_id])
     @claims = @employee.claims
     respond_to do |format|
       format.html
-      format.json
     end
+  end
+  
+  def show
+    @claim = @employee.claims.find(params[:id])
+    respond_to do |format|
+      format.html
+    end    
   end
   
 

@@ -37,7 +37,7 @@ Timemachine::Application.routes.draw do
      member do
       post 'date'
       post 'erase'
-      put 'projstate'
+      put 'projsummary'
       get 'project'
       get 'assignments'
     end

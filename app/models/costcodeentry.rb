@@ -15,4 +15,7 @@ class Costcodeentry
     self.hours = hours
   end
     
+  def related_costcode
+    Costcode.find(costcode)
+  end
 end

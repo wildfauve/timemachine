@@ -1,6 +1,6 @@
 class Expense
   
-  @@expense_types = [:phone, :client_entertainment, :staff_meeting]
+  @@expense_types = [:phone, :client_entertainment, :staff_meeting, :travel, :parking, :taxi]
   
   include Mongoid::Document
   include Mongoid::Timestamps  
@@ -8,6 +8,7 @@ class Expense
   field :desc, type:  String
   field :amt_cents, type: Integer
   field :expense_type, type: Symbol
+  field :customer, :type => Moped::BSON::ObjectId
   
   embedded_in :claim
   
@@ -17,11 +18,13 @@ class Expense
   
   def self.create_it(params)
     ex = self.new(params)
+    ex.customer = params[:customer]
     ex
   end
   
   def update_it(params)
     self.attributes = params
+    self.customer = params[:customer] if params[:customer]
     self
   end
         
@@ -49,4 +52,8 @@ class Expense
     Claim.find(claim)
   end
   
+  def for_customer
+    Customer.find(self.customer) if self.customer.present?
+  end
+    
 end

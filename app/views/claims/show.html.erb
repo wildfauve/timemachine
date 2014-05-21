@@ -1,0 +1,39 @@
+<% model_class = Claim %>
+<% title model_class.to_s %>
+
+<%= render partial: 'shared/employee_hrd' %>
+
+<%= link_to 'New Expense Item', new_employee_expense_path, :class => "small button"%>
+
+
+<ul class="small-block-grid-3">
+  <li>
+   <ul class="pricing-table">
+     <li class="title"><%= @claim.name%></li>
+     <li class="price"><%= "#{@claim.total_value.symbol}#{@claim.total_value}" %></li>
+     <li class="bullet-item"><%= @claim.total_items %></li>                
+     <li class="cta-button">
+        <%= link_to "Submit", employee_claim_submitted_path(@employee, @claim, method: :put), class: "tiny button" %>
+        <%= link_to "Paid", employee_claim_paid_path(@employee, @claim, method: :put), class: "tiny button" %>
+     </li>
+   </ul>
+</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Claim</th>
+      <th width="200">Date</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Type</th>      
+      <th>Action</th>      
+    </tr>
+  </thead>
+  <tbody>
+   <% for ex in @claim.expenses %>
+      <%= render partial: 'expenses/expense_row', locals: {ex: ex, claim: @claim} %>
+   <% end %>
+   </tbody>
+</table>

@@ -1,7 +1,7 @@
 class ExpensesController < ApplicationController
   
   def index
-    @employees = Employee.find(params[:employee_id])
+    @employee = Employee.find(params[:employee_id])
     respond_to do |format|
       format.html
       format.json
@@ -13,7 +13,7 @@ class ExpensesController < ApplicationController
   end
   
   def create
-    @exmployee = Employee.find(params[:employee_id]).create_expense(params[:expense])
+    @exmployee = Employee.find(params[:employee_id]).create_expense(params)
     respond_to do |format|
       if @employee.valid?
         format.html { redirect_to employee_expenses_path }

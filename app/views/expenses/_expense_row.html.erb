@@ -1,0 +1,12 @@
+<tr>
+   <td><%= claim.name %></td>      
+   <td><%= ex.created_at.strftime('%a %d %b %Y')%></td>
+   <td><%= ex.desc%></td>
+   <td><%= "#{ex.amt.symbol}#{ex.amt}"%></td>
+   <td><%= ex.expense_type%></td>            
+   <td><%= ex.for_customer.try(:name) %>
+   <td>
+      <%= link_to 'Edit', edit_employee_expense_path(@employee, ex, claim: claim.id,), :class => "tiny button"%>
+      <%= link_to "Delete", employee_expense_path(@employee, ex, claim: claim.id), method: :delete, :class => "tiny button" %>                     
+   </td>
+</tr>

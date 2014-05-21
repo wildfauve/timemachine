@@ -3,6 +3,8 @@
 
 <%= render partial: 'shared/employee_hrd' %>
 
+<%= link_to 'New Expense Item', new_employee_expense_path, :class => "small button"%>
+
 <table>
   <thead>
     <tr>
@@ -25,6 +27,7 @@
          <td>
             <%= link_to "Submit", employee_claim_submitted_path(@employee, claim, method: :put), class: "tiny button" %>
             <%= link_to "Paid", employee_claim_paid_path(@employee, claim, method: :put), class: "tiny button" %>
+            <%= link_to "Show Expenses", employee_claim_path(@employee, claim), class: "tiny button" %>          
          </td>
       </tr>
    <% end %>

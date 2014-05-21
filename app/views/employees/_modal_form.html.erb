@@ -1,10 +1,10 @@
-<%= form_tag(projstate_employee_path(@employee, project: @project), method: :put, :class => "custom", remote: true) do %>
+<%= form_tag(projsummary_employee_path(@employee, project: @project), method: :put, :class => "custom", remote: true) do %>
 	<div class="row">
 		<div class="small-3 columns">
 		    <%= label_tag 'Viewable?', nil , class: "right inline" %>
 		  </div>
 		<div class="small-9 columns">
-			<%= radio_button_tag('viewable', "yes", @projectstate.try(:viewable)) %>
+			<%= radio_button_tag('viewable', "yes", @projsummary.try(:viewable)) %>
 		</div>
 	</div>
 	<div class="row">
@@ -12,7 +12,7 @@
 		   <%= label_tag 'Hide?', nil , class: "right inline" %>
 		</div>
 		<div class="small-9 columns">
-			<%= radio_button_tag('viewable', "no", !@projectstate.try(:viewable)) %>
+			<%= radio_button_tag('viewable', "no", !@projsummary.try(:viewable)) %>
 		</div>
 	</div>
 	<div class="row">
@@ -20,7 +20,7 @@
 		    <%= label_tag 'Rate', nil , class: "right inline" %>
 		  </div>
 		<div class="small-9 columns">
-         <%= number_field_tag 'rate', @projectstate.try(:rate) %>
+         <%= number_field_tag 'rate', @projsummary.try(:rate) %>
 		</div>
 	</div>
 	<div class="row">

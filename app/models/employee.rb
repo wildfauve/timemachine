@@ -10,7 +10,7 @@ class Employee
   validates_uniqueness_of :name
   
   has_and_belongs_to_many :projects
-  embeds_many :projectstates
+#  embeds_many :projectstates
   embeds_many :days
   has_many :projsummaries
   has_many :claims
@@ -122,8 +122,6 @@ class Employee
     return nil if pe.nil?
     pe.cost_code(code).try(:hours)
   end
-
-  # Not implemented yet
   
   def cost_codes_by_project_by_day(project: nil, day: nil)
     pe = project_entry_for_day(day: day, project: project)
@@ -131,7 +129,7 @@ class Employee
       pe.costcodeentries.collect {|c| {project: project, costcodeentry: c}}
     end
   end
-  
+    
   def billable_calc
     self.projsummaries.select {|ps| ps.assigned_project.billable}.inject(0.to_f) {|n, v| n += v.total_hours}
   end
@@ -141,15 +139,15 @@ class Employee
     save
   end
   
-  def mod_project_state(params)
-    ps = self.projectstates.find_or_create_by(:project => params[:project])
+  def mod_project_summary(params)
+    ps = self.projsummaries.find_or_create_by(:project => params[:project])
     ps.mod(params)
     self.save!
     self
   end
   
   def project_viewable(proj)
-    ps = self.projectstates.where(:project => proj.id)
+    ps = self.projsummaries.where(:project => proj.id)
     ps.count > 0 ? ps.first.viewable : true
   end
   
@@ -160,9 +158,17 @@ class Employee
   def viewable_customer_projects(customer)
     self.viewable_projects.select {|vp| vp.customer == customer}
   end
+
+  def assigned_projects
+    self.projects
+  end
   
-  def project_state(project)
-    self.projectstates.where(project: project.id).first
+  def assigned_customers
+    self.projects.collect {|ap| ap.customer}.uniq!
+  end
+  
+  def project_summary(project)
+    self.projsummaries.where(project: project.id).first
   end
   
   def customers

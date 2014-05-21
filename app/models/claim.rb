@@ -37,13 +37,13 @@ class Claim
   end
   
   def add_expense_item(params)
-    self.expenses << Expense.create_it(params)
+    self.expenses << Expense.create_it(params[:expense].merge({customer: params[:customer]}))
     save!
     self
   end
   
   def update_expense(params)
-    self.expenses.find(params[:id]).update_it(params[:expense])
+    self.expenses.find(params[:id]).update_it(params[:expense].merge({customer: params[:customer]}))
     save!
     self
   end

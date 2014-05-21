@@ -6,7 +6,7 @@
         <li class="title"><%= proj.name%></li>
         <li class="price"><%= proj.customer.name%></li>
         <li class="bullet-item"><%= @employee.project_viewable(proj) ? "Viewable" : "Hidden" %></li>        
-        <li class="bullet-item"><%= @employee.project_state(proj).try(:rate) %></li>                
+        <li class="bullet-item"><%= @employee.project_summary(proj).try(:rate) %></li>                
         <li class="cta-button">
            <%= link_to "Update State", project_employee_path(@employee, :project => proj), remote: true, class: :button %>
         </li>

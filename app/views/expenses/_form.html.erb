@@ -25,6 +25,14 @@
      </div> 
    </div>
    <div class="row">
+      <div class="small-3 columns">
+         <%= f.label :customer, class: "right inline" %>
+      </div>
+      <div class="small-9 columns"> 
+         <%= select_tag(:customer, options_for_select(assigned_customer_list_select(@employee), @expense.customer), :include_blank => true, :prompt => "Select a Customer to Assign", :class => "medium") %>
+      </div>
+   </div>   
+   <div class="row">
      <div class="small-9 small-offset-3 columns">
        <%= f.submit 'Submit', :class => 'button small' %>
      </div>

@@ -1,5 +1,6 @@
 <div class="time-entry" data-date="<%= day %>" data-proj="<%= proj.name %>" >
    <% if @employee %>
+
       <% if entry.try(:hours) %>
          <%= link_to entry.hours, edit_employee_assignment_path(@employee, project_id: proj.id, day: day, date_start: @dash.date_start), remote: true %>
       <% else %>
@@ -8,7 +9,7 @@
          <% end%>
       <% end %>
    <% else%>
-      <%= entry.try(:hours) %>
+      <%= entry.hours %>
    <% end %>
    <% if entry.try(:note) && !entry.try(:note).empty? %>
       <span data-tooltip class="has-tip" title="<%= entry.try(:note) %>">note</span>

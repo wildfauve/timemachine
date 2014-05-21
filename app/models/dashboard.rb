@@ -1,6 +1,6 @@
 class Dashboard
   
-  attr_accessor :day_total, :proj_total, :summ_by_date, :summ_by_project, :employee, :date_start
+  attr_accessor :day_total, :proj_total, :summ_by_date, :summ_by_project, :employee, :date_start, :cce_total
   
   def initialize(params)
     @employee.nil? ? @employee = Employee.where(name: "Col").first : @employee = params[:employee]
@@ -28,28 +28,42 @@ class Dashboard
     @summ_by_project = []
     @day_total = {}
     @proj_total = {}
+    @cce_total = {}    
     @summ_by_date = []
     if @customer
       proj_list = @customer.projects.sort {|x,y| x.customer.name <=> y.customer.name}
     else
       proj_list = @employee.projects.sort {|x,y| x.customer.name <=> y.customer.name}
     end
+    
+    # Summaise by Project
+    # {:project=>#<Project _id: 51f05fb5e4df1c834a000008, _type: nil, created_at: 2013-07-24 23:13:57 UTC, updated_at: 2013-08-01 20:54:33 UTC, name: "Solution Architecture", desc: "", billable: true, customer_id: "51efb2ade4df1cead0000003", employee_ids: ["51efb2a5e4df1c5434000001"]>, :dates=>{"2014-05-01"=>#<Entry _id: 5363005ef3654e7f07000008, _type: nil, created_at: 2014-05-02 02:18:06 UTC, updated_at: 2014-05-02 02:18:06 UTC, hours: 3.0, project: "51f05fb5e4df1c834a000008", note: nil>, "2014-05-02"=>#<Entry _id: 5363004df3654e7f07000007, _type: nil, created_at: nil, updated_at: nil, hours: 3.0, project: "51f05fb5e4df1c834a000008", note: nil>, "2014-05-05"=>#<Entry _id: 5367527cf3654e9a65000003, _type: nil, created_at: 2014-05-05 08:57:32 UTC, updated_at: 2014-05-05 08:57:32 UTC, hours: 3.0, project: "51f05fb5e4df1c834a000008", note: nil>}}
+    
     proj_list.each do |proj|
       line, dates = {}, {}
       line[:project] = proj
       @day_range.each do |day|
         
         # Find hours for the day for the project
-        hours = @employee.project_hours_by_day(:project_id => proj.id, :date => day)
-        if hours > 0
-          dates[day.to_s] = hours          
-          @day_total[day.to_s] ? @day_total[day.to_s] += hours : @day_total[day.to_s] = hours
-          @proj_total[proj.id] ? @proj_total[proj.id] += hours : @proj_total[proj.id] = hours
+        e = entry(day: day, project: proj)
+        #hours = @employee.project_hours_by_day(:project_id => proj.id, :date => day)
+        if e
+          dates[day.to_s] = e
+          #
+          # day_total = {"2014-05-01"=>7.0, "2014-05-02"=>7.0, "2014-05-05"=>3.0}
+          #
+          @day_total[day.to_s] ? @day_total[day.to_s] += e.hours : @day_total[day.to_s] = e.hours
+          #
+          # proj_total = {"51f05fb5e4df1c834a000008"=>9.0, "5215303ee4df1c285a000001"=>8.0}
+          #          
+          @proj_total[proj.id] ? @proj_total[proj.id] += e.hours : @proj_total[proj.id] = e.hours
+          
+          # Sum all the costcode entries
+          if !e.costcodeentries.empty?
+            e.costcodeentries.each {|cce| @cce_total[cce.costcode] ? @cce_total[cce.costcode] += cce.hours : @cce_total[cce.costcode] = cce.hours}
+          end
+          
         end
-        
-        # Find hours for any costcodes
-        codes = @employee.cost_codes_by_project_by_day(project: proj, day: day)
-        
         
       end
       if !dates.empty?
@@ -57,6 +71,10 @@ class Dashboard
         @summ_by_project << line
       end
 		end
+    
+    # Summarise By Date
+    # {:date=>Tue, 06 May 2014, :projects=>{:project=>{:project=>#<Project _id: 5215303ee4df1c285a000001, _type: nil, created_at: 2013-08-21 21:25:18 UTC, updated_at: 2014-03-13 07:03:25 UTC, name: "Co-brand Programme", desc: "", billable: true, customer_id: "51efb2ade4df1cead0000003", employee_ids: ["51efb2a5e4df1c5434000001"]>, :dates=>{"2014-05-01"=>4.0, "2014-05-02"=>4.0}}, :total=>nil}}    
+    
 		date_line = {}
 		@day_range.each do |day|
 		  date_line[:date] = day
@@ -110,9 +128,9 @@ class Dashboard
     @proj_total[project.id]
   end
   
-  def hours_for_day(day,proj)
+  def hours_for_day(day, proj)
     p = @summ_by_project.select {|p| p[:project].id == proj[:project].id}.first
-    hours = p[:dates].select{|d, n| d == day.to_s}[day.to_s]
+    hours = p[:dates].select{|d, n| d == day.to_s}[day.to_s].try(:hours)
     hours
   end
   
@@ -135,11 +153,7 @@ class Dashboard
   def day_range
     @day_range.empty? ? [Date.today] : @day_range 
   end
-  
-  def total_for_cost_codes(params)
-    0
-  end
-  
+    
   def to_csv
     CSV.generate do |csv|
       csv << [" "] + self.day_range

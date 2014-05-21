@@ -9,27 +9,18 @@
   <thead>
     <tr>
       <th>Claim</th>
-      <th width="200">Date</th>
+      <th>Date Entered</th>
       <th>Description</th>
       <th>Amount</th>
       <th>Type</th>      
+      <th>Customer</th>      
       <th>Action</th>      
     </tr>
   </thead>
   <tbody>
-   <% for claim in @employees.claims %>
+   <% for claim in @employee.claims %>
       <% for ex in claim.expenses %>
-         <tr>
-            <td><%= claim.name %></td>            
-            <td><%= ex.created_at%></td>
-            <td><%= ex.desc%></td>
-            <td><%= "#{ex.amt.symbol}#{ex.amt}"%></td>
-            <td><%= ex.expense_type%></td>            
-            <td>
-               <%= link_to 'Edit', edit_employee_expense_path(@employee, ex, claim: claim.id,), :class => "tiny button"%>
-               <%= link_to "Delete", employee_expense_path(@employee, ex, claim: claim.id), method: :delete, :class => "tiny button" %>                     
-            </td>
-         </tr>
+         <%= render partial: 'expense_row', locals: {ex: ex, claim: claim} %>
       <% end %>
    <% end %>
    </tbody>
