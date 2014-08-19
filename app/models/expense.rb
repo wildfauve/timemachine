@@ -1,6 +1,6 @@
 class Expense
   
-  @@expense_types = [:phone, :client_entertainment, :staff_meeting, :travel, :parking, :taxi]
+  @@expense_types = [:phone, :client_entertainment, :staff_meeting, :travel, :parking, :taxi, :milage, :office_supplies]
   
   include Mongoid::Document
   include Mongoid::Timestamps  
@@ -9,6 +9,7 @@ class Expense
   field :amt_cents, type: Integer
   field :expense_type, type: Symbol
   field :customer, :type => Moped::BSON::ObjectId
+  field :entered, type: Boolean
   
   embedded_in :claim
   
@@ -54,6 +55,10 @@ class Expense
   
   def for_customer
     Customer.find(self.customer) if self.customer.present?
+  end
+  
+  def set_entered
+    self.entered = true
   end
     
 end

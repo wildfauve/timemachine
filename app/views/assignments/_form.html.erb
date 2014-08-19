@@ -32,7 +32,7 @@
 		    <%= label_tag 'Custom', nil , class: "right inline" %>
 		  </div>
 		<div class="small-9 columns">
-			<%= number_field_tag('custom_num', @employee.project_entry_for_day(day: @date, project: @project).try(:hours), :in => 0..10, :step => 0.1) %>
+			<%= number_field_tag('custom_num', @employee.project_entry_for_day(day: @date, project: @project).try(:hours), :in => 0..15, :step => 0.5) %>
 		</div>
 	</div>
 	<div class="row">
@@ -67,7 +67,7 @@
             <%= label_tag "#{code.code}: #{code.name}" %>
          </div>
          <div class="small-3 columns">                  
-            <%= number_field_tag("costcodes[#{code.id}]", @employee.cost_code_entry_by_day(day: @date, project: @project, code: code), :in => 0..15) %>
+            <%= number_field_tag("costcodes[#{code.id}]", @employee.cost_code_entry_by_day(day: @date, project: @project, code: code), :in => 0..15, :step => 0.5) %>
          </div>
       </div>
    <% end %>

@@ -1,0 +1,21 @@
+<table id="expense-list">
+  <thead>
+    <tr>
+      <th>Claim</th>
+      <th>Date Entered</th>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Type</th>      
+      <th>Customer</th>
+      <th>Entered</th>      
+      <th>Action</th>      
+    </tr>
+  </thead>
+  <tbody>
+   <% for claim in claims %>
+      <% for ex in claim.expenses %>
+         <%= render partial: 'expenses/expense_row', locals: {ex: ex, claim: claim} %>
+      <% end %>
+   <% end %>
+   </tbody>
+</table>

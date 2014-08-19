@@ -5,8 +5,10 @@
    <td><%= "#{ex.amt.symbol}#{ex.amt}"%></td>
    <td><%= ex.expense_type%></td>            
    <td><%= ex.for_customer.try(:name) %>
+   <td><%= ex.entered%></td>                  
    <td>
       <%= link_to 'Edit', edit_employee_expense_path(@employee, ex, claim: claim.id,), :class => "tiny button"%>
       <%= link_to "Delete", employee_expense_path(@employee, ex, claim: claim.id), method: :delete, :class => "tiny button" %>                     
+      <%= link_to 'Entered', entered_employee_expense_path(@employee, ex, claim: claim.id), method: :put, :class => "tiny button"%>      
    </td>
 </tr>

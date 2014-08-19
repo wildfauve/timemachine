@@ -16,6 +16,7 @@
       <tr>
          <th>Customer</th>
          <th>Assignment</th>
+         <th>Budget Hours</th>
          <th>Total Hours</th>
          <th>Duration</th>
          <th width="100">Start Date</th>
@@ -29,7 +30,8 @@
       <% for proj in @employee.projsummaries %>    
          <tr>
             <td><%= proj.assigned_project.customer.name %></td>
-            <td><%= proj.assigned_project.name %></td>            
+            <td><%= proj.assigned_project.name %></td> 
+            <td><%= proj.hours_budget %></td>                        
             <td><%= proj.total_hours %></td>
             <td><%= proj.duration %></td>            
             <td><%= proj.start_date %></td>

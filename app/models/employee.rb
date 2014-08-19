@@ -1,5 +1,7 @@
 class Employee
   
+  attr_accessor :claim
+  
   include Mongoid::Document
   include Mongoid::Timestamps  
   
@@ -66,12 +68,25 @@ class Employee
 #    Expense.find(params[:id]).update_it(params[:expense])
 #    self
   end
-
-  def delete_expense(params)
-    expense = Expense.find(params[:id])
-    self.expenses.delete(expense)
+  
+  def set_expense_entered(params)
+    @claim = self.claims.find(params[:claim])
+    @claim.set_expense_entered(params)
     self
   end
+
+  def delete_expense(params)
+    claim = Claim.find(params[:claim])
+    expense = claim.expenses.find(params[:id])
+    expense.delete
+    self
+  end
+
+
+  def set_claim_state_change(claim_id: nil, state: nil)
+    self.claims.find(claim_id).set_claim_state_change(state: state)
+  end
+
 
   # Utility Helpers
 

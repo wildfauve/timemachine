@@ -22,10 +22,13 @@ group :assets do
   gem 'foundicons-rails'
 end
 
+gem 'jquery-datatables-rails'
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'  
   gem 'meta_request'
+  gem 'railroady'
 end
 
 gem 'jquery-ui-rails'

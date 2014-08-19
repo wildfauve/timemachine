@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Api::ApplicationController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/api/application_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="../ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-error">#error</a>
+    
+    <li><a href="#method-i-invalid_request">#invalid_request</a>
+    
+    <li><a href="#method-i-record_not_found">#record_not_found</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Api.html">Api</a>
+  
+    <li><a href="../Api/ApplicationController.html">Api::ApplicationController</a>
+  
+    <li><a href="../Api/CustomersController.html">Api::CustomersController</a>
+  
+    <li><a href="../Ability.html">Ability</a>
+  
+    <li><a href="../AdminsController.html">AdminsController</a>
+  
+    <li><a href="../ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../Assignment.html">Assignment</a>
+  
+    <li><a href="../AssignmentsController.html">AssignmentsController</a>
+  
+    <li><a href="../ByEmployeeController.html">ByEmployeeController</a>
+  
+    <li><a href="../Claim.html">Claim</a>
+  
+    <li><a href="../ClaimsController.html">ClaimsController</a>
+  
+    <li><a href="../Costcode.html">Costcode</a>
+  
+    <li><a href="../Costcodeentry.html">Costcodeentry</a>
+  
+    <li><a href="../CostcodesController.html">CostcodesController</a>
+  
+    <li><a href="../Customer.html">Customer</a>
+  
+    <li><a href="../CustomersController.html">CustomersController</a>
+  
+    <li><a href="../Dashboard.html">Dashboard</a>
+  
+    <li><a href="../Day.html">Day</a>
+  
+    <li><a href="../DaysController.html">DaysController</a>
+  
+    <li><a href="../Employee.html">Employee</a>
+  
+    <li><a href="../EmployeesController.html">EmployeesController</a>
+  
+    <li><a href="../Entry.html">Entry</a>
+  
+    <li><a href="../Expense.html">Expense</a>
+  
+    <li><a href="../ExpensesController.html">ExpensesController</a>
+  
+    <li><a href="../HomeController.html">HomeController</a>
+  
+    <li><a href="../Project.html">Project</a>
+  
+    <li><a href="../ProjectsController.html">ProjectsController</a>
+  
+    <li><a href="../Projsummary.html">Projsummary</a>
+  
+    <li><a href="../SessionsController.html">SessionsController</a>
+  
+    <li><a href="../User.html">User</a>
+  
+    <li><a href="../UsersController.html">UsersController</a>
+  
+    <li><a href="../Utilities.html">Utilities</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Api::ApplicationController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-error" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">error</span><span
+            class="method-args">(status, code, message)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>def <a
+href="ApplicationController.html#method-i-record_not_found">#record_not_found</a></p>
+
+<pre>head :not_found</pre>
+
+<p>end</p>
+          
+
+          
+          <div class="method-source-code" id="error-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/application_controller.rb, line 21</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">error</span>(<span class="ruby-identifier">status</span>, <span class="ruby-identifier">code</span>, <span class="ruby-identifier">message</span>)
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:response_type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;ERROR&quot;</span>, <span class="ruby-value">:response_code</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">code</span>, <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">message</span>}.<span class="ruby-identifier">to_json</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">status</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- error-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- error-method -->
+
+    
+      <div id="method-i-invalid_request" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">invalid_request</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="invalid_request-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/application_controller.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">invalid_request</span>
+  <span class="ruby-identifier">error</span>(<span class="ruby-value">:bad_request</span>, <span class="ruby-value">:bad_request</span>, <span class="ruby-string">&quot;The request is badly formatted&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- invalid_request-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- invalid_request-method -->
+
+    
+      <div id="method-i-record_not_found" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">record_not_found</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="record_not_found-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/application_controller.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">record_not_found</span>
+  <span class="ruby-identifier">error</span>(<span class="ruby-value">:not_found</span>, <span class="ruby-value">:not_found</span>, <span class="ruby-string">&quot;URL does not represent a resource&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- record_not_found-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- record_not_found-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

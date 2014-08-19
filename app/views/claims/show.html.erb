@@ -20,20 +20,5 @@
 </li>
 </ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>Claim</th>
-      <th width="200">Date</th>
-      <th>Description</th>
-      <th>Amount</th>
-      <th>Type</th>      
-      <th>Action</th>      
-    </tr>
-  </thead>
-  <tbody>
-   <% for ex in @claim.expenses %>
-      <%= render partial: 'expenses/expense_row', locals: {ex: ex, claim: @claim} %>
-   <% end %>
-   </tbody>
-</table>
+<%= render partial: 'expenses/expense_table', locals: {claims: [@claim]} %>
+

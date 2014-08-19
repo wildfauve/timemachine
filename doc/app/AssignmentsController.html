@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class AssignmentsController - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/controllers/assignments_controller.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-calc">#calc</a>
+    
+    <li><a href="#method-i-date">#date</a>
+    
+    <li><a href="#method-i-edit">#edit</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-new">#new</a>
+    
+    <li><a href="#method-i-time_change">#time_change</a>
+    
+    <li><a href="#method-i-update">#update</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Api.html">Api</a>
+  
+    <li><a href="./Api/ApplicationController.html">Api::ApplicationController</a>
+  
+    <li><a href="./Api/CustomersController.html">Api::CustomersController</a>
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./AdminsController.html">AdminsController</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Assignment.html">Assignment</a>
+  
+    <li><a href="./AssignmentsController.html">AssignmentsController</a>
+  
+    <li><a href="./ByEmployeeController.html">ByEmployeeController</a>
+  
+    <li><a href="./Claim.html">Claim</a>
+  
+    <li><a href="./ClaimsController.html">ClaimsController</a>
+  
+    <li><a href="./Costcode.html">Costcode</a>
+  
+    <li><a href="./Costcodeentry.html">Costcodeentry</a>
+  
+    <li><a href="./CostcodesController.html">CostcodesController</a>
+  
+    <li><a href="./Customer.html">Customer</a>
+  
+    <li><a href="./CustomersController.html">CustomersController</a>
+  
+    <li><a href="./Dashboard.html">Dashboard</a>
+  
+    <li><a href="./Day.html">Day</a>
+  
+    <li><a href="./DaysController.html">DaysController</a>
+  
+    <li><a href="./Employee.html">Employee</a>
+  
+    <li><a href="./EmployeesController.html">EmployeesController</a>
+  
+    <li><a href="./Entry.html">Entry</a>
+  
+    <li><a href="./Expense.html">Expense</a>
+  
+    <li><a href="./ExpensesController.html">ExpensesController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./Project.html">Project</a>
+  
+    <li><a href="./ProjectsController.html">ProjectsController</a>
+  
+    <li><a href="./Projsummary.html">Projsummary</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./Utilities.html">Utilities</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class AssignmentsController</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-calc" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">calc</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="calc-source">
+            <pre><span class="ruby-comment"># File app/controllers/assignments_controller.rb, line 53</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier">calc</span>
+<span class="ruby-comment"># Params: </span>
+<span class="ruby-comment">#    {&quot;project&quot;=&gt;&quot;5215303ee4df1c285a000001&quot;, &quot;date&quot;=&gt;&quot;2014-03-13&quot;, &quot;custom_num&quot;=&gt;&quot;2&quot;, &quot;fill-value&quot;=&gt;&quot;&quot;, &quot;note&quot;=&gt;&quot;&quot;, &quot;costcodes&quot;=&gt;{&quot;532157f7f3654e73bf00000a&quot;=&gt;&quot;1&quot;, &quot;53215807f3654e73bf00000b&quot;=&gt;&quot;2&quot;, &quot;53215816f3654e73bf00000c&quot;=&gt;&quot;3&quot;}, &quot;commit&quot;=&gt;&quot;Submit&quot;, &quot;action&quot;=&gt;&quot;calc&quot;, &quot;controller&quot;=&gt;&quot;assignments&quot;, &quot;employee_id&quot;=&gt;&quot;51efb2a5e4df1c5434000001&quot;, &quot;id&quot;=&gt;&quot;5215303ee4df1c285a000001&quot;}}</span>
+    
+    <span class="ruby-ivar">@employee</span> = <span class="ruby-constant">Employee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:employee_id</span>])
+    <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+    <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">add_time</span>(<span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge</span>({<span class="ruby-value">:project</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>}))
+    <span class="ruby-ivar">@date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:date</span>]) <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">valid?</span>
+        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span> { <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;time_form&#39;</span>, <span class="ruby-value">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>}
+        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">employee_path</span>(<span class="ruby-ivar">@employee</span>) }
+        <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">raise</span>      
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>      
+  <span class="ruby-keyword">end</span></pre>
+          </div><!-- calc-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- calc-method -->
+
+    
+      <div id="method-i-date" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">date</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="date-source">
+            <pre><span class="ruby-comment"># File app/controllers/assignments_controller.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">date</span>
+  <span class="ruby-ivar">@employee</span> = <span class="ruby-constant">Employee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:employee_id</span>])
+  <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:date_opt</span>])
+  <span class="ruby-ivar">@assigment_day_proj</span> = <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">project_hours_by_day</span>(<span class="ruby-value">:date</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@date</span>, <span class="ruby-value">:project_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>)    
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span> {<span class="ruby-identifier">render</span> <span class="ruby-string">&#39;time_form&#39;</span>, <span class="ruby-value">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> }
+  <span class="ruby-keyword">end</span>
+  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- date-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- date-method -->
+
+    
+      <div id="method-i-edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/assignments_controller.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>    
+  <span class="ruby-ivar">@employee</span> = <span class="ruby-constant">Employee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:employee_id</span>])
+  <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:project_id</span>])
+  <span class="ruby-ivar">@date</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:day</span>]
+  <span class="ruby-ivar">@timesheer_date_start</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:date_start</span>]
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span> {<span class="ruby-identifier">render</span> <span class="ruby-string">&#39;modal_time_form&#39;</span>, <span class="ruby-value">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> }
+  <span class="ruby-keyword">end</span>    
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- edit-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- edit-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/assignments_controller.rb, line 3</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/controllers/assignments_controller.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@employee</span> = <span class="ruby-constant">Employee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:employee_id</span>])
+  <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:project_id</span>])
+  <span class="ruby-ivar">@date</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span> {<span class="ruby-identifier">render</span> <span class="ruby-string">&#39;time_form&#39;</span>, <span class="ruby-value">:layout</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> {<span class="ruby-identifier">render</span> <span class="ruby-string">&#39;time_form&#39;</span>}
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+      <div id="method-i-time_change" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">time_change</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="time_change-source">
+            <pre><span class="ruby-comment"># File app/controllers/assignments_controller.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">time_change</span>
+  <span class="ruby-identifier">raise</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- time_change-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- time_change-method -->
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/assignments_controller.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-ivar">@employee</span> = <span class="ruby-constant">Employee</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:employee_id</span>])
+  <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">add_time</span>(<span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge</span>({<span class="ruby-value">:project</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>}))
+  <span class="ruby-ivar">@date</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:date</span>]    
+  <span class="ruby-ivar">@entry</span> = <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">project_entry_for_day</span>(<span class="ruby-identifier">day</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@date</span>, <span class="ruby-identifier">project</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@project</span>)    
+  <span class="ruby-ivar">@dash</span> = <span class="ruby-constant">Dashboard</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:employee</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@employee</span>, <span class="ruby-value">:date_state</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:timesheet</span>, <span class="ruby-value">:date_start</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:timesheet_date_start</span>])        
+  <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">valid?</span>
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">js</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">layout</span><span class="ruby-operator">:</span> <span class="ruby-keyword">false</span> }
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>    
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

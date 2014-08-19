@@ -59,6 +59,8 @@ class Dashboard
           @proj_total[proj.id] ? @proj_total[proj.id] += e.hours : @proj_total[proj.id] = e.hours
           
           # Sum all the costcode entries
+          
+          # @cce_total = {"53215807f3654e73bf00000b"=>18.0, "53215816f3654e73bf00000c"=>18.0, "532157f7f3654e73bf00000a"=>9.0}
           if !e.costcodeentries.empty?
             e.costcodeentries.each {|cce| @cce_total[cce.costcode] ? @cce_total[cce.costcode] += cce.hours : @cce_total[cce.costcode] = cce.hours}
           end
@@ -167,6 +169,7 @@ class Dashboard
           row = []
           row << "#{code.code}: #{code.name}"
           self.day_range.each {|day| row << self.entry(day: day, project: proj[:project]).try(:cost_code, code).try(:hours).to_s}
+          row << @cce_total[code.id]
           csv << row
         end 
       end    

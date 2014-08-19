@@ -24,6 +24,14 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="small-3 columns">
+		    <%= label_tag 'Hours Budget', nil , class: "right inline" %>
+		  </div>
+		<div class="small-9 columns">
+         <%= number_field_tag 'hours_budget', @projsummary.try(:hours_budget) %>
+		</div>
+	</div>   
+	<div class="row">
 	  <div class="small-9 small-offset-3 columns">
 	    <%= submit_tag 'Submit', :class => 'button small' %>
 	  </div>

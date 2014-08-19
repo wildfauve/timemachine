@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Expense - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/expense.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">Mongoid::Document</span>
+  
+  
+  
+    <li><span class="include">Mongoid::Timestamps</span>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-create_it">::create_it</a>
+    
+    <li><a href="#method-c-expense_types">::expense_types</a>
+    
+    <li><a href="#method-i-amt">#amt</a>
+    
+    <li><a href="#method-i-amt-3D">#amt=</a>
+    
+    <li><a href="#method-i-for_customer">#for_customer</a>
+    
+    <li><a href="#method-i-related_claim">#related_claim</a>
+    
+    <li><a href="#method-i-set_entered">#set_entered</a>
+    
+    <li><a href="#method-i-update_it">#update_it</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Api.html">Api</a>
+  
+    <li><a href="./Api/ApplicationController.html">Api::ApplicationController</a>
+  
+    <li><a href="./Api/CustomersController.html">Api::CustomersController</a>
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./AdminsController.html">AdminsController</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Assignment.html">Assignment</a>
+  
+    <li><a href="./AssignmentsController.html">AssignmentsController</a>
+  
+    <li><a href="./ByEmployeeController.html">ByEmployeeController</a>
+  
+    <li><a href="./Claim.html">Claim</a>
+  
+    <li><a href="./ClaimsController.html">ClaimsController</a>
+  
+    <li><a href="./Costcode.html">Costcode</a>
+  
+    <li><a href="./Costcodeentry.html">Costcodeentry</a>
+  
+    <li><a href="./CostcodesController.html">CostcodesController</a>
+  
+    <li><a href="./Customer.html">Customer</a>
+  
+    <li><a href="./CustomersController.html">CustomersController</a>
+  
+    <li><a href="./Dashboard.html">Dashboard</a>
+  
+    <li><a href="./Day.html">Day</a>
+  
+    <li><a href="./DaysController.html">DaysController</a>
+  
+    <li><a href="./Employee.html">Employee</a>
+  
+    <li><a href="./EmployeesController.html">EmployeesController</a>
+  
+    <li><a href="./Entry.html">Entry</a>
+  
+    <li><a href="./Expense.html">Expense</a>
+  
+    <li><a href="./ExpensesController.html">ExpensesController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./Project.html">Project</a>
+  
+    <li><a href="./ProjectsController.html">ProjectsController</a>
+  
+    <li><a href="./Projsummary.html">Projsummary</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./Utilities.html">Utilities</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Expense</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-create_it" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_it</span><span
+            class="method-args">(params)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_it-source">
+            <pre><span class="ruby-comment"># File app/models/expense.rb, line 20</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">create_it</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">ex</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-identifier">ex</span>.<span class="ruby-identifier">customer</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:customer</span>]
+  <span class="ruby-identifier">ex</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_it-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_it-method -->
+
+    
+      <div id="method-c-expense_types" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">expense_types</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="expense_types-source">
+            <pre><span class="ruby-comment"># File app/models/expense.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">expense_types</span>
+  <span class="ruby-identifier">@@expense_types</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- expense_types-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- expense_types-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-amt" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">amt</span><span
+            class="method-args">(options = {})</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="amt-source">
+            <pre><span class="ruby-comment"># File app/models/expense.rb, line 45</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">amt</span>(<span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;The &quot;options&quot; arg must be a Hash&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+  <span class="ruby-identifier">options</span>[<span class="ruby-value">:in</span>] <span class="ruby-operator">||=</span> <span class="ruby-string">&#39;NZD&#39;</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">amt_cents</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">cents</span> = <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">cents</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">amt_cents</span>
+  <span class="ruby-identifier">f</span> = <span class="ruby-constant">Money</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">cents</span>, <span class="ruby-identifier">options</span>[<span class="ruby-value">:in</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- amt-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- amt-method -->
+
+    
+      <div id="method-i-amt-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">amt=</span><span
+            class="method-args">(amt)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="amt-3D-source">
+            <pre><span class="ruby-comment"># File app/models/expense.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">amt=</span>(<span class="ruby-identifier">amt</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-regexp">/^[\d]+(\.[\d]+){0,1}$/</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">amt</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\$/</span>, <span class="ruby-string">&quot;&quot;</span>)
+    <span class="ruby-identifier">money_amt</span> = <span class="ruby-constant">Money</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">amt</span>, <span class="ruby-string">&quot;NZD&quot;</span>)
+    <span class="ruby-keyword">if</span> [<span class="ruby-constant">Fixnum</span>, <span class="ruby-constant">Money</span>].<span class="ruby-identifier">include?</span> <span class="ruby-identifier">money_amt</span>.<span class="ruby-identifier">class</span>
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">amt_cents</span> = <span class="ruby-identifier">money_amt</span>.<span class="ruby-identifier">cents</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">money_amt</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Money</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:amt</span>, <span class="ruby-string">&quot;Rate is not a Money value&quot;</span>)        
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">errors</span>.<span class="ruby-identifier">add</span>(<span class="ruby-value">:amt</span>, <span class="ruby-string">&quot;Rate does not appear to be a number&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-regexp">/^[\d]+(\.[\d]+){0,1}$/</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">amt</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\$/</span>, <span class="ruby-string">&quot;&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- amt-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- amt-3D-method -->
+
+    
+      <div id="method-i-for_customer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">for_customer</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="for_customer-source">
+            <pre><span class="ruby-comment"># File app/models/expense.rb, line 56</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">for_customer</span>
+  <span class="ruby-constant">Customer</span>.<span class="ruby-identifier">find</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">customer</span>) <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">customer</span>.<span class="ruby-identifier">present?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- for_customer-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- for_customer-method -->
+
+    
+      <div id="method-i-related_claim" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">related_claim</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="related_claim-source">
+            <pre><span class="ruby-comment"># File app/models/expense.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">related_claim</span>
+  <span class="ruby-constant">Claim</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">claim</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- related_claim-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- related_claim-method -->
+
+    
+      <div id="method-i-set_entered" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_entered</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_entered-source">
+            <pre><span class="ruby-comment"># File app/models/expense.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_entered</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">entered</span> = <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_entered-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_entered-method -->
+
+    
+      <div id="method-i-update_it" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update_it</span><span
+            class="method-args">(params)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="update_it-source">
+            <pre><span class="ruby-comment"># File app/models/expense.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update_it</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">params</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">customer</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:customer</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:customer</span>]
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update_it-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update_it-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

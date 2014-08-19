@@ -29,7 +29,11 @@ Timemachine::Application.routes.draw do
   resources :assignments
   
   resources :employees do
-    resources :expenses
+    resources :expenses do
+      member do
+        put 'entered'
+      end
+    end
     resources :claims do
       put 'submitted'
       put 'paid'
@@ -61,6 +65,12 @@ Timemachine::Application.routes.draw do
           get 'summary'
         end
       end
+    end
+  end
+  
+  namespace :api do
+    namespace :v1 do
+      resources :customers
     end
   end
   

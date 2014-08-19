@@ -9,12 +9,13 @@ class Projsummary
   field :viewable, :type => Boolean
   field :project, :type => Moped::BSON::ObjectId
   field :rate_cents, type: Integer
+  field :hours_budget, type: Integer
   belongs_to :employee, :inverse_of => :projsummaries
 
   def self.store(proj)
-    project = self.find_or_create_by(:project => proj[:project].id)
-    project.summ(proj[:dates])
-    return project
+    projectsum = self.find_or_create_by(:project => proj[:project].id)
+    projectsum.summ(proj[:dates])
+    return projectsum
   end
   
   def summ(dates)
@@ -56,6 +57,7 @@ class Projsummary
   def mod(params)
     self.rate = params[:rate]
     self.viewable = params[:viewable]
+    self.hours_budget = params[:hours_budget]
     self.save
   end
   

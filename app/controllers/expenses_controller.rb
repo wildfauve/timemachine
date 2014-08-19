@@ -60,6 +60,17 @@ class ExpensesController < ApplicationController
       end
     end          
   end
-    
+  
+  def entered
+    @employee = Employee.find(params[:employee_id]).set_expense_entered(params)
+    @claim = @employee.claim
+    respond_to do |format|
+      if @employee.valid?
+        format.html { render 'claims/show' }
+      else
+        format.html { render action: "edit" }
+      end
+    end    
+  end  
   
 end

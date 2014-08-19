@@ -48,6 +48,18 @@ class Claim
     self
   end
   
+  def set_expense_entered(params)
+    self.expenses.find(params[:id]).set_entered
+    save!
+    self
+  end
+  
+  def set_claim_state_change(state: nil)
+    self.state = state
+    save!
+    self
+  end
+  
   def total_value
     @total_value ||= self.expenses.inject(Money.new(0, 'NZD')) {|total, ex| total += ex.amt}
   end

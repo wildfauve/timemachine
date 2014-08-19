@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class Dashboard - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/dashboard.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-calc_date_range">#calc_date_range</a>
+    
+    <li><a href="#method-i-calc_summary">#calc_summary</a>
+    
+    <li><a href="#method-i-day_range">#day_range</a>
+    
+    <li><a href="#method-i-entry">#entry</a>
+    
+    <li><a href="#method-i-hours_for_day">#hours_for_day</a>
+    
+    <li><a href="#method-i-overall_total">#overall_total</a>
+    
+    <li><a href="#method-i-project_total">#project_total</a>
+    
+    <li><a href="#method-i-set_date_range">#set_date_range</a>
+    
+    <li><a href="#method-i-timesheet_total">#timesheet_total</a>
+    
+    <li><a href="#method-i-to_csv">#to_csv</a>
+    
+    <li><a href="#method-i-total_for_day">#total_for_day</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./Api.html">Api</a>
+  
+    <li><a href="./Api/ApplicationController.html">Api::ApplicationController</a>
+  
+    <li><a href="./Api/CustomersController.html">Api::CustomersController</a>
+  
+    <li><a href="./Ability.html">Ability</a>
+  
+    <li><a href="./AdminsController.html">AdminsController</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./Assignment.html">Assignment</a>
+  
+    <li><a href="./AssignmentsController.html">AssignmentsController</a>
+  
+    <li><a href="./ByEmployeeController.html">ByEmployeeController</a>
+  
+    <li><a href="./Claim.html">Claim</a>
+  
+    <li><a href="./ClaimsController.html">ClaimsController</a>
+  
+    <li><a href="./Costcode.html">Costcode</a>
+  
+    <li><a href="./Costcodeentry.html">Costcodeentry</a>
+  
+    <li><a href="./CostcodesController.html">CostcodesController</a>
+  
+    <li><a href="./Customer.html">Customer</a>
+  
+    <li><a href="./CustomersController.html">CustomersController</a>
+  
+    <li><a href="./Dashboard.html">Dashboard</a>
+  
+    <li><a href="./Day.html">Day</a>
+  
+    <li><a href="./DaysController.html">DaysController</a>
+  
+    <li><a href="./Employee.html">Employee</a>
+  
+    <li><a href="./EmployeesController.html">EmployeesController</a>
+  
+    <li><a href="./Entry.html">Entry</a>
+  
+    <li><a href="./Expense.html">Expense</a>
+  
+    <li><a href="./ExpensesController.html">ExpensesController</a>
+  
+    <li><a href="./HomeController.html">HomeController</a>
+  
+    <li><a href="./Project.html">Project</a>
+  
+    <li><a href="./ProjectsController.html">ProjectsController</a>
+  
+    <li><a href="./Projsummary.html">Projsummary</a>
+  
+    <li><a href="./SessionsController.html">SessionsController</a>
+  
+    <li><a href="./User.html">User</a>
+  
+    <li><a href="./UsersController.html">UsersController</a>
+  
+    <li><a href="./Utilities.html">Utilities</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Dashboard</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-cce_total" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">cce_total</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-date_start" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">date_start</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-day_total" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">day_total</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-employee" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">employee</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-proj_total" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">proj_total</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-summ_by_date" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">summ_by_date</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-summ_by_project" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">summ_by_project</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(params)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">params</span>)
+  <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@employee</span> = <span class="ruby-constant">Employee</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">name</span><span class="ruby-operator">:</span> <span class="ruby-string">&quot;Col&quot;</span>).<span class="ruby-identifier">first</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@employee</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:employee</span>]
+  <span class="ruby-ivar">@date_start</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:date_start</span>]) <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:date_start</span>]
+  <span class="ruby-ivar">@customer</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:customer</span>]
+  <span class="ruby-identifier">set_date_range</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:date_state</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-calc_date_range" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">calc_date_range</span><span
+            class="method-args">(date, period: 15)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="calc_date_range-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 122</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">calc_date_range</span>(<span class="ruby-identifier">date</span>, <span class="ruby-identifier">period</span><span class="ruby-operator">:</span> <span class="ruby-value">15</span>)
+  <span class="ruby-identifier">today</span> = <span class="ruby-identifier">date</span>
+  <span class="ruby-identifier">start_month</span> = (<span class="ruby-identifier">today</span>.<span class="ruby-identifier">change</span>({<span class="ruby-value">:day</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>})<span class="ruby-operator">..</span><span class="ruby-identifier">today</span>.<span class="ruby-identifier">change</span>({<span class="ruby-value">:day</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">period</span>}))
+  <span class="ruby-identifier">end_month</span> = (<span class="ruby-identifier">today</span>.<span class="ruby-identifier">change</span>({<span class="ruby-value">:day</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">period</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>})<span class="ruby-operator">..</span><span class="ruby-identifier">today</span>.<span class="ruby-identifier">end_of_month</span>)
+  <span class="ruby-identifier">today</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">date</span>.<span class="ruby-identifier">change</span>({<span class="ruby-value">:day</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">period</span>}) <span class="ruby-operator">?</span> <span class="ruby-identifier">start_month</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">end_month</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- calc_date_range-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- calc_date_range-method -->
+
+    
+      <div id="method-i-calc_summary" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">calc_summary</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <h2 id="method-i-calc_summary-label-%3E+dashboard.day_total">&gt; dashboard.day_total</h2>
+
+<p>{“2013-07-22”=&gt;8, “2013-07-23”=&gt;8, “2013-07-24”=&gt;7,
+“2013-07-25”=&gt;5, “2013-07-26”=&gt;6}</p>
+          
+
+          
+          <div class="method-source-code" id="calc_summary-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 26</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">calc_summary</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@summ_by_project</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@summ_by_date</span>
+  <span class="ruby-ivar">@summ_by_project</span> = []
+  <span class="ruby-ivar">@day_total</span> = {}
+  <span class="ruby-ivar">@proj_total</span> = {}
+  <span class="ruby-ivar">@cce_total</span> = {}    
+  <span class="ruby-ivar">@summ_by_date</span> = []
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@customer</span>
+    <span class="ruby-identifier">proj_list</span> = <span class="ruby-ivar">@customer</span>.<span class="ruby-identifier">projects</span>.<span class="ruby-identifier">sort</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">customer</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">customer</span>.<span class="ruby-identifier">name</span>}
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">proj_list</span> = <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">projects</span>.<span class="ruby-identifier">sort</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">customer</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">customer</span>.<span class="ruby-identifier">name</span>}
+  <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Summaise by Project</span>
+  <span class="ruby-comment"># {:project=&gt;#&lt;Project _id: 51f05fb5e4df1c834a000008, _type: nil, created_at: 2013-07-24 23:13:57 UTC, updated_at: 2013-08-01 20:54:33 UTC, name: &quot;Solution Architecture&quot;, desc: &quot;&quot;, billable: true, customer_id: &quot;51efb2ade4df1cead0000003&quot;, employee_ids: [&quot;51efb2a5e4df1c5434000001&quot;]&gt;, :dates=&gt;{&quot;2014-05-01&quot;=&gt;#&lt;Entry _id: 5363005ef3654e7f07000008, _type: nil, created_at: 2014-05-02 02:18:06 UTC, updated_at: 2014-05-02 02:18:06 UTC, hours: 3.0, project: &quot;51f05fb5e4df1c834a000008&quot;, note: nil&gt;, &quot;2014-05-02&quot;=&gt;#&lt;Entry _id: 5363004df3654e7f07000007, _type: nil, created_at: nil, updated_at: nil, hours: 3.0, project: &quot;51f05fb5e4df1c834a000008&quot;, note: nil&gt;, &quot;2014-05-05&quot;=&gt;#&lt;Entry _id: 5367527cf3654e9a65000003, _type: nil, created_at: 2014-05-05 08:57:32 UTC, updated_at: 2014-05-05 08:57:32 UTC, hours: 3.0, project: &quot;51f05fb5e4df1c834a000008&quot;, note: nil&gt;}}</span>
+  
+  <span class="ruby-identifier">proj_list</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">proj</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">line</span>, <span class="ruby-identifier">dates</span> = {}, {}
+    <span class="ruby-identifier">line</span>[<span class="ruby-value">:project</span>] = <span class="ruby-identifier">proj</span>
+    <span class="ruby-ivar">@day_range</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">day</span><span class="ruby-operator">|</span>
+      
+      <span class="ruby-comment"># Find hours for the day for the project</span>
+      <span class="ruby-identifier">e</span> = <span class="ruby-identifier">entry</span>(<span class="ruby-identifier">day</span><span class="ruby-operator">:</span> <span class="ruby-identifier">day</span>, <span class="ruby-identifier">project</span><span class="ruby-operator">:</span> <span class="ruby-identifier">proj</span>)
+      <span class="ruby-comment">#hours = @employee.project_hours_by_day(:project_id =&gt; proj.id, :date =&gt; day)</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">e</span>
+        <span class="ruby-identifier">dates</span>[<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">e</span>
+        <span class="ruby-comment">#</span>
+        <span class="ruby-comment"># day_total = {&quot;2014-05-01&quot;=&gt;7.0, &quot;2014-05-02&quot;=&gt;7.0, &quot;2014-05-05&quot;=&gt;3.0}</span>
+        <span class="ruby-comment">#</span>
+        <span class="ruby-ivar">@day_total</span>[<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">?</span> <span class="ruby-ivar">@day_total</span>[<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">hours</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@day_total</span>[<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>] = <span class="ruby-identifier">e</span>.<span class="ruby-identifier">hours</span>
+        <span class="ruby-comment">#</span>
+        <span class="ruby-comment"># proj_total = {&quot;51f05fb5e4df1c834a000008&quot;=&gt;9.0, &quot;5215303ee4df1c285a000001&quot;=&gt;8.0}</span>
+        <span class="ruby-comment">#          </span>
+        <span class="ruby-ivar">@proj_total</span>[<span class="ruby-identifier">proj</span>.<span class="ruby-identifier">id</span>] <span class="ruby-operator">?</span> <span class="ruby-ivar">@proj_total</span>[<span class="ruby-identifier">proj</span>.<span class="ruby-identifier">id</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">hours</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@proj_total</span>[<span class="ruby-identifier">proj</span>.<span class="ruby-identifier">id</span>] = <span class="ruby-identifier">e</span>.<span class="ruby-identifier">hours</span>
+        
+        <span class="ruby-comment"># Sum all the costcode entries</span>
+        
+        <span class="ruby-comment"># @cce_total = {&quot;53215807f3654e73bf00000b&quot;=&gt;18.0, &quot;53215816f3654e73bf00000c&quot;=&gt;18.0, &quot;532157f7f3654e73bf00000a&quot;=&gt;9.0}</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">e</span>.<span class="ruby-identifier">costcodeentries</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-identifier">e</span>.<span class="ruby-identifier">costcodeentries</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">cce</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@cce_total</span>[<span class="ruby-identifier">cce</span>.<span class="ruby-identifier">costcode</span>] <span class="ruby-operator">?</span> <span class="ruby-ivar">@cce_total</span>[<span class="ruby-identifier">cce</span>.<span class="ruby-identifier">costcode</span>] <span class="ruby-operator">+=</span> <span class="ruby-identifier">cce</span>.<span class="ruby-identifier">hours</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@cce_total</span>[<span class="ruby-identifier">cce</span>.<span class="ruby-identifier">costcode</span>] = <span class="ruby-identifier">cce</span>.<span class="ruby-identifier">hours</span>}
+        <span class="ruby-keyword">end</span>
+        
+      <span class="ruby-keyword">end</span>
+      
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">dates</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">line</span>[<span class="ruby-value">:dates</span>] = <span class="ruby-identifier">dates</span>
+      <span class="ruby-ivar">@summ_by_project</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
+    <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">end</span>
+  
+  <span class="ruby-comment"># Summarise By Date</span>
+  <span class="ruby-comment"># {:date=&gt;Tue, 06 May 2014, :projects=&gt;{:project=&gt;{:project=&gt;#&lt;Project _id: 5215303ee4df1c285a000001, _type: nil, created_at: 2013-08-21 21:25:18 UTC, updated_at: 2014-03-13 07:03:25 UTC, name: &quot;Co-brand Programme&quot;, desc: &quot;&quot;, billable: true, customer_id: &quot;51efb2ade4df1cead0000003&quot;, employee_ids: [&quot;51efb2a5e4df1c5434000001&quot;]&gt;, :dates=&gt;{&quot;2014-05-01&quot;=&gt;4.0, &quot;2014-05-02&quot;=&gt;4.0}}, :total=&gt;nil}}    </span>
+  
+              <span class="ruby-identifier">date_line</span> = {}
+              <span class="ruby-ivar">@day_range</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">day</span><span class="ruby-operator">|</span>
+                <span class="ruby-identifier">date_line</span>[<span class="ruby-value">:date</span>] = <span class="ruby-identifier">day</span>
+                <span class="ruby-identifier">proj_line</span> = {}
+                <span class="ruby-ivar">@summ_by_project</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">proj</span><span class="ruby-operator">|</span>
+                  <span class="ruby-identifier">selected</span> = <span class="ruby-identifier">proj</span>[<span class="ruby-value">:dates</span>].<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">d</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">day</span>}
+                  <span class="ruby-identifier">proj_line</span>[<span class="ruby-value">:project</span>] = <span class="ruby-identifier">proj</span>
+                  <span class="ruby-identifier">proj_line</span>[<span class="ruby-value">:total</span>] = <span class="ruby-identifier">selected</span>[<span class="ruby-identifier">day</span>]
+          <span class="ruby-keyword">end</span>
+          <span class="ruby-identifier">date_line</span>[<span class="ruby-value">:projects</span>] = <span class="ruby-identifier">proj_line</span>
+          <span class="ruby-ivar">@summ_by_date</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">date_line</span>
+        <span class="ruby-keyword">end</span>
+              <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- calc_summary-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- calc_summary-method -->
+
+    
+      <div id="method-i-day_range" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">day_range</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="day_range-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 155</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">day_range</span>
+  <span class="ruby-ivar">@day_range</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> [<span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>] <span class="ruby-operator">:</span> <span class="ruby-ivar">@day_range</span> 
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- day_range-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- day_range-method -->
+
+    
+      <div id="method-i-entry" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">entry</span><span
+            class="method-args">(day: nil, project: nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="entry-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">entry</span>(<span class="ruby-identifier">day</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">project</span><span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">project_entry_for_day</span>(<span class="ruby-identifier">day</span><span class="ruby-operator">:</span> <span class="ruby-identifier">day</span>, <span class="ruby-identifier">project</span><span class="ruby-operator">:</span> <span class="ruby-identifier">project</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- entry-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- entry-method -->
+
+    
+      <div id="method-i-hours_for_day" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hours_for_day</span><span
+            class="method-args">(day, proj)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="hours_for_day-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">hours_for_day</span>(<span class="ruby-identifier">day</span>, <span class="ruby-identifier">proj</span>)
+  <span class="ruby-identifier">p</span> = <span class="ruby-ivar">@summ_by_project</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span>[<span class="ruby-value">:project</span>].<span class="ruby-identifier">id</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">proj</span>[<span class="ruby-value">:project</span>].<span class="ruby-identifier">id</span>}.<span class="ruby-identifier">first</span>
+  <span class="ruby-identifier">hours</span> = <span class="ruby-identifier">p</span>[<span class="ruby-value">:dates</span>].<span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">d</span>, <span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>}[<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>].<span class="ruby-identifier">try</span>(<span class="ruby-value">:hours</span>)
+  <span class="ruby-identifier">hours</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- hours_for_day-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- hours_for_day-method -->
+
+    
+      <div id="method-i-overall_total" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">overall_total</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="overall_total-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 147</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">overall_total</span>
+  <span class="ruby-ivar">@proj_total</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0.0</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">r</span>, (<span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span>)<span class="ruby-operator">|</span> <span class="ruby-identifier">r</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">v</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- overall_total-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- overall_total-method -->
+
+    
+      <div id="method-i-project_total" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">project_total</span><span
+            class="method-args">(project)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="project_total-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">project_total</span>(<span class="ruby-identifier">project</span>)
+  <span class="ruby-ivar">@proj_total</span>[<span class="ruby-identifier">project</span>.<span class="ruby-identifier">id</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- project_total-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- project_total-method -->
+
+    
+      <div id="method-i-set_date_range" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_date_range</span><span
+            class="method-args">(state)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="set_date_range-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_date_range</span>(<span class="ruby-identifier">state</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">state</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-value">:timesheet</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@date_start</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">date_range</span> = <span class="ruby-identifier">calc_date_range</span>(<span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-value">:timesheet</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@date_start</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">date_range</span> = <span class="ruby-identifier">calc_date_range</span>(<span class="ruby-ivar">@date_start</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-value">:invoice</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@date_start</span>.<span class="ruby-identifier">nil?</span>  
+      <span class="ruby-identifier">date_range</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>.<span class="ruby-identifier">change</span>({<span class="ruby-identifier">day</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>})<span class="ruby-operator">..</span><span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>.<span class="ruby-identifier">end_of_month</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">state</span> <span class="ruby-operator">==</span> <span class="ruby-value">:invoice</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@date_start</span>.<span class="ruby-identifier">nil?</span> 
+      <span class="ruby-identifier">date_range</span> = <span class="ruby-ivar">@date_start</span>.<span class="ruby-identifier">change</span>({<span class="ruby-identifier">day</span><span class="ruby-operator">:</span> <span class="ruby-value">1</span>})<span class="ruby-operator">..</span><span class="ruby-ivar">@date_start</span>.<span class="ruby-identifier">end_of_month</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@date_start</span>
+      <span class="ruby-identifier">date_range</span> = <span class="ruby-identifier">calc_date_range</span>(<span class="ruby-ivar">@date_start</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">state</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@date_start</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">date_range</span> = <span class="ruby-keyword">nil</span> 
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">raise</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">date_range</span>
+    <span class="ruby-ivar">@day_range</span> = <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">days</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-identifier">date_range</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">date</span>}.<span class="ruby-identifier">collect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">date</span>}.<span class="ruby-identifier">sort</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">x</span>,<span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">y</span>}
+    <span class="ruby-ivar">@day_range</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">date_range</span>.<span class="ruby-identifier">first</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@day_range</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-ivar">@day_range</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@day_range</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@day_range</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">date_range</span>.<span class="ruby-identifier">last</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@day_range</span> = <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">all_days</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_date_range-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_date_range-method -->
+
+    
+      <div id="method-i-timesheet_total" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">timesheet_total</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="timesheet_total-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 151</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">timesheet_total</span>
+  <span class="ruby-ivar">@employee</span>.<span class="ruby-identifier">days</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@day_range</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">d</span>.<span class="ruby-identifier">date</span>) }.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0.0</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">t</span>, <span class="ruby-identifier">d</span><span class="ruby-operator">|</span> <span class="ruby-identifier">t</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">d</span>.<span class="ruby-identifier">total_hours</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- timesheet_total-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- timesheet_total-method -->
+
+    
+      <div id="method-i-to_csv" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_csv</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="to_csv-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_csv</span>
+  <span class="ruby-constant">CSV</span>.<span class="ruby-identifier">generate</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">csv</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">csv</span> <span class="ruby-operator">&lt;&lt;</span> [<span class="ruby-string">&quot; &quot;</span>] <span class="ruby-operator">+</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">day_range</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">calc_summary</span>.<span class="ruby-identifier">summ_by_project</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">proj</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">row</span> = []
+      <span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">proj</span>[<span class="ruby-value">:project</span>].<span class="ruby-identifier">name</span>
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">day_range</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">day</span><span class="ruby-operator">|</span> <span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">hours_for_day</span>(<span class="ruby-identifier">day</span>, <span class="ruby-identifier">proj</span>).<span class="ruby-identifier">to_s</span>}
+      <span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">proj_total</span>[<span class="ruby-identifier">proj</span>[<span class="ruby-value">:project</span>].<span class="ruby-identifier">id</span>]  
+      <span class="ruby-identifier">csv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">row</span>
+      <span class="ruby-identifier">proj</span>[<span class="ruby-value">:project</span>].<span class="ruby-identifier">costcodes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">code</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">row</span> = []
+        <span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;#{code.code}: #{code.name}&quot;</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">day_range</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">day</span><span class="ruby-operator">|</span> <span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">entry</span>(<span class="ruby-identifier">day</span><span class="ruby-operator">:</span> <span class="ruby-identifier">day</span>, <span class="ruby-identifier">project</span><span class="ruby-operator">:</span> <span class="ruby-identifier">proj</span>[<span class="ruby-value">:project</span>]).<span class="ruby-identifier">try</span>(<span class="ruby-value">:cost_code</span>, <span class="ruby-identifier">code</span>).<span class="ruby-identifier">try</span>(<span class="ruby-value">:hours</span>).<span class="ruby-identifier">to_s</span>}
+        <span class="ruby-identifier">row</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@cce_total</span>[<span class="ruby-identifier">code</span>.<span class="ruby-identifier">id</span>]
+        <span class="ruby-identifier">csv</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">row</span>
+      <span class="ruby-keyword">end</span> 
+    <span class="ruby-keyword">end</span>    
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_csv-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_csv-method -->
+
+    
+      <div id="method-i-total_for_day" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">total_for_day</span><span
+            class="method-args">(day)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="total_for_day-source">
+            <pre><span class="ruby-comment"># File app/models/dashboard.rb, line 143</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">total_for_day</span>(<span class="ruby-identifier">day</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">day_total</span>.<span class="ruby-identifier">select</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">d</span>, <span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">d</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>}[<span class="ruby-identifier">day</span>.<span class="ruby-identifier">to_s</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- total_for_day-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- total_for_day-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
