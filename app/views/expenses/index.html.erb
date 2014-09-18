@@ -1,0 +1,8 @@
+<% model_class = Expense %>
+<% title model_class.to_s %>
+
+<%= render partial: 'shared/employee_hrd' %>
+
+<%= link_to 'New Item', new_employee_expense_path, :class => "small button"%>
+
+<%= render partial: "expense_table", locals: {claims: @employee.claims}%>

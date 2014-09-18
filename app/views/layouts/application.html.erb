@@ -8,7 +8,7 @@
   	<title><%= content_for?(:title) ? yield(:title) : "TimeMachine" %></title>
 
   	<%= stylesheet_link_tag    "application" %>
-  	<%= javascript_include_tag "vendor/custom.modernizr" %>
+  	<%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -35,19 +35,17 @@
             </li>
          <% else %>
             <% if current_user && current_user.employee %>
-               <li class="has-dropdown"><%= link_to "Time", employee_path(current_user.employee) %>
-                  <ul class="dropdown">
-                     <li><%= link_to 'Update Time', employee_path(current_user.employee)%></li>
-                     <li><%= link_to 'Timesheet', by_employee_path(@employee, :state => :timesheet) %></li>
-                     <li><%= link_to 'Edit Assignments', assignments_employee_path(@employee) %></li>
-                     <li><%= link_to 'Expenses', employee_expenses_path(@employee) %></li>                     
-                  </ul>
-               </li>         
-               <li class="has-dropdown"><%= link_to "Expenses", employee_expenses_path(current_user.employee) %>
-                  <ul class="dropdown">
-                     <li><%= link_to 'Expense', employee_expenses_path(@employee) %></li>                     
-                  </ul>
-               </li>                        
+               <li><%= link_to "Time", employee_path(current_user.employee), data: {dropdown: "drop_time"} %></li>
+               <ul id="drop_time" class="f-dropdown" data-dropdown-content>
+                 <li><%= link_to 'Add Time', employee_path(current_user.employee)%></li>
+                 <li><%= link_to 'Timesheet', by_employee_path(@employee, :state => :timesheet) %></li>
+                 <li><%= link_to 'Edit Assignments', assignments_employee_path(@employee) %></li>
+                 <li><%= link_to 'Expenses', employee_expenses_path(@employee) %></li>                     
+               </ul>        
+               <li><%= link_to "Expenses", employee_expenses_path(current_user.employee), data: {dropdown: "drop_expenses"} %></li>
+               <ul id="drop_expenses" class="f-dropdown" data-dropdown-content>               
+                   <li><%= link_to 'Expense', employee_expenses_path(@employee) %></li>                     
+               </ul>
             <% end %>                  
          <% end %>
          <% if current_user && current_user.employee %>
@@ -87,16 +85,19 @@
 	      <li class="divider"></li>
          <% if current_user  %>
             <% if current_user.employee %>
-               <li class="has-dropdown"><%= link_to current_user.name, employee_path(current_user.employee) %>
+              <li>
+                <%= link_to(current_user.name, employee_path(current_user.employee), data: {dropdown: "drop_user"})  %>
+              </li>
             <% else%>
-               <li class="has-dropdown"><%= link_to current_user.name, admins_path %>            
+              <li>
+                <%= link_to(current_user.name, admins_path, data: {dropdown: "drop_user"})  %>
+              </li>            
             <% end %>                  
-               <ul class="dropdown">
-	               <li><%= link_to 'Logout', log_out_path%></li>
-               </ul>
-			   </li>         
+                <ul id="drop_user" class="f-dropdown" data-dropdown-content>
+                  <li><%= link_to 'Logout', log_out_path%></li>
+                </ul>        
          <% else %>
-      	   <li class="has-dropdown"><%= link_to "Login", log_in_path %></li>
+      	   <li ><%= link_to "Login", log_in_path %></li>
          <% end %>
 	      <li class="has-form">
 	        <form>
