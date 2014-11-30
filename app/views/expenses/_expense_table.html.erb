@@ -13,7 +13,7 @@
   </thead>
   <tbody>
    <% for claim in claims %>
-      <% for ex in claim.expenses %>
+      <% for ex in claim.expenses.desc(:entered) %>
          <%= render partial: 'expenses/expense_row', locals: {ex: ex, claim: claim} %>
       <% end %>
    <% end %>
