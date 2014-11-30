@@ -8,7 +8,7 @@ class Expense
   field :desc, type:  String
   field :amt_cents, type: Integer
   field :expense_type, type: Symbol
-  field :customer, :type => Moped::BSON::ObjectId
+  field :customer, :type => BSON::ObjectId
   field :entered, type: Boolean
   
   embedded_in :claim

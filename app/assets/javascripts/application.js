@@ -15,9 +15,7 @@
 //= require foundation
 // require tablecloth-rails
 //= require jquery.ui.all
-//= require dataTables/jquery.dataTables
+// require dataTables/jquery.dataTables
 //= require_tree .
-
-$(document).foundation();
 
 $(function(){ $(document).foundation(); });

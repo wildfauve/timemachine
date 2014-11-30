@@ -6,7 +6,7 @@ class Entry
   include Mongoid::Timestamps  
   
   field :hours, :type => Float
-  field :project, :type => Moped::BSON::ObjectId
+  field :project, :type => BSON::ObjectId
   field :note, type: String
   embedded_in :day, :inverse_of => :entries
   embeds_many :costcodeentries

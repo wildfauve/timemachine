@@ -25,12 +25,14 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 gem 'mongoid', github: 'mongoid/mongoid'
+
 gem 'wisper'
 
 gem 'mc-settings'
 
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
+gem 'jquery-ui-rails'
 
 group :development do
   gem 'better_errors'

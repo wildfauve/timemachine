@@ -1,8 +1,5 @@
 <div class="row">
-   <div class="small-2 columns">
-      <h2 class="subheader"><%= link_to @employee.name, employee_path(@employee) %></h2>
-   </div>
-   <div class="small-6 columns">
+   <div class="small-12 columns">
       <dl class="sub-nav">
          <dl class="sub-nav">
             <dd class=<%= test_location(params, :show) %>><%= link_to 'Add Time', employee_path(@employee) %></dd>
@@ -14,10 +11,5 @@
             <dd class=<%= test_location(params, :claims)%> ><%= link_to 'Claims', employee_claims_path(@employee) %></dd>
          </dl>
       </dl>
-   </div>
-   <div class="small-4 columns">
-      <div class="row" id="date-form">
-      </div>
-      
    </div>
 </div>

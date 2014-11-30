@@ -7,7 +7,7 @@ class Projsummary
   field :start_date, :type => Date
   field :end_date, :type => Date
   field :viewable, :type => Boolean
-  field :project, :type => Moped::BSON::ObjectId
+  field :project, :type => BSON::ObjectId
   field :rate_cents, type: Integer
   field :hours_budget, type: Integer
   belongs_to :employee, :inverse_of => :projsummaries
