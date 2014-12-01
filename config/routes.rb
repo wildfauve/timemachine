@@ -68,7 +68,13 @@ Timemachine::Application.routes.draw do
     end
   end
   
-  resources :loads
+  resources :loads do
+    collection do
+      post 'upload'
+      post 'download'
+    end
+  end
+
   
   namespace :api do
     namespace :v1 do

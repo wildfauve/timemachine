@@ -89,6 +89,8 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (5.4.3)
+    monetize (1.0.0)
+      money (~> 6.4.0)
     money (6.4.0)
       i18n (>= 0.6.4, <= 0.7.0.beta1)
     moped (2.0.2)
@@ -155,8 +157,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.5.2)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.5.3)
@@ -180,6 +180,7 @@ DEPENDENCIES
   jquery-ui-rails
   mc-settings
   meta_request
+  monetize
   money
   mongoid!
   pry
@@ -189,6 +190,5 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring
   tablecloth-rails (~> 1.0)
-  turbolinks
   uglifier (>= 1.3.0)
   wisper

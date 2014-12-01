@@ -36,16 +36,16 @@ class Employee
     self.attributes = (params[:employee])
     if params[:project].present?
       proj = Project.find(params[:project])
-      self.projects << proj
+      self.projects << proj unless self.projects.include? proj
     end
     save
   end
   
   def add_time(params)
     # check if day already found
-    day_find = self.days.where(:date => params[:date])
-    if day_find.count > 0
-      day = day_find.first.add_time(params)
+    day = self.days.where(:date => params[:date]).first
+    if day
+      day.add_time(params)
     else
       day = Day.new
       self.days << day.add_time(params)[:day]

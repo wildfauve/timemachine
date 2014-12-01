@@ -16,37 +16,26 @@ class LoadsController < ApplicationController
   end
   
   def download
-    params[:export_type] == "all" ? @nodes = Node.all_active : @nodes = nil
-    @types = Type.all
-    @reltypes = Reltype.all
+    @employees = Employee.all
     respond_to do |f|
       f.json do
-        stream = render_to_string(:template=>"exports/new" )  
-        send_data(stream, :type=>"application/json", :filename => "tracer_export_#{Time.now.to_s}.json")
+        stream = render_to_string()
+        send_data(stream, :type=>"application/json", :filename => "#{params[:filename]}_export_#{Time.now.to_s}.json")
       end
 #      f.json 
     end
   end
   
-  def up_load
+  def upload
     name = params[:import].original_filename
     directory = "public/imports"
     path = File.join(directory, name)
     File.open(path, "wb") { |f| f.write(params[:import].tempfile.read) }
     flash[:notice] = "File uploaded"
-    @import = Import.new(path).parse
-    redirect_to types_path
+    @import = ImportHandler.new(path).parse
+    redirect_to loads_path
   end
   
-  def down_load
-    @export = Export.new(params)
-    respond_to do |f|
-      f.json do
-        stream = render_to_string(template: "loads/down_load" )  
-        send_data(stream, :type=>"application/json", :filename => @export.file_name)
-      end
-    end
-  end
   
   
 end

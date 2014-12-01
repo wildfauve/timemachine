@@ -2,9 +2,9 @@
    <% if @employee %>
 
       <% if entry.try(:hours) %>
-         <%= link_to entry.hours, edit_employee_assignment_path(@employee, project_id: proj.id, day: day, date_start: @dash.date_start), remote: true %>
+         <%= link_to entry.hours, edit_employee_assignment_path(@employee, proj.id, day: day, date_start: @dash.date_start), remote: true %>
       <% else %>
-         <%= link_to edit_employee_assignment_path(@employee, project_id: proj.id, day: day), remote: true do %>
+         <%= link_to edit_employee_assignment_path(@employee, proj.id, day: day), remote: true do %>
             <i class="fi-plus"></i>
          <% end%>
       <% end %>

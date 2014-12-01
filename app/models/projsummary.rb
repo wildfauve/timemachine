@@ -63,7 +63,7 @@ class Projsummary
   
   def rate=(rate)
     if /^[\d]+(\.[\d]+){0,1}$/ === rate.gsub(/\$/, "")
-      money_rate = Money.parse(rate, "NZD")
+      money_rate = Monetize.parse(rate, "NZD")
       if [Fixnum, Money].include? money_rate.class
         self.rate_cents = money_rate.cents if money_rate.is_a? Money
       else

@@ -24,9 +24,9 @@ class Day
 
   def add_time(params)
     self.date = params[:date]
-    ass_find = self.entries.where(:project => params[:project].id)
-    if ass_find.count > 0 
-      ass_entry = ass_find.first.add_time(params)
+    ass_entry = self.entries.where(:project => params[:project].id).first
+    if ass_entry
+      ass_entry.add_time(params)
     else
       ass_entry = Entry.new
       self.entries << ass_entry.add_time(params)

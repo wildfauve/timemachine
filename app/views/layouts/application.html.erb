@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Timemachine" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -12,19 +12,28 @@
   </head>
 
   <body>
-    <div class="icon-bar six-up">
-      <a class="item">
-        <i class="fi-home"></i>
-        <label>Home</label>
-      </a>
-      <% if @current_user %>
-        <%= link_to(loads_path, class: "item") do %>
-          <i class="fi-dollar"></i>
-          <label>Loads</label>
-        <% end %>     
-      <% end %> 
-    </div>
 
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="#">TimeMachine</a></h1>
+        </li>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <!-- Left Nav Section -->
+        <ul class="left">
+          <% if current_user && current_user.employee %>
+            <%= render 'shared/employee_top_nav'  %>
+          <% end %>
+          <%= render 'shared/admin_top_nav'  %>          
+          <%= render 'shared/utils_top_nav'  %>
+        </ul>
+
+      </section>
+    </nav>
     <%= yield %>
     <%= javascript_include_tag "application" %>
   </body>

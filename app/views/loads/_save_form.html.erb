@@ -1,0 +1,15 @@
+<%= form_tag(download_loads_path(params.merge(:format => :json, :method => :post, :class => "custom") ) ) do  %>
+   <div class="row">
+     <div class="large-3 columns">
+       <%= label_tag :filename %>
+     </div>
+     <div class="large-9 columns">
+       <%= text_field_tag :filename %>
+     </div> 
+   </div>
+   <div class="row">
+     <div class="large-12 columns">
+        <%= submit_tag "Save", :class => "button" %>
+      </div>
+  </div>
+<% end %>

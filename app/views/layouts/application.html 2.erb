@@ -14,18 +14,6 @@
 
   <body>
     
-    <div class="icon-bar six-up">
-      <a class="item">
-        <i class="fi-home"></i>
-        <label>Home</label>
-      </a>
-      <% if @current_user %>
-        <%= link_to(loads_path, class: "item") do %>
-          <i class="fi-dollar"></i>
-          <label>Loads</label>
-        <% end %>     
-      <% end %> 
-    </div>
 	<nav class="top-bar">
 	  <ul class="title-area">
 	    <!-- Title Area -->
