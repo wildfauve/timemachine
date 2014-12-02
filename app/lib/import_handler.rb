@@ -64,9 +64,15 @@ class ImportHandler
 
 
   def create_employee(emp)
-    Employee.where(name: emp["name"]).first
-    #e = Employee.create_it({name: emp["name"]})
+    e = Employee.where(name: emp["name"]).first
+    if e
+      e
+    else
+      e = Employee.create_it({name: emp["name"]})
+      e
+    end
   end
+  
 =begin
  "project"=>
   #<Project _id: 540530ecf3654ec0e9000005, created_at: 2014-09-02 02:52:28 UTC, updated_at: 2014-09-02 02:52:41 UTC, name: "EA Roadmap", desc: "", billable: true, customer_id: BSON::ObjectId('540530d5f3654e2747000004'), employee_ids: [BSON::ObjectId('51efb2a5e4df1c5434000001')]>,
