@@ -1,10 +1,12 @@
 class Entry
   
+  attr_accessor :diff
+  
   include Mongoid::Document
   include Mongoid::Timestamps  
   
   field :hours, :type => Float
-  field :project, :type => Moped::BSON::ObjectId
+  field :project, :type => BSON::ObjectId
   field :note, type: String
   embedded_in :day, :inverse_of => :entries
   embeds_many :costcodeentries
@@ -16,8 +18,10 @@ class Entry
       self.cost_codes = params[:costcodes]
     end
     if params[:hour].present?
+      self.hours ? @diff = params[:hour].to_f - self.hours : @diff = params[:hour].to_f
       self.hours = params[:hour]
     elsif params[:custom_num].present?
+      self.hours ? @diff = params[:custom_num].to_f - self.hours : @diff = params[:custom_num].to_f
       self.hours = params[:custom_num]
     else
       raise

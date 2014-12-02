@@ -15,7 +15,7 @@ class AssignmentsController < ApplicationController
   
   def edit    
     @employee = Employee.find(params[:employee_id])
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:id])
     @date = params[:day]
     @timesheer_date_start = params[:date_start]
     respond_to do |format|
