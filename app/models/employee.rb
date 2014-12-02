@@ -13,7 +13,7 @@ class Employee
   
   has_and_belongs_to_many :projects
 #  embeds_many :projectstates
-  embeds_many :days
+  has_many :days
   has_many :projsummaries
   has_many :claims
   belongs_to :user

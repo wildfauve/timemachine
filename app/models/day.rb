@@ -4,7 +4,7 @@ class Day
   include Mongoid::Timestamps  
   
   field :date, :type => Date
-  embedded_in :employee, :inverse_of => :days
+  belongs_to :employee
   embeds_many :entries
 
   def project_hours(project_id)
