@@ -13,7 +13,7 @@ json.employees employees do |emp|
       json.note ent.note
       json.costcodeentries ent.costcodeentries do |cce|
         json.costcode_id cce.costcode.to_s
-        json.hours cce.hours
+        json.hours cce.hours.to_s
       end
     end
   end

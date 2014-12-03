@@ -104,7 +104,7 @@
     
     <li><a href="#method-i-total_earnings">#total_earnings</a>
     
-    <li><a href="#method-i-total_utilisation">#total_utilisation</a>
+    <li><a href="#method-i-avg_utilisation">#avg_utilisation</a>
     
   </ul>
 </nav>
@@ -525,10 +525,10 @@
       </div><!-- total_earnings-method -->
 
     
-      <div id="method-i-total_utilisation" class="method-detail ">
+      <div id="method-i-avg_utilisation" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">total_utilisation</span><span
+          <span class="method-name">avg_utilisation</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -540,23 +540,23 @@
           
 
           
-          <div class="method-source-code" id="total_utilisation-source">
+          <div class="method-source-code" id="avg_utilisation-source">
             <pre><span class="ruby-comment"># File app/models/projsummary.rb, line 32</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">total_utilisation</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">avg_utilisation</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">start_date</span>
     (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">total_hours</span> <span class="ruby-operator">/</span> <span class="ruby-value">8</span>) <span class="ruby-operator">/</span> (<span class="ruby-constant">Utilities</span>.<span class="ruby-identifier">working_days_between</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">start_date</span>, <span class="ruby-keyword">self</span>.<span class="ruby-identifier">end_date</span>) <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) * <span class="ruby-value">100</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-value">0</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- total_utilisation-source -->
+          </div><!-- avg_utilisation-source -->
           
         </div>
 
         
 
         
-      </div><!-- total_utilisation-method -->
+      </div><!-- avg_utilisation-method -->
 
     
     </section><!-- public-instance-method-details -->

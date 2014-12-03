@@ -22,14 +22,14 @@ class Day
     e.count > 0 ? e.first : nil 
   end
 
-  def add_time(params)
-    self.date = params[:date]
-    ass_entry = self.entries.where(:project => params[:project].id).first
+  def add_time(hour: nil, proj: nil, date: nil, custom_num: nil, fill_value: nil, note: nil, cost_codes: nil)
+    self.date = date
+    ass_entry = self.entries.where(:project => proj.id).first
     if ass_entry
-      ass_entry.add_time(params)
+      ass_entry.add_time(hour: hour, proj: proj, date: date, custom_num: custom_num, fill_value: fill_value, note: note, cost_codes: cost_codes)
     else
       ass_entry = Entry.new
-      self.entries << ass_entry.add_time(params)
+      self.entries << ass_entry.add_time(hour: hour, proj: proj, date: date, custom_num: custom_num, fill_value: fill_value, note: note, cost_codes: cost_codes)
     end
     return {:entry => ass_entry, :day => self}
   end

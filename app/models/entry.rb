@@ -11,18 +11,19 @@ class Entry
   embedded_in :day, :inverse_of => :entries
   embeds_many :costcodeentries
 
-  def add_time(params)
-    self.project = params[:project].id
-    self.note = params[:note] if params[:note].present?
-    if params[:costcodes].present?
-      self.cost_codes = params[:costcodes]
+  def add_time(hour: nil, proj: nil, date: nil, custom_num: nil, fill_value: nil, note: nil, cost_codes: nil)
+    self.project = proj.id
+    self.note = note if note.present?
+    if cost_codes.present?
+      raise
+      self.cost_codes = cost_codes
     end
-    if params[:hour].present?
-      self.hours ? @diff = params[:hour].to_f - self.hours : @diff = params[:hour].to_f
-      self.hours = params[:hour]
-    elsif params[:custom_num].present?
-      self.hours ? @diff = params[:custom_num].to_f - self.hours : @diff = params[:custom_num].to_f
-      self.hours = params[:custom_num]
+    if hour.present?
+      self.hours ? @diff = hour.to_f - self.hours : @diff = hour.to_f
+      self.hours = hour
+    elsif custom_num.present?
+      self.hours ? @diff = custom_num.to_f - self.hours : @diff = custom_num.to_f
+      self.hours = custom_num
     else
       raise
     end

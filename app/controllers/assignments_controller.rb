@@ -56,13 +56,12 @@ class AssignmentsController < ApplicationController
     
     @employee = Employee.find(params[:employee_id])
     @project = Project.find(params[:id])
-    @employee.add_time(params.merge({:project => @project}))
+    @employee.add_time(hour: params[:hour], proj: @project, date: params[:date], custom_num: params[:custom_num], fill_value: params[:fill_value], note: params[:note])
     @date = Date.parse(params[:date]) + 1
     respond_to do |format|
       if @employee.valid?
         format.js { render 'time_form', :layout => false}
         format.html { redirect_to employee_path(@employee) }
-        format.json
       else
         raise      
       end

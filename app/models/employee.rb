@@ -41,16 +41,30 @@ class Employee
     save
   end
   
-  def add_time(params)
+=begin
+ "project"=>
+  #<Project _id: 53179af0f3654eb0ee000003, created_at: 2014-03-05 21:45:20 UTC, updated_at: 2014-03-05 21:45:32 UTC, name: "FMS2", desc: "", billable: true, customer_id: BSON::ObjectId('53179abcf3654ed944000002'), employee_ids: [BSON::ObjectId('51efb2a5e4df1c5434000001')]>,
+ "date"=>"2014-12-03",
+ "custom_num"=>"2.0",
+ "fill-value"=>"",
+ "note"=>"",
+ "commit"=>"Submit",
+ "action"=>"calc",
+ "controller"=>"assignments",
+ "employee_id"=>"51efb2a5e4df1c5434000001",
+ "id"=>"53179af0f3654eb0ee000003"}
+=end
+  def add_time(hour: nil, proj: nil, date: nil, custom_num: nil, fill_value: nil, note: nil, costcodes: nil)
     # check if day already found
-    day = self.days.where(:date => params[:date]).first
+    day = self.days.where(:date => date).first
     if day
-      day.add_time(params)
+      result = day.add_time(hour: hour, proj: proj, date: date, custom_num: custom_num, fill_value: fill_value, note: note, cost_codes: costcodes)
     else
       day = Day.new
-      self.days << day.add_time(params)[:day]
+      result = day.add_time(hour: hour, proj: proj, date: date, custom_num: custom_num, fill_value: fill_value, note: note, cost_codes: costcodes)
+      self.days << result[:day]
     end
-    #projsum = self.projsummaries.find_or_create_by(:name)
+    refresh_project_total(result: result, proj: proj)
     save
   end
 
@@ -183,21 +197,37 @@ class Employee
   end
   
   def project_summary(project)
-    self.projsummaries.where(project: project.id).first
+    ps = self.projsummaries.where(project: project.id).first
+    if ps 
+      ps
+    else
+      ps = ProjSummary.create_me(proj: project)
+      self.projsummaries << ps
+      ps
+    end
   end
   
   def customers
     self.viewable_projects.collect {|vp| vp.customer}.uniq!
   end
     
+  def refresh_project_total(proj: nil, result: nil)
+    ps = project_summary(proj)    
+    ps.inc(entry: result[:entry])
+    total_u()
+  end
+
   def refresh_totals
-    # Only deals with 1 employee summary
     Dashboard.new(:employee => self).calc_summary.summ_by_project.each do |proj|
-      self.projsummaries << Projsummary.store(proj)
+      self.projsummaries << project_summary(proj[:project]).summ(proj[:dates])
     end
-      self.billable_u = (self.billable_calc / (self.total_number_days * 8)) * 100
-      self.summ_refresh_date = Time.now
-      save
+    total_u()
+    save
+  end
+  
+  def total_u
+    self.billable_u = (self.billable_calc / (self.total_number_days * 8)) * 100
+    self.summ_refresh_date = Time.now
   end
     
 

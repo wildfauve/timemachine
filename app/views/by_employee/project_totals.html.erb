@@ -36,7 +36,7 @@
             <td><%= proj.duration %></td>            
             <td><%= proj.start_date %></td>
             <td><%= proj.end_date %></td>
-            <td><%= number_to_percentage(proj.total_utilisation, :precision => 2) %></td>
+            <td><%= number_to_percentage(proj.avg_utilisation, :precision => 2) %></td>
             <td><%= number_with_precision(proj.avg_effort, precision: 2)   %></td>
             <td><%= proj.total_earnings   %></td>            
          </tr>
