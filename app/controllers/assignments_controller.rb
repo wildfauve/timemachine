@@ -26,7 +26,7 @@ class AssignmentsController < ApplicationController
   def update
     @employee = Employee.find(params[:employee_id])
     @project = Project.find(params[:id])
-    @employee.add_time(params.merge({:project => @project}))
+    @employee.add_time(hour: params[:hour], proj: @project, date: params[:date], custom_num: params[:custom_num], fill_value: params[:fill_value], note: params[:note])
     @date = params[:date]    
     @entry = @employee.project_entry_for_day(day: @date, project: @project)    
     @dash = Dashboard.new(:employee => @employee, :date_state => :timesheet, :date_start => params[:timesheet_date_start])        

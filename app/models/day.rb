@@ -31,7 +31,8 @@ class Day
       ass_entry = Entry.new
       self.entries << ass_entry.add_time(hour: hour, proj: proj, date: date, custom_num: custom_num, fill_value: fill_value, note: note, cost_codes: cost_codes)
     end
-    return {:entry => ass_entry, :day => self}
+    self.save
+    {:entry => ass_entry, :day => self}
   end
   
 #  def assigned_project
