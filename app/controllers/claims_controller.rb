@@ -1,7 +1,7 @@
 class ClaimsController < ApplicationController
   
   def index
-    @claims = @employee.claims
+    @claims = @employee.claims.desc(:created_at)
     respond_to do |format|
       format.html
     end

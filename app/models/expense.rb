@@ -18,20 +18,26 @@ class Expense
   end
   
   def self.create_it(params)
-    ex = self.new(params)
-    ex.customer = params[:customer]
+    ex = self.new
+    ex.update_attrs(params)
     ex
   end
   
   def update_it(params)
-    self.attributes = params
-    self.customer = params[:customer] if params[:customer]
+    self.update_attrs(params)
     self
   end
-        
+      
+  def update_attrs(params)
+    self.desc = params[:desc]
+    self.amt = params[:amt]
+    self.expense_type = params[:expense_type]
+    self.customer = params[:customer] if params[:customer].present?
+  end  
+  
   def amt=(amt)
     if /^[\d]+(\.[\d]+){0,1}$/ === amt.gsub(/\$/, "")
-      money_amt = Money.parse(amt, "NZD")
+      money_amt = Monetize.parse(amt, "NZD")
       if [Fixnum, Money].include? money_amt.class
         self.amt_cents = money_amt.cents if money_amt.is_a? Money
       else

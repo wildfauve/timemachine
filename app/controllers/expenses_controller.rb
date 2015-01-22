@@ -13,16 +13,9 @@ class ExpensesController < ApplicationController
   end
   
   def create
-    @employee = Employee.find(params[:employee_id]).create_expense(params)
-    respond_to do |format|
-      if @employee.valid?
-        format.html { redirect_to employee_expenses_path }
-        format.json
-      else
-        format.html { render action: "new" }
-        format.json
-      end
-    end      
+    @employee = Employee.find(params[:employee_id])
+    @employee.subscribe self
+    @employee.create_expense(params)
   end
   
   def show
@@ -36,16 +29,9 @@ class ExpensesController < ApplicationController
   end
   
   def update
-    @employee = Employee.find(params[:employee_id]).update_expense(params)    
-    respond_to do |format|
-      if @employee.valid?
-        format.html { redirect_to employee_expenses_path }
-        format.json
-      else
-        format.html { render action: "edit" }
-        format.json
-      end
-    end      
+    @employee = Employee.find(params[:employee_id])
+    @employee.subscribe self
+    @employee.update_expense(params)    
   end
   
   def destroy
@@ -72,5 +58,14 @@ class ExpensesController < ApplicationController
       end
     end    
   end  
+  
+  def successful_create_expense_event(claim)
+    redirect_to(employee_claim_path(@employee, claim))
+  end
+
+  def successful_update_expense_event(claim)
+    redirect_to(employee_claim_path(@employee, claim))
+  end
+
   
 end

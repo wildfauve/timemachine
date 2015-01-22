@@ -2,6 +2,8 @@ class Employee
   
   attr_accessor :claim
   
+  include Wisper::Publisher
+  
   include Mongoid::Document
   include Mongoid::Timestamps  
   
@@ -71,16 +73,14 @@ class Employee
   # Expenses Management
 
   def create_expense(params)
-    self.claims << Claim.add_expense(params)
-    self
+    claim = Claim.add_expense(params)
+    self.claims << claim
+    publish(:successful_create_expense_event, claim)
   end
 
   def update_expense(params)
-    self.claims.find(params[:claim]).update_expense(params)
-    self
-    
-#    Expense.find(params[:id]).update_it(params[:expense])
-#    self
+    claim = self.claims.find(params[:claim]).update_expense(params)
+    publish(:successful_update_expense_event, claim)
   end
   
   def set_expense_entered(params)

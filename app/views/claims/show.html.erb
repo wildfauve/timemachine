@@ -13,7 +13,7 @@
      <li class="price"><%= "#{@claim.total_value.symbol}#{@claim.total_value}" %></li>
      <li class="bullet-item"><%= @claim.total_items %></li>                
      <li class="cta-button">
-        <%= link_to "Submit", employee_claim_submitted_path(@employee, @claim, method: :put), class: "tiny button" %>
+        <%= link_to "Submit", employee_claim_submitted_path(@employee, @claim), method: :put, class: "tiny button" %>
         <%= link_to "Paid", employee_claim_paid_path(@employee, @claim, method: :put), class: "tiny button" %>
      </li>
    </ul>
