@@ -2,12 +2,11 @@
   <h4 class="subheader"><%= @project.name %></h4>
 	<%= form_tag(date_employee_assignment_path(@employee, @project), :class => "custom", :remote => true) do %>
   		<div class="small-3 columns">
-			<%= text_field_tag :date_opt, nil, :id => "date-picker-#{@project.hyphenise_name}", :placeholder => "New Date" %>
+			<%= text_field_tag :date_opt, nil, id: "date-picker-#{@project.hyphenise_name}", placeholder: "New Date" %>
 		</div>
   		<div class="small-9 columns">		
-	    	<%= submit_tag 'Submit', :class => 'button small' %>
-			<%= link_to 'Go To Today', date_employee_assignment_path(@employee, @project, :date_opt => Date.today), :remote => true, :method => :post, :class => 'button small' %>	
 			<%= link_to '<', date_employee_assignment_path(@employee, @project, :date_opt => @date - 1), :remote => true, :method => :post, :class => 'button small' %>	
+			<%= link_to 'Today', date_employee_assignment_path(@employee, @project, :date_opt => Date.today), :remote => true, :method => :post, :class => 'button small' %>	
 			<%= link_to '>', date_employee_assignment_path(@employee, @project, :date_opt => @date + 1), :remote => true, :method => :post, :class => 'button small' %>	
 	  </div>
 	<% end %>

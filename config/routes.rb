@@ -79,6 +79,7 @@ Timemachine::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :customers
+      resources :api_docs
     end
   end
   
