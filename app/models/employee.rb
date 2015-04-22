@@ -35,12 +35,17 @@ class Employee
   end
   
   def update_it(params)
-    self.attributes = (params[:employee])
+    update_attrs(params[:employee])
     if params[:project].present?
       proj = Project.find(params[:project])
       self.projects << proj unless self.projects.include? proj
     end
     save
+  end
+  
+  def update_attrs(employee)
+    self.name = employee[:name]
+    self
   end
   
 =begin
@@ -201,7 +206,7 @@ class Employee
     if ps 
       ps
     else
-      ps = ProjSummary.create_me(proj: project)
+      ps = Projsummary.create_me(proj: project)
       self.projsummaries << ps
       ps
     end

@@ -23,7 +23,8 @@ class Projsummary
 
   def self.create_me(proj)
     ps = self.new
-    ps.project = proj
+    ps.project = proj[:proj].id
+    ps.total_hours = 0 
     ps.save
     ps
   end
@@ -97,8 +98,5 @@ class Projsummary
     self.rate_cents.nil? ? cents = 0 : cents = self.rate_cents
     Money.new(cents, options[:in])
   end
-
-
-  
   
 end

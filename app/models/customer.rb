@@ -10,11 +10,15 @@ class Customer
   has_many :projects, :dependent => :delete
   
   def self.create_it(params)
-    cus = self.new(params)
+    cus = self.new.update_attrs(params)
     cus.save
     cus
   end
   
+  def update_attrs(params)
+    self.name = params[:name]
+    self
+  end
 
     
   def self.all_projects

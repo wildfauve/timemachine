@@ -16,13 +16,20 @@ class Project
   has_and_belongs_to_many :employees
   
   def self.create_it(params)
-    proj = Project.new(params)
+    proj = Project.new.update_attrs(params)
     proj
   end
   
   def update_it(params)
     self.attributes = params
     save!
+  end
+  
+  def update_attrs(params)
+    self.name = params[:name]
+    self.desc = params[:desc]
+    self.billable = params[:billable]
+    self
   end
   
   def create_costcode(params)
