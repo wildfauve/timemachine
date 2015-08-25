@@ -127,7 +127,13 @@ class Dashboard
   end
   
   def project_total(project)
-    @proj_total[project.id]
+    @total = @proj_total[project.id]
+  end
+  
+  def project_rate(project)
+    # this wont work (the @total) if the project_total is not called first.
+    # find a better way.
+    @employee.project_summary(project).rate * @total
   end
   
   def hours_for_day(day, proj)

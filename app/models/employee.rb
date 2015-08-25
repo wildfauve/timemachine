@@ -213,7 +213,7 @@ class Employee
   end
   
   def customers
-    self.viewable_projects.collect {|vp| vp.customer}.uniq!
+    self.viewable_projects.collect {|vp| vp.customer}.uniq
   end
     
   def refresh_project_total(proj: nil, result: nil)

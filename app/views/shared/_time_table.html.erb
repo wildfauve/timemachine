@@ -10,6 +10,7 @@
             </th>
          <% end %>
          <th><h3 class="subheader">Total</h3></th>
+         <th><h3 class="subheader">Rate</h3></th>
       </tr>
    </thead>
    <tbody>
@@ -26,6 +27,7 @@
              </td>
           <% end %>
           <td class="subheader"><%= @dash.project_total(proj[:project]) %></td>
+          <td class="subheader"><%= @dash.project_rate(proj[:project]).format %></td>
         </tr>
         <% for code in proj[:project].costcodes %>
            <tr>
