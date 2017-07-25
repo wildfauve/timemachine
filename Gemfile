@@ -28,15 +28,17 @@ gem 'mongoid', github: 'mongoid/mongoid'
 
 gem 'wisper'
 
+gem "scorecard_client", path: "/Users/wildfauve/apps/flick/scorecard_client"
+
 gem 'mc-settings'
 
-gem 'foundation-rails'
+gem 'foundation-rails', '5.4.3.1'
 gem 'foundation-icons-sass-rails'
 gem 'jquery-ui-rails'
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller'  
+  gem 'binding_of_caller'
   gem 'meta_request'
   gem 'pry'
   gem 'railroady'

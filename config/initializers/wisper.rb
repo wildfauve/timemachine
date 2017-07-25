@@ -1,0 +1,1 @@
+Wisper.subscribe(TimeObserver.new)

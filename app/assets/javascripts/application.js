@@ -14,7 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 // require tablecloth-rails
-//= require jquery.ui.all
+//= require jquery-ui
 // require dataTables/jquery.dataTables
 //= require_tree .
 
