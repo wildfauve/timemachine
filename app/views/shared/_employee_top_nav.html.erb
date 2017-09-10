@@ -1,26 +1,23 @@
-<li class="has-dropdown">
-   <a href="#">Time</a>
-   <ul class="dropdown">
-     <li class="active"><%= link_to 'Add Time', employee_path(current_user.employee)%></li>
-     <li><%= link_to 'Timesheet', by_employee_path(@employee, :state => :timesheet) %></li>
-   </ul>
-</li>
-<li class="has-dropdown">
-   <a href="#">Assignments</a>
-   <ul class="dropdown">
-     <li class="active"><%= link_to 'List', assignments_employee_path(@employee) %></li>
-   </ul>
-</li>
-<li class="has-dropdown">
-   <a href="#">Expenses</a>
-   <ul class="dropdown">
-     <li class="active"><%= link_to "List", employee_expenses_path(current_user.employee) %></li>
-     <li ><%= link_to "List Claims", employee_claims_path(@employee) %></li>
-   </ul>
-</li>
-<li class="has-dropdown">
-   <a href="#">Customers</a>
-   <ul class="dropdown">
-     <li class="active"><%= link_to 'List', customers_path%></li>
-   </ul>
-</li>
+<ul class="nav nav-pills">
+
+  <li class="nav-item">
+    <%= link_to 'Timesheet', by_employee_path(@employee, :state => :timesheet), class: "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to 'Timesheet', by_employee_path(@employee, :state => :timesheet), class: "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to 'List', assignments_employee_path(@employee), class: "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to "List Claims", employee_claims_path(@employee), class: "nav-link" %>
+  </li>
+
+  <li class="nav-item">
+    <%= link_to 'List', customers_path, class: "nav-link" %>
+  </li>
+
+</ul>

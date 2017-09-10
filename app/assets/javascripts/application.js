@@ -12,10 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require bootstrap-sprockets
 // require tablecloth-rails
 //= require jquery-ui
 // require dataTables/jquery.dataTables
 //= require_tree .
-
-$(document).foundation();
